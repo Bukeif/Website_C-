@@ -1,0 +1,2600 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeviceDriver</name>
+    </assembly>
+    <members>
+        <member name="T:CNC.EZSocket.Driver_EZSOCKET">
+            <summary>三菱 FUNANC EZSocket</summary>
+        </member>
+        <member name="F:CNC.EZSocket.Driver_EZSOCKET.Handle">
+            <summary>用來儲存句柄</summary>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>建立連線</summary>
+            <param name="pConnectInfo">傳入設備資訊</param>
+            <returns>回傳連線結果</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.CmdRead(Core.CIO.DeviceInterface.EDCType,System.String,System.Nullable{System.UInt16},Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[]@)">
+            <summary>讀取資料</summary>
+            <param name="pEdcType">EDC 類型</param>
+            <param name="pPoint">點位</param>
+            <param name="pLength">長度</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">位置區域</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>回傳作業結果 Code </returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GETPROGRAMNAME(System.Object[]@)">
+            <summary>取得程序名稱</summary>
+            <param name="pData">接收回傳的資料</param>
+            <returns>回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GetSpindleMonitor(System.String,System.Object[]@)">
+            <summary>取得轉速資料</summary>
+            <param name="pPoint">位置</param>
+            <param name="pData">接收讀取的資料</param>
+            <returns>回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GETFEEDSPEED(System.Object[]@)">
+            <summary>取得進給資料</summary>
+            <param name="pData">接收讀取的資料</param>
+            <returns>回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GetAllAlarm(System.Object[]@)">
+            <summary>取得全部報警資料</summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.PaserAlarmData(System.String,System.Collections.Generic.List{System.Object})">
+            <summary>處理報警資訊</summary>
+            <param name="pAlarmMessage">報警資訊</param>
+            <param name="pAlarmList"></param>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GETNCPARAM(System.String,System.Nullable{System.UInt16},Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[]@)">
+            <summary>取得參數資訊</summary>
+            <param name="pPoint">傳入參數編號</param>
+            <param name="pLength">長度</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">點位位置</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>作業是否成功</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GETNCRUNSTAT(System.String,System.Object[]@)">
+            <summary>取得設備狀態</summary>
+            <param name="pPoint">取得的系統</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>作業是否成功</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.GETTIMEDATA(Core.CIO.DeviceInterface.EDCType,System.Object[]@)">
+            <summary>取得時間參數資料</summary>
+            <param name="pEDCType">傳入 EDC 類型</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>作業是否成功</returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.CmdWrite(System.String,System.UInt16,Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[])">
+            <summary>寫入參數</summary>
+            <param name="pAddress"></param>
+            <param name="pCount"></param>
+            <param name="pDataType"></param>
+            <param name="pCNCArea"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.ChangeEZSocketWriteDataType(Core.CIO.DeviceInterface.DataType)">
+            <summary>轉換成 EZSocket 中接受的型態資料</summary>
+            <param name="pDataType">資料型態</param>
+            <returns></returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.DeLink">
+            <summary>結束連線</summary>
+            <returns></returns>
+        </member>
+        <member name="M:CNC.EZSocket.Driver_EZSOCKET.CmdWriteBit(System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.String,System.UInt16,System.Boolean)">
+            <summary>寫入 Bit 資料</summary>
+            <param name="pCNCArea">傳入要寫入的資料區域</param>
+            <param name="pAddress">傳入要寫入的位置</param>
+            <param name="pBitIndex">傳入要寫入 BIT 的 INDEX</param>
+            <param name="pData">傳入要寫入的值</param>
+            <returns>將回傳寫入的結果</returns>
+        </member>
+        <member name="T:CNC.FUNANC.Driver_FUNANC_CNC">
+            <summary>CNC Funanc API</summary>
+        </member>
+        <member name="F:CNC.FUNANC.Driver_FUNANC_CNC.Handle">
+            <summary>用來儲存句柄</summary>
+        </member>
+        <member name="F:CNC.FUNANC.Driver_FUNANC_CNC.MachineName">
+            <summary>用來儲存機台型號</summary>
+        </member>
+        <member name="F:CNC.FUNANC.Driver_FUNANC_CNC.MachineList">
+            <summary>儲存所有機台型號</summary>
+        </member>
+        <member name="F:CNC.FUNANC.Driver_FUNANC_CNC.SetPathList">
+            <summary>儲存所有機台型號</summary>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>建立連線</summary>
+            <param name="pConnectInfo">傳入設備資訊</param>
+            <returns>回傳連線結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CmdRead(Core.CIO.DeviceInterface.EDCType,System.String,System.Nullable{System.UInt16},Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[]@)">
+            <summary>讀取資料</summary>
+            <param name="pEdcType">EDC 類型</param>
+            <param name="pPoint">點位</param>
+            <param name="pLength">長度</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">位置區域</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>回傳作業結果 Code </returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_Program(System.Object[]@)">
+            <summary>查詢 CNC 程式名稱</summary>
+            <param name="pData">回傳的資料結果</param>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CmdWrite(System.String,System.UInt16,Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[])">
+            <summary>寫入資料</summary>
+            <param name="pAddress">起始位置</param> 
+            <param name="pCount">數量</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">區域位置</param>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CmdWriteBit(System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.String,System.UInt16,System.Boolean)">
+            <summary>寫入 BIT 資料</summary>
+            <param name="pAddress">起始位置</param>
+            <param name="pBitIndex">Bit 索引位置</param>
+            <param name="pCNCArea">區域位置</param>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.ChangeCNCDataTypeToPMCType(Core.CIO.DeviceInterface.DataType)">
+            <summary>改變 CNC Type 為 PMC 資料型態</summary>
+            <param name="pDataType">傳入 CNC 的資料型態</param>
+            <returns>將回傳轉換後的資料型態</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.GetODBPSDInfo(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>將資料轉換成 IODBPSD 的物件</summary>
+            <param name="pDataType">傳入要轉換的資料型態</param>
+            <param name="pData">傳入要轉換的資料</param>
+            <returns>將回傳轉換後的 IODBPSD 的物件</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.AnalysisSendData(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>將資料轉換成 Byte 的陣列</summary>
+            <param name="pDataType">資料類型</param>
+            <param name="pData">要轉換的資料</param>
+            <returns>回傳轉換後的 Byte 陣列</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_RdPMCData(System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Nullable{System.UInt16},System.Nullable{System.UInt16},Core.CIO.DeviceInterface.PMCDataType,System.Object[]@)">
+            <summary>讀取 PMC 資料</summary>
+            <param name="pCNCArea">傳入要抓取的資料區域</param>
+            <param name="pPoint">傳入資料位置</param>
+            <param name="pLength">傳入要抓取的資料長度</param>
+            <param name="pDataType">傳入要回傳的資料類型</param>
+            <param name="pData">傳入抓取到的資料要存放的物件</param>
+            <returns>將回傳作業是否成功</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_RdParam(System.Nullable{System.UInt16},System.Nullable{System.UInt16},Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[]@)">
+            <summary>抓取 CNC 資料參數</summary>
+            <param name="pPoint">點位</param>
+            <param name="pLength">長度</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">區域</param>
+            <param name="pData"></param>
+            <returns>回傳 Error Code </returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.GetByteSize(Core.CIO.DeviceInterface.DataType)">
+            <summary>計算並取得 CNC 資料類型長度</summary>
+            <param name="pDataType">傳入資料類型</param>
+            <returns>將回傳計算後的長度資訊</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.GetPMCByteSize(Core.CIO.DeviceInterface.PMCDataType,System.UInt16)">
+            <summary>計算並取得 PMC 資料長度</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pDataLength">傳入資料長度</param>
+            <returns>將回傳計算後的長度資訊</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_Alarm(System.Object[]@)">
+            <summary>取得 PLC 報警資訊</summary>
+            <param name="pData">傳入要接收狀態的資料</param>
+            <returns>將回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_Acts2(System.Object[]@)">
+            <summary>cnc_acts2 轉速</summary>
+            <param name="pData">傳入要接收狀態的資料</param>
+            <returns>將回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.CNC_Actf(System.Object[]@)">
+            <summary>CNC_Actf 進給資料 </summary>
+            <param name="pData">傳入要接收狀態的資料</param>
+            <returns>將回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.GetCNCStatinfo(System.Object[]@)">
+            <summary>取得機台的狀態資訊</summary>
+            <param name="pData">傳入要接收狀態的資料</param>
+            <returns>將回傳作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.Cnc_statusInfo(System.Object[]@)">
+            <summary>取得狀態</summary>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳 作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.Cnc_statusInfo2(System.Object[]@)">
+            <summary>取得狀態</summary>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳 作業結果</returns>
+        </member>
+        <member name="M:CNC.FUNANC.Driver_FUNANC_CNC.DeLink">
+            <summary>結束連線</summary>
+            <returns>將回傳作業的結果</returns>
+        </member>
+        <member name="T:EZSocketLib">
+            <summary>EZSocket</summary>
+        </member>
+        <member name="T:EZSocketLib.TLOFT">
+            <summary>tooloffset dataset</summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.WearX">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.WearZ">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.WearY">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.LengX">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.LengZ">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.LengY">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.NoseR">
+            <summary></summary>
+        </member>
+        <member name="F:EZSocketLib.TLOFT.WearR">
+            <summary></summary>
+        </member>
+        <member name="M:EZSocketLib.EntLink(System.String,System.UInt16,Core.CIO.DeviceInterface.NC_Type,System.Int32,System.UInt16@)">
+            <summary>建立連線</summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="t"></param>
+            <param name="NC_unit"></param>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.STOP(System.UInt16,System.Int32@)">
+            <summary>停机</summary>
+            <param name="handle"></param>
+            <param name="pResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.DeLink(System.UInt16)">
+            <summary>中斷連線</summary>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.ComGetHead(System.UInt16,System.Int32@)">
+            <summary></summary>
+            <param name="handle"></param>
+            <param name="head"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.ComSetHead(System.UInt16,System.Int32)">
+            <summary></summary>
+            <param name="handle"></param>
+            <param name="head"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetFeedSpeed(System.UInt16,System.Int32,System.Double@)">
+            <summary>取得 CNC 當前進給</summary>
+            <param name="handle"></param>
+            <param name="pSpeedType"></param>
+            <param name="pSpeedValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetSpindleMonitor(System.UInt16,System.Int32,System.Int32,System.Int32@,System.String@)">
+            <summary>取得轉數餐數</summary>
+            <param name="handle">句柄</param>
+            <param name="pIndex">轉述</param>
+            <param name="pSpindleNumber"></param>
+            <param name="pSpeedValue"></param>
+            <param name="pStringValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcInvalidStat(System.UInt16,System.Int32@)">
+            <summary>
+            取得NC無效狀態
+            </summary>
+            <param name="handle">handle</param>
+            <param name="state">(out)state</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcRunStat(System.UInt16,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            取得NC運轉狀態(單一: 自動運轉中or休止or停止)
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="pAxis">轴</param>
+            <param name="stateNo">號碼</param>
+            <param name="state">(out)狀態</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcRunStat2(System.UInt16,System.Int32,System.Int32@)">
+            <summary>
+            取得NC運轉狀態(自動運轉中、休止或停止)
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="head">系統 head</param>
+            <param name="state">(out)狀態</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcRunStat3(System.UInt16,System.Int32@)">
+            <summary>
+            取得NC運轉狀態($1與$2)
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="state">(out)狀態</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetOpeMsg(System.UInt16,System.Int32,System.String@)">
+            <summary>
+            取得操作訊息
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="a">數量</param>
+            <param name="str">return value</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetStopCode(System.UInt16,System.Int32,System.String@)">
+            <summary>
+            取得 ALARM 停止 CODE
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="a">數量</param>
+            <param name="b">(out)code 訊息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcAlarm(System.UInt16,System.Int32,System.String@)">
+            <summary>
+            取得 NC ALARM MESSAGE
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="a">數量</param>
+            <param name="b">(out)報警訊息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetPlcAlarm(System.UInt16,System.Int32,System.String@)">
+            <summary>
+            取得 PLC ALARM MESSAGE
+            </summary>
+            <param name="handle">handle</param>
+            <param name="a">數量</param>
+            <param name="b">(out)報警訊息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetAllAlarm(System.UInt16,System.Int32,System.String@)">
+            <summary>取得全部 ALARM MESSAGE</summary>
+            <param name="handle">handle</param>
+            <param name="a">數量</param>
+            <param name="b">(out)報警訊息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetParameter(System.UInt16,System.Int32,System.String@)">
+            <summary>
+            取得 NC parameter
+            </summary>
+            <param name="hanlde">handle</param>
+            <param name="a">參數號碼</param>
+            <param name="b">(out)回傳參數</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.SetParameterData3(System.UInt16,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>寫入參數</summary>
+            <param name="hanlde">句柄</param>
+            <param name="pAddress">位置</param>
+            <param name="pCount">數量</param>
+            <param name="pAxis">軸</param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.ReadDevice(System.UInt16,System.Int32,System.String[],System.Int32[],System.Int32[]@)">
+            <summary>讀取參數資料</summary>
+            <param name="hanlde">句柄</param>
+            <param name="pLength">資料長度</param>
+            <param name="pAddress">位置</param>
+            <param name="pDataType">資料型態</param>
+            <param name="pValue">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.WriteDevice(System.UInt16,System.UInt32,System.String[],System.Int32[],System.Int32[])">
+            <summary>寫入參數</summary>
+            <param name="hanlde">句柄</param>
+            <param name="pLength">資料長度</param>
+            <param name="pAddress">位置</param>
+            <param name="pDataType">資料型態</param>
+            <param name="pValue">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetMainNo(System.UInt16,System.String@)">
+             <summary>取得主程序名稱</summary>
+             <param name="hanlde">句柄</param>
+            <param name="pValue">回傳的資料</param>
+             <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetSubprgNo(System.UInt16,System.String@)">
+             <summary>取得子程序名稱</summary>
+             <param name="hanlde">句柄</param>
+            <param name="pValue">回傳的資料</param>
+             <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetToolType(System.UInt16,System.Int32@)">
+            <summary>
+            回傳工具type
+            </summary>
+            <param name="handle">handle</param>
+            <param name="a">(out)Tool Type (車床為6)</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetToolOffset(System.UInt16,System.Int32,System.UInt16,System.Int32@,EZSocketLib.TLOFT)">
+            <summary>
+            取得刀具補正
+            </summary>
+            <param name="handle">handle</param>
+            <param name="head">head 系統($1 or $2)</param>
+            <param name="a">補正號</param>
+            <param name="b">假想刀刃點</param>
+            <param name="dSTooloft">刀具補正</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetToolOffset2(System.UInt16,System.Int32,System.UInt16,System.Int32@,EZSocketLib.TLOFT)">
+            <summary>
+            取得刀具補正(刀長為0)
+            </summary>
+            <param name="handle">handle</param>
+            <param name="head">head 系統($1 or $2)</param>
+            <param name="a">補正號</param>
+            <param name="b">假想刀刃點</param>
+            <param name="dSTooloft">刀具補正</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.SetNcToolOffset(System.UInt16,System.Int32,System.UInt16,System.Int32,EZSocketLib.TLOFT)">
+            <summary>
+            設定刀具補正(待完成) 
+            </summary>
+            <param name="handlde"></param>
+            <param name="head"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="dSTooloft"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.ListAllFile(System.UInt16,System.Int32,System.Text.StringBuilder,System.Text.StringBuilder)">
+            <summary>
+            取得 NC 檔案列表
+            </summary>
+            <param name="handle">handle</param>
+            <param name="NC_unit">NC 單元</param>
+            <param name="list1">$1 檔案列表</param>
+            <param name="list2">$2 檔案列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetNcFile(System.UInt16,System.Int32,System.String,System.String)">
+            <summary>
+            取得 NC 檔案
+            </summary>
+            <param name="handle">handle</param>
+            <param name="NC_unit">NC 單元</param>
+            <param name="FileName">檔案名稱</param>
+            <param name="savePath">存檔路徑</param>
+            <returns></returns>
+        </member>
+        <member name="M:EZSocketLib.GetTimeData(System.UInt16,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>TIME</summary>
+            <param name="handle">句柄</param>
+            <param name="a">alivetime</param>
+            <param name="b">runtime</param>
+            <param name="c">starttime</param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_wrm198host(System.UInt16)">
+            <summary>write the connecting host number for the M198 operation</summary>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_wrhostno(System.UInt16,System.Int16)">
+            <summary>write the connecting host number</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_searchword(System.UInt16,System.Object)">
+            <summary>search string in data server program</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_searchresult(System.UInt16)">
+            <summary>read the searching result</summary>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_rdfile(System.UInt16,System.Object,System.Object)">
+            <summary>read file in the Data Server's HDD</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.ds_wrfile(System.UInt16,System.Object,System.Object)">
+            <summary>write file in the Data Server's HDD</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_rdnodenum(System.Int32@)">
+            <summary>read number of node</summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_rdnodeinfo(System.Int32,Focas1.ODBNODE)">
+            <summary>read node informations</summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_setdefnode(System.Int32)">
+            <summary>set default node number</summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_allclibhndl2(System.Int32,System.UInt16@)">
+            <summary>allocate library handle 2</summary>
+            <param name="node"></param>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_allclibhndl3(System.Object,System.UInt16,System.Int32,System.UInt16@)">
+            <summary>allocate library handle 3</summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="timeout"></param>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_allclibhndl4(System.Object,System.UInt16,System.Int32,System.UInt32,System.UInt16@)">
+            <summary>allocate library handle 4</summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="timeout"></param>
+            <param name="id"></param>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_settimeout(System.UInt16,System.Int32)">
+            <summary>set timeout for socket</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_resetconnect(System.UInt16)">
+            <summary>reset all socket connection</summary>
+            <param name="FlibHndl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_getfocas1opt(System.UInt16,System.Int16,System.Int32@)">
+            <summary>get option state for FOCAS1/Ethernet</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Focas1.cnc_rdetherinfo(System.UInt16,System.Int16@,System.Int16@)">
+            <summary>read Ethernet board information</summary>
+            <param name="FlibHndl"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DeviceDriver.DeviceDriverFactory">
+            <summary>装置驱动工厂</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.DeviceDriverFactory.DriverGenerator(System.String,System.Object[])">
+            <summary>取得驅動物件</summary>
+            <param name="pDriverMode">傳入要取得的驅動類型</param>
+            <param name="pParamAvg">传入启动参数</param>
+            <returns>將回傳驅動物件</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.DeviceDriverFactory.CNCDriverGenerator(System.String,System.Object[])">
+            <summary>取得驅動物件</summary>
+            <param name="pDriverMode">傳入要取得的驅動類型</param>
+            <param name="pParamAvg">传入启动参数</param>
+            <returns>將回傳驅動物件</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.DeviceDriverFactory.PrintDriverGenerator(System.String,System.Object[])">
+            <summary>取得驅動物件</summary>
+            <param name="pDriverMode">傳入要取得的驅動類型</param>
+            <param name="pParamAvg">传入启动参数</param>
+            <returns>將回傳驅動物件</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Kepware.Driver_KEPWARE">
+            <summary>KEPWARE OPC 驅動</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.Result">
+            <summary>宣告儲存作業結果值</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.OPCConnectObject">
+            <summary>與 OPC Server 連線的物件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.OPCTagGroup">
+            <summary>用來儲存 OPC 的 Tag 群組</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.OPCTagArray">
+            <summary>用來儲存 OPC Tag 的陣列</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.OPCTags">
+            <summary>用來儲存 OPC Tag </summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Kepware.Driver_KEPWARE.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>与 PLC 建立的连线</summary>
+            <param name="pConnectInfo">傳入連線條件設定檔</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.DeLink">
+            <summary>移除與 OPC Server 建立的連線</summary>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>讀取 OPC Server 資料</summary>
+            <param name="pTagList">傳入要作業的資料區域</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+            <remarks>當回傳結果不為 0 的時後，建議要重新連線 PLC</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>寫入資料到 OPC Server</summary>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+            <remarks>當回傳結果不為 0 的時後，建議要重新連線 OPC</remarks>
+        </member>
+        <member name="P:Core.DeviceDriver.Kepware.Driver_KEPWARE.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary></summary>
+            <param name="pDataArea"></param>
+            <param name="pDataType"></param>
+            <param name="pAddress"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pDataArea"></param>
+            <param name="pDataType"></param>
+            <param name="pAddress"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Kepware.Driver_KEPWARE.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Keyence.KeyenceErrorCode">
+            <summary>基恩斯异常码</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Keyence.KeyenceErrorCode.ErrorCodeDefinition">
+            <summary>用来储存错误码定义</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.KeyenceErrorCode.#ctor">
+            <summary>建构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.KeyenceErrorCode.Finalize">
+            <summary>解构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.KeyenceErrorCode.GetErrorInfo(System.Int32)">
+            <summary>取得错误码说明</summary>
+            <param name="pCode">传入异常码编号</param>
+            <returns>将回传对应的异常码资讯</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Keyence.Driver_KEYENCE">
+            <summary>基恩斯 PLC 通讯</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Keyence.Driver_KEYENCE.ExceptionTrigger_delegate">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+            <param name="sender">物件代码</param>
+            <param name="e">事件代码</param>
+        </member>
+        <member name="E:Core.DeviceDriver.Keyence.Driver_KEYENCE.ExceptionTrigger">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Keyence.Driver_KEYENCE.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Keyence.Driver_KEYENCE.PLCSocket">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Keyence.Driver_KEYENCE.ErrorDesc">
+            <summary>用来储存错误码查表物件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Keyence.Driver_KEYENCE.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.Finalize">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.OnExceptionTrigger(System.Object,System.Exception)">
+            <summary>建立觸發 Exception 事件</summary>
+            <param name="sender">觸發者</param>
+            <param name="e">例外事件</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>连线到 PLC</summary>
+            <param name="pConnectInfo">传入连线参数资讯</param>
+            <returns>将回传连线的错误码 0::无异常 / != 0::有异常</returns>
+            <remarks>
+            必要传入资讯【ServerIP】【ServerPort】【LocalIP】【LocalPort】【WaitTime】
+            </remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.DeLink">
+            <summary>停止连线</summary>
+            <returns>将回传交易码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.Bit_Reset(System.Int32,Core.CIO.DeviceInterface.DataArea,System.UInt16,System.UInt16)">
+            <summary>将单一 BIT 资料归 0</summary>
+            <param name="pHandle">传入 Socket function point 指标</param>
+            <param name="pMemoryArea">传入要处理的记忆体区块</param>
+            <param name="pAddress">传入记忆体起始位置</param>
+            <param name="pBit">指定要 Reset 哪个 BIT</param>
+            <returns>将回传处理是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.Bit_Set(System.Int32,Core.CIO.DeviceInterface.DataArea,System.UInt16,System.UInt16)">
+            <summary>将单一 BIT 资料设定为 1</summary>
+            <param name="pHandle">传入 Socket function point 指标</param>
+            <param name="pMemoryArea">传入要处理的记忆体区块</param>
+            <param name="pAddress">传入记忆体起始位置</param>
+            <param name="pBit">指定要设定哪个 BIT</param>
+            <returns>将回传处理是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.Bit_Test(System.Int32,Core.CIO.DeviceInterface.DataArea,System.UInt16,System.UInt16,System.Boolean@)">
+            <summary>读取单一 BIT 资料</summary>
+            <param name="pHandle">传入 Socket function point 指标</param>
+            <param name="pMemoryArea">传入要处理的记忆体区块</param>
+            <param name="pAddress">传入记忆体起始位置</param>
+            <param name="pBit">指定要设定哪个 BIT</param>
+            <param name="pState">传入用来接收 bit 位资料的物件</param>
+            <returns>将回传处理是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.SetDataAreaCommand(Core.CIO.DeviceInterface.DataArea,System.String@)">
+            <summary>设定资料区域的指令</summary>
+            <param name="pDataArea">传入指定的资料区</param>
+            <param name="pCommand">传入要存放区域指令的物件</param>
+            <returns>将回传作业是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>PLC 资料读取</summary>
+            <param name="pDataArea">传入要处理的记忆体区域</param>
+            <param name="pDataType">传入要回传的资料格式</param>
+            <param name="pAddress">传入资料的起始位置</param>
+            <param name="pCount">传入要处理的资料长度</param>
+            <param name="pData">传入用来接收资料的物件阵列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>将回传资料交易处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdRead(System.Int32,Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.UInt16,System.UInt16,System.Object[]@)">
+            <summary>PLC 资料读取</summary>
+            <param name="pHandle">传入 Socket Function point 指标(没有就填 0 便可)</param>
+            <param name="pMemoryArea">传入要处理的记忆体区域</param>
+            <param name="pValueType">传入要回传的资料格式</param>
+            <param name="pAddress">传入资料的起始位置</param>
+            <param name="pCount">传入要处理的资料长度</param>
+            <param name="pData">传入用来接收资料的物件阵列</param>
+            <returns>将回传资料交易处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>当前不支持</summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>当前不支持</summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>PLC 资料写入</summary>
+            <param name="pDataArea">传入要处理的记忆体区域</param>
+            <param name="pDataType">传入要写入的资料格式</param>
+            <param name="pAddress">传入资料的起始位置</param>
+            <param name="pCount">传入要处理的资料长度</param>
+            <param name="pData">传入要写入 PLC 资料的物件阵列</param>
+            <returns>将回传资料交易处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdWrite(System.Int32,Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.UInt16,System.UInt16,System.Object[]@)">
+            <summary>PLC 资料写入</summary>
+            <param name="pHandle">传入 Socket Function point 指标(没有就填 0 便可)</param>
+            <param name="pMemoryArea">传入要处理的记忆体区域</param>
+            <param name="pValueType">传入要写入的资料格式</param>
+            <param name="pAddress">传入资料的起始位置</param>
+            <param name="pCount">传入要处理的资料长度</param>
+            <param name="pData">传入要写入 PLC 资料的物件阵列</param>
+            <returns>将回传资料交易处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>当前不支持</summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>当前不支持</summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Keyence.Driver_KEYENCE.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Keyence.Driver_KEYENCE.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MC_3E">
+            <summary>MC :: [3E帧 協議] 最大讀取數 :: [960] 、最大寫入數 :: [960] </summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ExceptionTrigger_delegate">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+            <param name="sender">物件代码</param>
+            <param name="e">事件代码</param>
+        </member>
+        <member name="E:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ExceptionTrigger">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.PLCSocket">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.LogicNumber">
+            <summary>儲存站號位置</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.OnExceptionTrigger(System.Object,System.Exception)">
+            <summary>建立觸發 Exception 事件</summary>
+            <param name="sender">觸發者</param>
+            <param name="e">例外事件</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>连线到 PLC</summary>
+            <param name="pConnectInfo">传入连线参数资讯</param>
+            <returns>将回传连线的错误码 0::无异常 / != 0::有异常</returns>
+            <remarks>
+            必要传入资讯【ServerIP】【ServerPort】【LocalIP】【LocalPort】【WaitTime】【LogicNumber】
+            </remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.DeLink">
+            <summary>停止连线</summary>
+            <returns>将回传交易码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>讀取 PLC 資料 </summary>
+            <param name="pDataArea">要讀取的記憶體區域</param>
+            <param name="pDataType"></param>
+            <param name="pAddress">讀取的點位位至起點</param>
+            <param name="pCount">讀取的點位長度</param>
+            <param name="pData">返回讀取到的資料</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>返回 0 代表資料讀取成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.AnalysisEndCode(System.Byte[])">
+            <summary>抓取 EndCode 的資料 </summary>
+            <param name="pPLCDData">傳入接收到的 PLC 資料</param>
+            <returns>將回傳分析後的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>寫入資料到 PLC  </summary>
+            <param name="pDataArea">要寫入的記憶體位置</param>
+            <param name="pDataType">要寫入的型態</param>
+            <param name="pAddress">寫入的起始點位</param>
+            <param name="pCount">寫入的資料長度</param>
+            <param name="pData">返回資料寫完之後的資料</param>
+            <returns>返回 0 代表資料寫入成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.SetDataAreaCommand(Core.CIO.DeviceInterface.DataArea,System.String,System.Byte[]@)">
+            <summary>设定资料区域的指令</summary>
+            <param name="pDataArea">传入指定的资料区</param>
+            <param name="pAddress">传入要写入的点位</param>
+            <param name="pCommand">传入要存放区域指令的物件</param>
+            <returns>将回传作业是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.AnalysisSendData(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>解析要寫入到 PLC 的資料信息 </summary>
+            <param name="pDataType">传入资料类型</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.AnalysisReceiveData(Core.CIO.DeviceInterface.DataType,System.Byte[],System.Object[]@)">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pDataType">传入资料类型</param>
+            <param name="pPLCData">Socket 接收到的回覆資料</param>
+            <param name="pData">用來儲存解析後的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ByteToInt16(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 16進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 16 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ByteToInt32(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 32進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 32 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Mitsubishi.Driver_MC_3E.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MXPLC">
+            <summary>MX PLC 驱动</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ErrorMessage">
+            <summary>宣告調用 MX 裡處理 ErrorMessage 的類別</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.MxDriver">
+            <summary>宣告調用 MX 裡 UtlType的連線方式</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.Result">
+            <summary>宣告儲存 PLC 回傳的結果值</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.DeLink">
+            <summary>移除与PLC建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>与 PLC 建立的连线</summary>
+            <param name="pConnectInfo">傳入连线资讯</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.PaserPLCAddress(Core.CIO.DeviceInterface.DataArea,System.String,System.Int32,System.Int32@)">
+            <summary>依據點位的不同,判斷要如何抓取點位</summary>
+            <param name="pDataArea">傳入要寫入的位置區域</param>
+            <param name="pAddress">傳入要寫入的起始位置地址</param>
+            <param name="pUserCount">傳入使用者指定要讀取的長度</param>
+            <param name="pReadCount">傳入用來接收真實要讀取資料庫的長度</param>
+            <returns>將回傳彙整後的點位資料</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReadPLCDataByUINT16(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@,System.Int32,System.String,System.String)">
+            <summary>使用讀取 PLC 資料並轉換成 UINT16</summary>
+            <param name="pDataArea">傳入要讀取的資料區域</param>
+            <param name="pDataType">傳入要回傳的資料格式</param>
+            <param name="pCount">傳入使用者指定要讀取的長度</param>
+            <param name="pData">傳入用來接收 PLC 資料的物件陣列</param>
+            <param name="pReadCount">傳入計算後要讀取 PLC 真實的長度</param>
+            <param name="pRealAddress">傳入資料讀取的起始位置</param>
+            <param name="pUserAddress"></param>
+            <returns>將回傳讀取資料是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReadPLCDataByINT16(Core.CIO.DeviceInterface.DataArea,System.UInt16,System.Object[]@,System.Int32,System.String,System.String)">
+            <summary>使用讀取 PLC 資料並轉換成 UINT16</summary>
+            <param name="pDataArea">傳入要讀取的資料區域</param>
+            <param name="pCount">傳入使用者指定要讀取的長度</param>
+            <param name="pData">傳入用來接收 PLC 資料的物件陣列</param>
+            <param name="pReadCount">傳入計算後要讀取 PLC 真實的長度</param>
+            <param name="pRealAddress">傳入資料讀取的起始位置</param>
+            <param name="pUserAddress"></param>
+            <returns>將回傳讀取資料是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.HandleAreaDataByML(System.Object[]@,System.UInt16,System.Int16[],System.Int32)">
+            <summary>處理 M / L 區域的資料</summary>
+            <param name="pData">傳入要接收資料轉換後的物件</param>
+            <param name="pUserCount">傳入使用者指定的讀取長度</param>
+            <param name="pReadData">傳入 PLC 讀取到的資料</param>
+            <param name="pOffset">傳入</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.Int16ArrayToBitList(System.Int16[])">
+            <summary>將 INT 16 陣列的資料轉換成 Bit List</summary>
+            <param name="pReadData">傳入要轉換的資料</param>
+            <returns>將回傳轉換後的資料</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReadPLCDataByInt32(System.String,System.Int32,System.Object[]@)">
+            <summary>將讀取出來的資料 轉換成 Int32</summary>
+            <param name="pStartAddress">傳入要寫入的起始位置地址</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReadPLCDataByUInt32(System.String,System.Int32,System.Object[]@)">
+            <summary>將讀取出來的資料 轉換成 UInt32</summary>
+            <param name="pStartAddress">傳入要寫入的起始位置地址</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>將資料依序寫進點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <returns>將回傳寫入資料到 PLC 的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.SendPLCByUint16(System.String,System.Object[])">
+            <summary>將 Uint16 的資料轉換成 Short 寫入 PLC </summary>
+            <param name="pStartAddress">傳入要寫入的起始位置地址</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>将回传写入的结果代码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.SendPLCByInt32(System.String,System.Object[])">
+            <summary>>將 Int32 的資料轉換成 Short 寫入 PLC </summary>
+            <param name="pStartAddress">傳入要寫入的起始位置地址</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>将回传写入的结果代码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.SendPLCByUInt32(System.String,System.Object[])">
+            <summary>將 UInt32 的資料轉換成 Short 寫入 PLC </summary>
+            <param name="pStartAddress">傳入要寫入的起始位置地址</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>将回传写入的结果代码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.GetErrorMessage(System.Object)">
+            <summary>解析 Component 發生的訊息錯誤代碼</summary>
+            <param name="pResult">錯誤代碼</param>
+            <return>錯誤說明</return>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Mitsubishi.Driver_MXPLC.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC">
+            <summary>Mitsubishi A系列装置 PLC 驱动</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.PLCDriver">
+            <summary>宣告調用 MX 裡 UtlType的連線方式</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.Result">
+            <summary>宣告儲存 PLC 回傳的結果值</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.DeLink">
+            <summary>移除与PLC建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>与 PLC 建立的连线</summary>
+            <param name="pConnectInfo">傳入连线资讯</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>將資料依序寫進點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <returns>將回傳寫入資料到 PLC 的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.ReStartPlc(System.String)">
+             <summary>重新啟動模塊 </summary>
+            <param name="pPLCIP">傳入 PLC 的 IP 地址</param>
+             <returns>指令是否發送成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.GetErrorMessage(System.Object)">
+            <summary>解析 Component 發生的訊息錯誤代碼</summary>
+            <param name="pResult">錯誤代碼</param>
+            <returns>将回传异常讯息</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Mitsubishi.Driver_MCA_PLC.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC">
+            <summary>Mitsubishi Q 系列装置 PLC 驱动</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.PLCDriver">
+            <summary>宣告調用 MX 裡 UtlType的連線方式</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.Result">
+            <summary>宣告儲存 PLC 回傳的結果值</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.DeLink">
+            <summary>移除与PLC建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>与 PLC 建立的连线</summary>
+            <param name="pConnectInfo">傳入连线资讯</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pCount">传入资料长度</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>將資料依序寫進點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <returns>將回傳寫入資料到 PLC 的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.ReStartPlc(System.String)">
+             <summary>重新啟動模塊 </summary>
+            <param name="pPLCIP">傳入 PLC 的 IP 地址</param>
+             <returns>指令是否發送成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.GetErrorMessage(System.Object)">
+            <summary>解析 Component 發生的訊息錯誤代碼</summary>
+            <param name="pResult">錯誤代碼</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Mitsubishi.Driver_MCQ_PLC.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.Driver_MC">
+            <summary>Mitsubishi MC 4E 系列装置 PLC 驱动</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC.PLCDriver">
+            <summary>宣告調用 MX 裡 UtlType的連線方式</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC.Result">
+            <summary>宣告儲存 PLC 回傳的結果值</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Mitsubishi.Driver_MC.ErrorCode">
+            <summary>用来储存异常码</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.DeLink">
+            <summary>移除与PLC建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>与 PLC 建立的连线</summary>
+            <param name="pConnectInfo">傳入连线资讯</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>將資料依序寫進點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <returns>將回傳寫入資料到 PLC 的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.GetErrorMessage(System.Object)">
+            <summary>解析 Component 發生的訊息錯誤代碼</summary>
+            <param name="pResult">錯誤代碼</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.Driver_MC.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Mitsubishi.Driver_MC.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Mitsubishi.MCErrorCode">
+            <summary> MC 错误码</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.MCErrorCode.#ctor">
+            <summary>建构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.MCErrorCode.Finalize">
+            <summary>解构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Mitsubishi.MCErrorCode.GetErrorDesc(System.Int32)">
+            <summary>取得异常错误码</summary>
+            <param name="pErrorCode">传入异常错误码</param>
+            <returns>将回传查询到的异常码</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU">
+            <summary>Modbus TCP</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ExceptionTrigger_delegate">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+            <param name="sender">物件代码</param>
+            <param name="e">事件代码</param>
+        </member>
+        <member name="E:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ExceptionTrigger">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.PLCSerial">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.PLCSocket">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ConnMode">
+            <summary>用来储存连线模式 SOCKET / COM</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.LogicNumber">
+            <summary>儲存站號位置</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.BitReversal">
+            <summary>儲存是否要处理高低位差</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.NeedCRC">
+            <summary>用来判断是否要处理 CRC 判定</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.OnExceptionTrigger(System.Object,System.Exception)">
+            <summary>建立觸發 Exception 事件</summary>
+            <param name="sender">觸發者</param>
+            <param name="e">例外事件</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>连线到 PLC</summary>
+            <param name="pConnectInfo">传入连线参数资讯</param>
+            <returns>将回传连线的错误码 0::无异常 / != 0::有异常</returns>
+            <remarks>
+            必要传入资讯【ServerIP】【ServerPort】【LocalIP】【LocalPort】【WaitTime】【LogicNumber】
+            </remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.DeLink">
+            <summary>停止连线</summary>
+            <returns>将回传交易码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>讀取 PLC 資料 </summary>
+            <param name="pDataArea">要讀取的記憶體區域</param>
+            <param name="pDataType"></param>
+            <param name="pAddress">讀取的點位位至起點</param>
+            <param name="pCount">讀取的點位長度</param>
+            <param name="pData">返回讀取到的資料</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>返回 0 代表資料讀取成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.BuildReadCommand(Core.CIO.DeviceInterface.DataArea,System.String,System.UInt16,System.Byte[]@)">
+            <summary>产生读取资料的指令</summary>
+            <param name="pDataArea">传入指定的资料区域</param>
+            <param name="pAddress">传入指定读取的点位</param>
+            <param name="pCount">传入读取的数量</param>
+            <param name="pSendData">传入要用来接收资料的阵列</param>
+            <returns>将回传读取是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CalculateCRC(System.Byte[],System.Int32)">
+            <summary>计算 CRC 校验</summary>
+            <param name="pCheckData">传入要验算的资料</param>
+            <param name="pDataLength">传入要回传的资料长度</param>
+            <returns>将回传验算后的 CRC 码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CalculateCRC(System.Byte[],System.Int32,System.Int32)">
+            <summary>计算 CRC 校验</summary>
+            <param name="pCheckData">传入要验算的资料</param>
+            <param name="pOffset">Offset</param>
+            <param name="pDataLength">传入要回传的资料长度</param>
+            <returns>将回传验算后的 CRC 码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>寫入資料到 PLC  </summary>
+            <param name="pDataArea">要寫入的記憶體位置</param>
+            <param name="pDataType">要寫入的型態</param>
+            <param name="pAddress">寫入的起始點位</param>
+            <param name="pCount">寫入的資料長度</param>
+            <param name="pData">返回資料寫完之後的資料</param>
+            <returns>返回 0 代表資料寫入成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.BuildWriteCommand(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[],System.Byte[]@)">
+            <summary>产生读取资料的指令</summary>
+            <param name="pDataArea">传入指定的资料区域</param>
+            <param name="pDataType">传入资料形态</param>
+            <param name="pAddress">传入指定读取的点位</param>
+            <param name="pCount">传入读取的数量</param>
+            <param name="pData">传入要写入的资料</param>
+            <param name="pSendData">传入要用来接收资料的阵列</param>
+            <returns>将回传读取是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.SetDataAreaCommand(Core.CIO.DeviceInterface.DataArea,System.String,System.UInt16@)">
+            <summary>设定资料区域的指令</summary>
+            <param name="pDataArea">传入指定的资料区</param>
+            <param name="pAddress">传入 PLC 点位</param>
+            <param name="pCommand">传入要存放区域指令的物件</param>
+            <returns>将回传作业是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.AnalysisErrorCode(System.Byte,System.Byte[])">
+            <summary>抓取 EndCode 的資料 </summary>
+            <param name="pFunctionCode">传入 Function code</param>
+            <param name="pPLCDData">傳入接收到的 PLC 資料</param>
+            <returns>將回傳分析後的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.AnalysisReceiveData(Core.CIO.DeviceInterface.DataType,System.Byte[],System.Object[]@)">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pPLCData">Socket 接收到的回覆資料</param>
+            <param name="pDataType">传入资料类型</param>
+            <param name="pData">用來儲存解析後的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.AnalysisSendData(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pDataType">傳入要寫入的資料型態</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ByteToInt16(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 16進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 16 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ByteToInt32(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 32進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 32 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.ReStartPlc(System.String)">
+             <summary>重新啟動模塊 </summary>
+            <param name="pPLCIP">傳入 PLC 的 IP 地址</param>
+             <returns>指令是否發送成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Modbus.Driver_MODBUS_RTU.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Modbus.Driver_MODBUS">
+            <summary>Modbus TCP</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Modbus.Driver_MODBUS.ExceptionTrigger_delegate">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+            <param name="sender">物件代码</param>
+            <param name="e">事件代码</param>
+        </member>
+        <member name="E:Core.DeviceDriver.Modbus.Driver_MODBUS.ExceptionTrigger">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS.PLCSocket">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS.LogicNumber">
+            <summary>儲存站號位置</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Modbus.Driver_MODBUS.BitReversal">
+            <summary>儲存是否要处理高低位差</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.OnExceptionTrigger(System.Object,System.Exception)">
+            <summary>建立觸發 Exception 事件</summary>
+            <param name="sender">觸發者</param>
+            <param name="e">例外事件</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>连线到 PLC</summary>
+            <param name="pConnectInfo">传入连线参数资讯</param>
+            <returns>将回传连线的错误码 0::无异常 / != 0::有异常</returns>
+            <remarks>
+            必要传入资讯【ServerIP】【ServerPort】【LocalIP】【LocalPort】【WaitTime】【LogicNumber】
+            </remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.DeLink">
+            <summary>停止连线</summary>
+            <returns>将回传交易码</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>讀取 PLC 資料 </summary>
+            <param name="pDataArea">要讀取的記憶體區域</param>
+            <param name="pDataType"></param>
+            <param name="pAddress">讀取的點位位至起點</param>
+            <param name="pCount">讀取的點位長度</param>
+            <param name="pData">返回讀取到的資料</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>返回 0 代表資料讀取成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>寫入資料到 PLC  </summary>
+            <param name="pDataArea">要寫入的記憶體位置</param>
+            <param name="pDataType">要寫入的型態</param>
+            <param name="pAddress">寫入的起始點位</param>
+            <param name="pCount">寫入的資料長度</param>
+            <param name="pData">返回資料寫完之後的資料</param>
+            <returns>返回 0 代表資料寫入成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.SetDataAreaCommand(Core.CIO.DeviceInterface.DataArea,System.String,System.Int16@)">
+            <summary>设定资料区域的指令</summary>
+            <param name="pDataArea">传入指定的资料区</param>
+            <param name="pAddress">传入指定的点位</param>
+            <param name="pCommand">传入要存放区域指令的物件</param>
+            <returns>将回传作业是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.AnalysisErrorCode(System.Byte,System.Byte[])">
+            <summary>抓取 EndCode 的資料 </summary>
+            <param name="pPLCDData">傳入接收到的 PLC 資料</param>
+            <param name="pFunctionCode">传入要分析的资料</param>
+            <returns>將回傳分析後的結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.AnalysisReceiveData(Core.CIO.DeviceInterface.DataType,System.Byte[],System.Object[]@)">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pPLCData">Socket 接收到的回覆資料</param>
+            <param name="pDataType">传入资料类型</param>
+            <param name="pData">用來儲存解析後的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.AnalysisSendData(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pDataType">傳入要寫入的資料型態</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.ByteToInt16(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 16進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 16 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.ByteToInt32(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 32進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 32 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.ReStartPlc(System.String)">
+             <summary>重新啟動模塊 </summary>
+            <param name="pPLCIP">傳入 PLC 的 IP 地址</param>
+             <returns>指令是否發送成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.Driver_MODBUS.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Modbus.Driver_MODBUS.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Modbus.ModbusErrorCode">
+            <summary> MC 错误码</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.ModbusErrorCode.#ctor">
+            <summary>建构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.ModbusErrorCode.Finalize">
+            <summary>解构子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Modbus.ModbusErrorCode.GetErrorDesc(System.Int32)">
+            <summary>取得异常错误码</summary>
+            <param name="pErrorCode">传入异常错误码</param>
+            <returns>将回传查询到的异常码</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.OPCUA.Driver_OPCUA">
+            <summary>OPC UA 驅動</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.OPCUA.Driver_OPCUA.UAClient">
+            <summary>連線 OPC UA 的物件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.OPCUA.Driver_OPCUA.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.OPCUA.Driver_OPCUA.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.OPCUA.Driver_OPCUA.LinkCount">
+            <summary>设定或是取得资料连线数</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>與 OPCUA Server 連線</summary>
+            <param name="pConnectInfo">傳入 連線資訊</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.DeLink">
+            <summary>與 OPCUA Server 斷線</summary>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>讀取 OPC UA 信息</summary>
+            <param name="pTagList">傳入要讀取的 Tag 列表</param>
+            <param name="pData">回傳讀取到的資料</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.VerifyReadData(System.Collections.Generic.List{Opc.UaFx.OpcReadNode},System.Collections.Generic.List{Opc.UaFx.OpcValue},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>確認資料是否讀成功</summary>
+            <param name="pNodeList">Tag 的資料</param>
+            <param name="pData">要回傳的資料</param>
+            <param name="pReadData">讀寫完成的資料</param>
+            <returns>将回传处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>资料写入 PLC</summary>
+            <param name="pData">传入要写入的 Tag 与资料</param>
+            <returns>将回传处理完成的状态</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.VerifyWriteData(System.Collections.Generic.List{Opc.UaFx.OpcWriteNode},Opc.UaFx.OpcStatusCollection)">
+            <summary>確認資料是否寫成功</summary>
+            <param name="pNodeList">Tag 的資料</param>
+            <param name="pData">讀寫完成的資料</param>
+            <returns>将回传处理的结果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.GetRealTypeData(Core.CIO.DeviceInterface.DataDetial)">
+            <summary>转换资料为真实要写入的格式</summary>
+            <param name="pData">传入要写入 opc 的资料</param>
+            <returns>将回传转换型态后真实要写入的资料</returns>
+        </member>
+        <member name="P:Core.DeviceDriver.OPCUA.Driver_OPCUA.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pDataArea"></param>
+            <param name="pDataType"></param>
+            <param name="pAddress"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.OPCUA.Driver_OPCUA.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL">
+            <summary>Panasonic FP 系列協議 </summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ExceptionTrigger_delegate">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+            <param name="sender">物件代码</param>
+            <param name="e">事件代码</param>
+        </member>
+        <member name="E:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ExceptionTrigger">
+            <summary>用来触发当有异常产生时所触发的事件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.PLCSocket">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.PLCStation">
+            <summary>用來儲存 PLC 的點位</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.Finalize">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.OnExceptionTrigger(System.Object,System.Exception)">
+            <summary>建立觸發 Exception 事件</summary>
+            <param name="sender">觸發者</param>
+            <param name="e">例外事件</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.DeLink">
+            <summary>與 PLC 斷線</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>與 PLC 連線</summary>
+            <param name="pConnectInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CalculateBCC(System.String)">
+            <summary>計算 BCC 值</summary>
+            <param name="pCommandString">傳入完整指令碼</param>
+            <returns>回傳計算結果</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>讀取 PLC 資料 </summary>
+            <param name="pDataArea">要讀取的記憶體區域</param>
+            <param name="pDataType"></param>
+            <param name="pAddress">讀取的點位位至起點</param>
+            <param name="pCount">讀取的點位長度</param>
+            <param name="pData">返回讀取到的資料</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>返回 0 代表資料讀取成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>寫入資料到 PLC  </summary>
+            <param name="pDataArea">要寫入的記憶體位置</param>
+            <param name="pDataType">要寫入的型態</param>
+            <param name="pAddress">寫入的起始點位</param>
+            <param name="pCount">寫入的資料長度</param>
+            <param name="pData">返回資料寫完之後的資料</param>
+            <returns>返回 0 代表資料寫入成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ByteToCommand(System.Byte[])">
+            <summary> </summary>
+            <param name="pByteArray"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.GetErrorCode(System.String,System.Int32@)">
+            <summary>判斷回傳的資料是否正確</summary>
+            <param name="pReturnData">取得回傳的資料</param>
+            <param name="pResultCode">結果碼</param>
+            <returns>結果碼判斷正確 回傳 true / 否則回傳 false</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.SetDataAreaCommand(Core.CIO.DeviceInterface.DataArea,System.String,System.UInt16,System.String@)">
+            <summary>设定资料区域的指令</summary>
+            <param name="pDataArea">传入指定的资料区</param>
+            <param name="pAddress">寫入的起始點位</param>
+            <param name="pCount">寫入的資料長度</param>
+            <param name="pCommand">传入要存放区域指令的物件</param>
+            <returns>将回传作业是否成功</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ASCIIStringToByteArray(System.String)">
+            <summary>將回傳的 ASCII 資料轉換成 Byte 陣列</summary>
+            <param name="pASCIIString">傳入要轉換的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.AnalysisSendData(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>解析要寫入到 PLC 的資料信息 </summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pData">傳入要寫入的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.AnalysisReceiveData(Core.CIO.DeviceInterface.DataType,System.Byte[],System.Object[]@)">
+            <summary>解析接收到的資料信息 </summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData">Socket 接收到的回覆資料</param>
+            <param name="pData">用來儲存解析後的資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ByteToInt16(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 16進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 16 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ByteToInt32(Core.CIO.DeviceInterface.DataType,System.Byte[])">
+            <summary> 位元組轉換成 32進位</summary>
+            <param name="pDataType">傳入資料型態</param>
+            <param name="pPLCData"> PLC 回傳的資料</param>
+            <returns>回傳一個 32 進位的 object 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.Panasonic.Driver_MEWTOCOL.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Print.DominoErrorCode">
+            <summary>Domino Error Code</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.DominoErrorCode.ErrorCodeList">
+            <summary>用來儲存錯誤異常清單</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.DominoErrorCode.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.DominoErrorCode.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.DominoErrorCode.GetErrorDesc(System.String)">
+            <summary>取得錯誤代碼</summary>
+            <param name="pCode">傳入錯誤代碼</param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Print.Driver_DOMINOPRINT">
+            <summary>Domino 噴碼機 驅動</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_DOMINOPRINT.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_DOMINOPRINT.SocketConnect">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_DOMINOPRINT.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_DOMINOPRINT.AsciiMapping">
+            <summary> 用來處理 ASCII 對應說明的物件 </summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.Finalize">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.EntLink(Core.CIO.DeviceInterface.ConnPrintEnity)">
+            <summary>連線 噴碼機</summary>
+            <param name="pConnectInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.PrintStart(Core.CIO.DeviceInterface.PrintType,Core.CIO.DeviceInterface.PrintSettingInfo,Core.CIO.DeviceInterface.ConnPrintEnity)">
+            <summary>開始進行資料列印</summary>
+            <param name="pPrintType">傳入列印型別</param>
+            <param name="pSettingInfo">傳入列印相關資訊</param>
+            <param name="pConnectInfo">連線資訊</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.DeLink">
+            <summary>移除建立的連線</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.FormatCommandFor2DCode(Core.CIO.DeviceInterface.PrintType,Core.CIO.DeviceInterface.PrintSettingInfo,System.Byte[]@)">
+            <summary>轉換 MES 的訊息為 Domino 噴碼機可接受的訊息</summary>
+            <param name="pPrintType">傳入列印型別</param>
+            <param name="pSettingInfo">傳入列印相關資訊</param>
+            <param name="pReadySendByte">要傳送的 Byte 資訊</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.SendCommandToDominoPring(Core.CIO.DeviceInterface.ConnPrintEnity,System.Byte[])">
+            <summary>傳送命令給 Domino 噴碼機</summary>
+            <param name="pConnectInfo">連線資訊</param>
+            <param name="pReadySendByte">要傳送的資訊</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.ListenPrintReceive">
+            <summary>取得噴碼機的回應</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.ParseAndHandleMessage(System.Byte[])">
+            <summary>解析並處理噴碼機的回應訊息</summary>
+            <param name="pMessageData">傳入接收到噴碼機的訊息</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.GetRealErrorDesc(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>噴碼機的錯誤碼</summary>
+            <param name="ErrorDecsList">儲存錯誤資料</param>
+            <param name="ErrorList"></param>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_DOMINOPRINT.GetErrorCode(System.Collections.Generic.List{System.Byte},System.String)">
+             <summary>取得回傳資料的錯誤碼</summary>
+            <param name="pResult">傳入噴碼機的 Result Code</param>
+            <param name="pExcludingValue">傳入要剃除的資料</param>
+             <returns>將回傳解析後的錯誤碼</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Print.Driver_KEYENCEPRINT">
+            <summary>金恩斯 雷雕機</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.SocketConnect">
+            <summary>設定 socket 的連線模式為 TCP</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.ConnectInfo">
+            <summary>儲存噴碼機連線資訊</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.Finalize">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.EntLink">
+            <summary>連線 噴碼機</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.DeLink">
+            <summary>移除建立的連線</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.PrintStart(Core.CIO.DeviceInterface.PrintType,Core.CIO.DeviceInterface.PrintSettingInfo,Core.CIO.DeviceInterface.ConnPrintEnity)">
+            <summary>開始進行資料列印</summary>
+            <param name="pPrintType">傳入列印型別</param>
+            <param name="pSettingInfo">傳入列印相關資訊</param>
+            <param name="pConnectInfo">連線資訊</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.ChangePrgNo(Core.CIO.DeviceInterface.PrintSettingInfo)">
+            <summary>切換雷雕機的程序編號</summary>
+            <param name="pSettingInfo">傳入列印資訊</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.CheckPrinterReady">
+            <summary>檢查雷雕機狀態是否正常</summary>
+            <returns>若正常回傳 true 反之則回傳 false </returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.SendMessageToPrint(System.String)">
+            <summary>傳送資料至噴碼機</summary>
+            <param name="pSendCommand">要傳送的訊息</param>
+            <returns>回傳接收到的回覆信息</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Print.Driver_KEYENCEPRINT.ChangeTagInfoWithPrintMessage(Core.CIO.DeviceInterface.PrintSettingInfo)">
+            <summary>將列印資料轉換成噴碼機接受的格式字串</summary>
+            <param name="pSettingInfo"></param>
+        </member>
+        <member name="T:Core.DeviceDriver.ProFace.ProfaceErrorCode">
+            <summary>Proface Error Code</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.ProfaceErrorCode.ErrorList">
+            <summary>錯誤碼對照表</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.ProfaceErrorCode.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.ProfaceErrorCode.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.ProfaceErrorCode.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.ProfaceErrorCode.GetErrorInfo(System.Int32)">
+            <summary>查詢錯誤碼所代表的資訊</summary>
+            <param name="pCode">傳入要查詢的錯誤碼</param>
+            <returns>回傳錯誤碼所代表的資訊</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.ProFace.Driver_PROFACE">
+            <summary>Pro-face PLC 驱动</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.Result">
+            <summary>用來回傳作業結果</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.ErrorObj">
+            <summary>錯誤碼對照表</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.MaxErrorCount">
+            <summary>用來存放 ProServer 的最大讀寫失敗次數</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.ProServerName">
+            <summary>用來存放要連線的 ProServer 名稱</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.PLCName">
+            <summary>用來存放要連線的 PLC 名稱</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.ConnectionConfig">
+            <summary>用來連線 Proface 的設定檔</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.Finalize">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>與 ProServer 建立的連線</summary>
+            <param name="pConnectInfo">傳入 連線資訊</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.DeLink">
+            <summary>與 ProServer 的結束連線 </summary>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>用標籤讀取區間記憶體資料</summary>
+            <param name="pTage">傳入標籤名稱</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+            <remarks>當回傳結果不為 0 的時後，建議要重新連線 PLC</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.ReadPlc(System.String,System.String,System.String,System.String,System.UInt16,System.Int16[]@,System.Int32[]@)">
+            <summary>嘗試讀取 PLC 資料，最多 MaxErrorCount 次</summary>
+            <param name="pDataLength">傳入資料長度，16 或 32</param>
+            <param name="pProServer_Name">傳入 ProServer 的服務器名稱</param>
+            <param name="pPLC_Name">傳入 PLC 名稱，若是 GP2000 則傳入空字串</param>
+            <param name="pTage">傳入標籤名稱</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pPlcData_Short">傳入要轉換的 ShortArray 資料</param>
+            <param name="pPlcData_Int">傳入要轉換的 IntArray 資料</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="F:Core.DeviceDriver.ProFace.Driver_PROFACE.LOCK_INST">
+            <summary>用來解決同一時間會有兩條執行緒搶New的程式</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>利用 PLC 地址寫入區間記憶體資料</summary>
+            <param name="pDataArea">傳入要作業的作業區</param>
+            <param name="pAddress">傳入要作業的資料位置</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>用標籤寫入區間記憶體資料</summary>
+            <param name="pTage">傳入標籤名稱</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.PlcNameCommand(System.String)">
+            <summary>組合 PLC 名稱的指令</summary>
+            <param name="pPLC_Name">傳入 ProServer 定義好的 PLC 名稱</param>
+            <returns>將回傳 PLC 名稱的指令</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.TagCommand(Core.CIO.DeviceInterface.DataArea,System.String)">
+            <summary>將 Address 轉成 Tag </summary>
+            <param name="pDataArea">傳入要作業的作業區</param>
+            <param name="pAddress">傳入要作業的資料位置</param>
+            <returns>回傳 ProServer 的 TagName</returns> 
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.GetInt16Array(Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[])">
+            <summary>將 ObjectArray 轉為 INT16 Array</summary>
+            <param name="pDataType">传入资料类型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>回傳 Int16 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.GetInt32Array(Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[])">
+            <summary>將 ObjectArray 轉為 INT32 Array</summary>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <param name="pDataType">传入资料类型</param>
+            <returns>回傳 Int32 陣列</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.ParsePlcData(Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[],System.Int16[],System.Int32[])">
+            <summary>將 PLC 取出的資料轉換成要回傳的資料</summary>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <param name="pPlcData_Short">傳入要轉換的 ShortArray 資料</param>
+            <param name="pPlcData_Int">傳入要轉換的 IntArray 資料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pTagList"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary></summary>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.ProFace.Driver_PROFACE.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DeviceDriver.ProFace.Driver_PROFACE.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="P:Core.DeviceDriver.ProFace.Driver_PROFACE.WorkTimeoutSec">
+            <summary>设定或是取得作业 Timeout 时间</summary>
+        </member>
+        <member name="T:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7">
+            <summary>西门子 S7.Net</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.ClinetObject">
+            <summary>连线 西门子的物件</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.TransactionFlag">
+            <summary>用来储存交易的 Flag</summary>
+        </member>
+        <member name="P:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.DriverModel">
+            <summary>取得驅動類型</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.DeLink">
+            <summary>PLC 断线</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>PLC 连线</summary>
+            <param name="pConnectInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetPLCType(System.String)">
+            <summary>回傳 PLC 型號資料</summary>
+            <param name="pProfaceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>利用 Tag 地址讀取區間記憶體資料</summary>
+            <param name="pTagList">傳入由 DataDetial 組合的 Json 字串集合</param>
+            <param name="pData">傳入要接收回傳的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetDetailData(Core.CIO.DeviceInterface.DataDetial,System.Boolean)">
+            <summary>將資料轉換成 PLC DataItem 物件</summary>
+            <param name="pData">傳入外部參數物件</param>
+            <param name="pIsWriter">传入是否要写入</param>
+            <returns>回傳 S7 的 DataItem 物件</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>將資料依序讀取點位</summary>
+            <param name="pDataArea">傳入要作業的資料區域</param>
+            <param name="pDataType">使用者傳入使用的型態</param>
+            <param name="pAddress">傳入要作業的記憶體位置</param>
+            <param name="pCount">传入要写入的寄存器数量</param>
+            <param name="pData">傳入要儲存進點位的陣列</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>利用 PLC 地址寫入區間記憶體資料</summary>
+            <param name="pDataArea">傳入要作業的作業區</param>
+            <param name="pAddress">傳入要作業的資料位置</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>將資料寫入 PLC </summary>
+            <param name="pData">傳入由 DataDetial JOSN 字串集合的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.VerifyWriteData(System.Collections.Generic.List{Core.CIO.DeviceInterface.DataDetial},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary></summary>
+            <param name="pPLCItem"></param>
+            <param name="pReadTagValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetVarType(Core.CIO.DeviceInterface.DataType)">
+            <summary>取得對應的資料型態</summary>
+            <param name="pDataType">傳入的資料型態</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetValue``1(``0[])">
+            <summary>將不知名的資料加入到陣列中</summary>
+            <typeparam name="T"></typeparam>
+            <param name="Inputs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.HandleDataHighLow(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>將資料進行高低位差處理</summary>
+            <param name="pDataType"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.HandleDataHighLowToByteArray(Core.CIO.DeviceInterface.DataType,System.Object[])">
+            <summary>將資料進行高低位差處理</summary>
+            <param name="pDataType"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetPLCDataArea(Core.CIO.DeviceInterface.DataArea)">
+            <summary>取得 與 PLC 對應的位置區域</summary>
+            <param name="pDataArea">傳入位置區域資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary></summary>
+            <param name="pTage"></param>
+            <param name="pDataType"></param>
+            <param name="pCount"></param>
+            <param name="pData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.ReStartPlc(System.String)">
+            <summary></summary>
+            <param name="pPLCIP"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+            <remarks>当前不支持</remarks>
+        </member>
+        <member name="M:Core.DeviceDriver.Siemens.Driver_SIEMENS_S7.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Utility.AsciiMappingCode">
+            <summary>ASCII Code 對應表</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Utility.AsciiMappingCode.AsciiMappingTable">
+            <summary>用來儲存 Ascii 對應表</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.AsciiMappingCode.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.AsciiMappingCode.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.AsciiMappingCode.GetAsciiMappingDesc(System.Byte)">
+            <summary>取得 Ascii 對應說明</summary>
+            <param name="pCode">傳入 Ascii </param>
+            <returns>將回傳對應的資訊</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.AsciiMappingCode.GetAsciiMappingDesc(System.Byte[])">
+            <summary>取得 Ascii 對應說明</summary>
+            <param name="pCode">傳入 Ascii </param>
+            <returns>將回傳對應的資訊</returns>
+        </member>
+        <member name="T:Core.DeviceDriver.Utility.CommonUtility">
+            <summary>建立公用 Mothod 的 CommonUtility</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Utility.CommonUtility.UtilityInstance">
+            <summary>建立 singleton pattern 存取的 CommonUtility Instance</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Utility.CommonUtility.UtilityLock">
+            <summary>用來解決同一時間會有兩條執行緒搶 New 的程式</summary>
+        </member>
+        <member name="F:Core.DeviceDriver.Utility.CommonUtility.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.CommonUtility.#ctor">
+            <summary>CommonUtility建構子</summary>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.CommonUtility.GetInstance">
+            <summary>利用single pattern取得CommonUtility的實體</summary>
+            <returns>將會回傳一個ProjectBase.GetInstance的實體</returns>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.CommonUtility.OutputInfomation(MessageLevel,System.String,System.Object[])">
+            <summary>輸出資訊</summary>
+            <param name="paramLevel">傳入要輸出的等級</param>
+            <param name="paramMessage">傳入要輸出的訊息</param>
+            <param name="paramValue">传入要写入的资料</param>
+        </member>
+        <member name="M:Core.DeviceDriver.Utility.CommonUtility.SaveLog(MessageLevel,System.String)">
+            <summary>輸出資訊</summary>
+            <param name="paramLevel">傳入要輸出的等級</param>
+            <param name="paramMessage">傳入要輸出的訊息</param>
+        </member>
+    </members>
+</doc>

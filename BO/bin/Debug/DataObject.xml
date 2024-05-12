@@ -1,0 +1,3079 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataObject</name>
+    </assembly>
+    <members>
+        <member name="T:Core.DataObject.AccessDataObject">
+            <summary>Access Data Object</summary>
+        </member>
+        <member name="F:Core.DataObject.AccessDataObject.AccessConnection">
+            <summary>用來處理資料庫連線的物件</summary>
+        </member>
+        <member name="F:Core.DataObject.AccessDataObject.AccessDataAdapter">
+            <summary>用來處理資料庫溝通的物件</summary>
+        </member>
+        <member name="F:Core.DataObject.AccessDataObject.AccessCommand">
+            <summary>用來處理資料庫交易的物件</summary>
+        </member>
+        <member name="F:Core.DataObject.AccessDataObject.AccessTransaction">
+            <summary>Controls whether this SimpleDataObject is transactional.</summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.#ctor(System.String,System.Boolean)">
+            <summary> Initializes a new instance of the SimpleDataObject. </summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Finalize">
+            <summary>
+            Releases the relevant unmanageable resource.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.ExecuteNonQuery(System.String)">
+            <summary>執行資料庫交易.</summary>
+            <param name="sql">傳入要交易的SQL Command</param>
+            <returns>將回傳交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>執行資料庫交易.</summary>
+            <param name="sql">傳入要交易的SQL Command</param>
+            <param name="parameters">傳入交易時所需使用的參數</param>
+            <returns>將回傳交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.GetDataTableBySql(System.String)">
+            <summary>查詢資料表資料.</summary>
+            <param name="sql">傳入要交易的SQL Command</param>
+            <returns>將回傳夾查詢資料.</returns>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.GetDataTableBySql(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>查詢資料表資料.</summary>
+            <param name="sql">傳入要交易的SQL Command</param>
+            <param name="parameters">傳入交易時所需使用的參數</param>
+            <returns>將回傳夾查詢資料.</returns>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.GetDataTableBySql(System.String,System.Int32,System.Int32,System.String)">
+            <summary>Executes a query sql and return paticular range of rows.</summary>
+            <param name="sql"></param>
+            <param name="startRecord">The zero-based record number to start with.</param>
+            <param name="maxRecord">The maximum number of records to retrieve.</param>
+            <param name="srcTable">The name of the source table to use for table mapping.</param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.BeginTransaction">
+            <summary>Begins a transaction.</summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Commit">
+            <summary>Commits the transaction.</summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Rollback">
+            <summary>Rollbacks the transaction.</summary>
+        </member>
+        <member name="P:Core.DataObject.AccessDataObject.Connection">
+            <summary>Get Connection</summary>
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Base_GetDbParamInstance">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Base_GetDbParamInstance(System.String,System.String)">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Base_GetDbParamInstance(System.String,System.String,System.Data.DbType)">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.AccessDataObject.Dispose">
+            <summary>Releases the relevant unmanag eable resource.</summary>
+        </member>
+        <member name="T:Core.DataObject.ParameterNotSupporetedException">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.SqlNotSetException">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.SqlErrorException">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.SqlErrorException.#ctor(System.String,System.Exception)">
+            <summary></summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:Core.DataObject.BaseConnectionBuilder">
+            <summary>Builds relevant stuff of the batabase connection.</summary>
+        </member>
+        <member name="F:Core.DataObject.BaseConnectionBuilder.connectionString">
+            <summary>ConnectionString</summary>
+        </member>
+        <member name="F:Core.DataObject.BaseConnectionBuilder.connection">
+            <summary>Connection</summary>
+        </member>
+        <member name="F:Core.DataObject.BaseConnectionBuilder.dataAdapter">
+            <summary>DataAdapter</summary>
+        </member>
+        <member name="F:Core.DataObject.BaseConnectionBuilder.command">
+            <summary>Command</summary>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the BaseConnectionBuilder class.
+            
+            </summary>
+            <param name="connectionString">The databse ConnectionString</param>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.GetConnection">
+            <summary>Gets an IDbConnection.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.GetDataAdapter">
+            <summary>Gets an IDbAdapter.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.GetDbCommand">
+            <summary>Gets an IDbCommand.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.GetMark">
+            <summary>Gets an IDbCommand.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BaseConnectionBuilder.SQL_TYPE">
+            <summary>Gets an SQL TYPE</summary>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.ChineseFieldsNameXmlException">
+            <summary>
+            ChineseFieldsNameV10.xml has wrong value
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.ChineseFieldsNameXmlException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ChineseFieldsNameXmlException.
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.ColumnNotMatchException">
+            <summary>
+            Column doesn't match between xml and aspx.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.ColumnNotMatchException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ColumnNotMatchException.
+            </summary>
+            <param name="columnName">Column name</param>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.DataGridColumnGenerate10">
+            <summary>Summary description for DataGridColumnGenerate10</summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.ConfigurationDataRows">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.HeaderGroupText">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.ConfigurationTableName">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.HeaderText">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.DataGridColumnGenerate10.GenerateDataGridColumnsFromXML(System.Web.UI.WebControls.DataGrid,System.String,System.Data.DataTable)">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.DataGridTemplate10">
+            <summary>
+            Summary description for DataGridTemplate10
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.DataGridTemplate10.#ctor(System.String,System.String,System.Type,System.Int32,System.String)">
+            <summary></summary>
+            <param name="newColumnName"></param>
+            <param name="newTempleteType"></param>
+            <param name="newDataType"></param>
+            <param name="newColumnWidth"></param>
+            <param name="newReadOnly"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.DataGridTemplate10.#ctor(System.String,System.String,System.Type,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary></summary>
+            <param name="newColumnName"></param>
+            <param name="newTempleteType"></param>
+            <param name="newDataType"></param>
+            <param name="newReferenceTable"></param>
+            <param name="newTextColumn"></param>
+            <param name="newValueColumn"></param>
+            <param name="newColumnWidth"></param>
+            <param name="newReadOnly"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.DataGridTemplate10.InstantiateIn(System.Web.UI.Control)">
+            <summary></summary>
+            <param name="container"></param>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.IWebDataGridAudi">
+            <summary>
+            DataGrid WebForm Audi Base
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.QueryData(System.String)">
+            <summary>
+            Execute query operation
+            </summary>
+            <param name="newSql">Query SQL</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.QueryData">
+            <summary>
+            Execute query operation
+            <returns>SQL</returns>
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.QueryData(System.Data.DataTable)">
+            <summary>
+            Execute query operation
+            </summary>
+            <param name="newDataTable">DataTable contains data</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.SaveData(Core.DataObject.BasedWebForm.AudiOperation)">
+            <summary>
+            Execute insert, update, delete operations
+            </summary>
+            <param name="newCommand"></param>
+            <returns>Exected SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.DataGridItemCommand(System.Web.UI.WebControls.DataGridCommandEventArgs)">
+            <summary>
+            Operations in DataGrid 
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.DisplayDataToUi(System.Data.DataRow)">
+            <summary>
+            Set current row of DataGrid to corresponding controls
+            </summary>
+            <param name="newDataRow"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.ClearDataToUi">
+            <summary>
+            Clear data of all controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.BindDetailControlLabel">
+            <summary>
+            Bind corresponding label control's Text property of detail control 
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.IWebDataGridAudi.DataGridPageIndexChanged(System.Web.UI.WebControls.DataGridPageChangedEventArgs)">
+            <summary>
+            DataGrid Page Changed
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.AudiOperation">
+            <summary>
+            Operations of WebDataGridAudiBase 
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.BasedWebForm.AudiOperation.New">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.BasedWebForm.AudiOperation.Update">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.BasedWebForm.AudiOperation.Delete">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.WebDataGridAudiBase">
+            <summary>
+            DataGrid WebForm Audi Base
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.#ctor(System.Web.UI.WebControls.DataGrid,System.String,System.String,System.Web.UI.Page)">
+            <summary>
+            Create WebDataGridAudiBase object
+            </summary>
+            <param name="newDataGrid">Detail DataGrid control</param>
+            <param name="newDatabaseTableName">Corresponding database table name</param>
+            <param name="newConfigurationTableName">Correspond to TableName attribute of Table tag in ChineseFieldsNameV10.xml</param>
+            <param name="newPage">Application Page Object</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.#ctor(System.Web.UI.WebControls.DataGrid,System.String,System.String,System.Web.UI.Page,System.Web.UI.Control)">
+            <summary>
+            Create WebDataGridAudiBase object
+            </summary>
+            <param name="newDataGrid">Detail DataGrid control</param>
+            <param name="newDatabaseTableName">Corresponding database table name</param>
+            <param name="newConfigurationTableName">Correspond to TableName attribute of Table tag in ChineseFieldsNameV10.xml</param>
+            <param name="newPage">Application Page Object</param>
+            <param name="newDetailBasedControl">Detail based control</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DataGridItemCommand(System.Web.UI.WebControls.DataGridCommandEventArgs)">
+            <summary>
+            Operations in DataGrid 
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DisplayDataToUi(System.Data.DataRow)">
+            <summary>
+            Set current row of DataGrid to corresponding controls
+            </summary>
+            <param name="newDataRow"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.ClearDataToUi">
+            <summary>
+            Clear data of all controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.QueryData(System.String)">
+            <summary>
+            Execute query operation
+            </summary>
+            <param name="newSql">Query SQL</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.QueryData">
+            <summary>
+            Execute query operation
+            </summary>        
+            <returns>SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.QueryData(System.Int32)">
+            <summary>
+            Execute query operation
+            </summary>        
+            
+            <returns>SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.QueryData(System.Data.DataTable)">
+            <summary>
+            Execute query operation
+            </summary>
+            <param name="newDataTable">DataTable contains data</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.SaveData(Core.DataObject.BasedWebForm.AudiOperation)">
+            <summary>
+            Execute insert, update, delete operations
+            </summary>
+            <param name="newCommand"></param>
+            <returns>Exected SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.BindDetailControlLabel">
+            <summary>
+            Bind corresponding label control's Text property of detail control 
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DataGridPageIndexChanged(System.Web.UI.WebControls.DataGridPageChangedEventArgs)">
+            <summary>
+            DataGrid Page Changed
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.CreateEmptyDataTable">
+            <summary>
+            Create an empty DataTable via ChineseFieldsNameV10.xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.uiFromId">
+            <summary>
+            Set or get Detail DataGrid object
+            </summary>
+            
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DataGridObject">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.WebPage">
+            <summary>
+            Set Application Page object
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.ConfigurationDataRows">
+            <summary>
+            Get ChineseFieldsNameV10.xml configuration data
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.HeaderGroupText">
+            <summary>
+            Get DataGrid HeaderGroup
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.ConfigurationTableName">
+            <summary>
+            Get or set TableName attribute of Table tag in ChineseFieldsNameV10.xml
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DatabaseTableName">
+            <summary>
+            Get or set database table name
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.DataObject">
+            <summary>
+            Get SchemaDataObject
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.ParentFormID">
+            <summary>
+            Get or set parent form ID, default value is "form1".
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.BasedWebForm.WebDataGridAudiBase.EmptyDataRowCount">
+            <summary>
+            Get or set Empty DataGrid DataRow count, dfault value is 10.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.KeyFieldEnableScript">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.RequestForm(System.Web.UI.Page)">
+            <summary></summary>
+            <param name="newPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebDataGridAudiBase.Dispose">
+            <summary>Dispose</summary>
+        </member>
+        <member name="T:Core.DataObject.BasedWebForm.WebFormUtility">
+            <summary>
+            WebForm Utility
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebFormUtility.BindDropDownList(System.Data.DataTable,System.Web.UI.WebControls.ListControl,System.String,System.String)">
+            <summary>
+            Bind DropDownList control via DataTable
+            </summary>
+            <param name="dataTable">DataTable which contains display data</param>
+            <param name="dropDownList">Bound DropDownList control</param>
+            <param name="textField">Column name of dataTable which is used to set in DataTextField property of DropDownList control</param>
+            <param name="valueField">Column name of dataTable which is used to set in DataValueField property of DropDownList control</param>
+        </member>
+        <member name="M:Core.DataObject.BasedWebForm.WebFormUtility.BindDropDownList(Core.DataObject.IDataObject,System.String,System.Web.UI.WebControls.ListControl,System.String,System.String)">
+            <summary>
+            Bind DropDownList control via SQL
+            </summary>
+            <param name="dataObject">DataObject</param>
+            <param name="sql">Query SQL used to bind data</param>
+            <param name="dropDownList">Bound DropDownList control</param>
+            <param name="textField">Column name of dataTable which is used to set in DataTextField property of DropDownList control</param>
+            <param name="valueField">Column name of dataTable which is used to set in DataValueField property of DropDownList control</param>
+        </member>
+        <member name="T:Core.DataObject.CDOAttribute">
+            <summary>Entity 類別 Attribute</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.TableName">
+            <summary>設定或是取得 Table Name</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.ColumnName">
+            <summary>設定或是取得資料表欄位名稱</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.DBType">
+            <summary>設定或是取得資料表欄位對應資料庫的型別</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.ColumnMode">
+            <summary>設定或是取得資料欄位總類</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.UseGuid">
+            <summary>設定或是取得資料表欄位對應資料庫的型別</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.NotNull">
+            <summary>設定或是取得資料欄位是否允許 null</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.CryptoMode">
+            <summary>設定或是取得進行加密的類型</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.PrimaryKey">
+            <summary>設定或是取得該資料欄位是否為PK欄位</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOAttribute.DBColumn">
+            <summary>設定或是取得該資料欄位是否為資料庫的欄位</summary>
+        </member>
+        <member name="T:Core.DataObject.CryptoFunction">
+            <summary>加密類型</summary>
+        </member>
+        <member name="F:Core.DataObject.CryptoFunction.NONE">
+            <summary>不加密</summary>
+        </member>
+        <member name="F:Core.DataObject.CryptoFunction.DES">
+            <summary>DES 加密法</summary>
+        </member>
+        <member name="F:Core.DataObject.CryptoFunction.RSA">
+            <summary>RSA 加密法</summary>
+        </member>
+        <member name="T:Core.DataObject.ColumnType">
+            <summary>欄位類型</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.NONE">
+            <summary>無</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.SID">
+            <summary>SID 欄位</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.INSERT_TIME">
+            <summary>資料新增時間欄位</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.INSERT_USER">
+            <summary>資料新增人員欄位</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.UPDATE_TIME">
+            <summary>資料最後修改時間欄位</summary>
+        </member>
+        <member name="F:Core.DataObject.ColumnType.UPDATE_USER">
+            <summary>資料最後修改人員欄位</summary>
+        </member>
+        <member name="T:Core.DataObject.CDOConnectSetting">
+            <summary>用來儲存連線資訊的CDO物件</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOConnectSetting.ProviderName">
+            <summary>SQL 提供者</summary>
+        </member>
+        <member name="P:Core.DataObject.CDOConnectSetting.ConnectionString">
+            <summary>資料庫連線字串</summary>
+        </member>
+        <member name="T:Core.DataObject.ConnectionBuilderFactory">
+            <summary>Used to create the ConnectionBuilder object</summary>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.CreateConnectionBuilder">
+            <summary>
+            Creates DataObject via ConnectionStrings.xml.
+            Search ConnectionStrings.xml priority: 
+                1. &lt;connectionStrings&gt; in web.config
+                2. application configuration &lt;appSettings&gt; tag's "ConnectionStringsPath" key 
+                3. ConnectionStrings.xml in current assembly path.
+            </summary>
+            <exception cref="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">When you uses the database that is not suppored by ConnectionBuilder</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.CreateConnectionBuilder(System.String,System.Boolean)">
+            <summary>
+            Creates DataObject via ConnectionStrings.xml.
+            Search ConnectionStrings.xml priority: 
+                1. &lt;connectionStrings&gt; in web.config
+                2. application configuration &lt;appSettings&gt; tag's "ConnectionStringsPath" key 
+                3. ConnectionStrings.xml in current assembly path.
+            </summary>
+            <exception cref="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">When you uses the database that is not suppored by ConnectionBuilder</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.CreateConnectionBuilder(System.Configuration.ConnectionStringSettings)">
+            <summary>
+            Creates DataObject via ConnectionStrings.xml.
+            Search ConnectionStrings.xml priority: 
+                1. &lt;connectionStrings&gt; in web.config
+                2. application configuration &lt;appSettings&gt; tag's "ConnectionStringsPath" key 
+                3. ConnectionStrings.xml in current assembly path.
+            </summary>
+            <exception cref="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">When you uses the database that is not suppored by ConnectionBuilder</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.CreateConnectionBuilder(System.String)">
+            <summary>Creates DataObject via ConnectionStrings.xml.</summary>
+            <exception cref="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">When you uses the database that is not suppored by ConnectionBuilder</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.CreateConnectionBuilder(System.String,System.String)">
+            <summary>Creates DataObject via database kind and connectionString</summary>
+            <exception cref="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">When you uses the database that is not suppored by ConnectionBuilder</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.ReadXml(System.String)">
+            <summary>Reads ConnectionStrings.xml</summary>
+            <param name="xmlPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ConnectionBuilderFactory.GetConnectionSettings(System.String)">
+            <summary>Get connection string by app.config</summary>
+            <param name="paramName">Setting name</param>
+            <returns>Return db connection string</returns>
+        </member>
+        <member name="T:Core.DataObject.ControlType">
+            <summary>
+            Only used by ControlNameMatcher. Decides which control type will be matched.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.ControlType.Windows">
+            <summary>
+            WinForm detail control
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.ControlType.Web">
+            <summary>
+            WebForm detail control
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.ControlType.WebLabel">
+            <summary>
+            WebForm detail control's label
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.ControlNameMatcher">
+            <summary>
+            Matches the control name and table column name
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.ControlNameMatcher.IsMatch(Core.DataObject.ControlType,System.String,System.String)">
+            <summary>
+            Follows Dands's Code Convention document.
+            ex: column name: Country, control name: textBoxColCountry, this method will return true.
+            </summary>
+            <param name="controlType"></param>
+            <param name="columnName"></param>
+            <param name="controlName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.CPO.CDOCK">
+            <summary>CDOCK</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.CDOCK.RPK">
+            <summary>RPK</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.CDOCK.RIV">
+            <summary>RIV</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.CDOCK.DPK">
+            <summary>DPK</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.CDOCK.DIV">
+            <summary>DIV</summary>
+        </member>
+        <member name="T:Core.DataObject.CPO.Crypto">
+            <summary>加解密物件</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.Crypto.CryptoKey">
+            <summary>用來儲存加解密的金鑰</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.#ctor(System.Int32)">
+            <summary>建構子</summary>
+            <param name="paramKey">傳入加解密的金鑰</param>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Decryption(System.String)">
+            <summary>Decryption string</summary>
+            <param name="paramData">input string for decryption</param>
+            <returns>return decrypted info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.CalculateKey">
+            <summary>計算金鑰資料</summary>
+            <returns>將回傳計算後的結果</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Encryption(System.String)">
+            <summary>Encryption string</summary>
+            <param name="paramData">input string for Encryption</param>
+            <returns>return encrypted info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Encryption(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>加密作業</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <param name="paramEncryptObj">傳入加密的物件</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.MD5Encryption(System.String)">
+            <summary>MD5 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.SAH256Encryption(System.String)">
+            <summary>SAH256 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.SHA1Encryption(System.String)">
+            <summary>SHA1 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.SHA384Encryption(System.String)">
+            <summary>SHA384 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.SHA512Encryption(System.String)">
+            <summary>SHA512 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.DESEncryption(System.String,System.String,System.String)">
+            <summary>DES 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <param name="paramPublicKey">Key，長度必須為 8 個 ASCII 字元</param>
+            <param name="paramPrivateKey">IV，長度必須為 8 個 ASCII 字元</param>
+            <returns>將回傳 DES 加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.DESDecryption(System.String,System.String,System.String)">
+            <summary>DES 解密</summary>
+            <param name="paramHexData">傳入要加密的文字</param>
+            <param name="paramPublicKey">Key，長度必須為 8 個 ASCII 字元</param>
+            <param name="paramPrivateKey">IV，長度必須為 8 個 ASCII 字元</param>
+            <returns>將回傳 DES 加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.RSAEncryptor(System.Byte[],Core.DataObject.CPO.EK)">
+            <summary>RSA 加密</summary>
+            <param name="paramOriginalData">傳入原始數據</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳加密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.RSADecryptor(System.Byte[],Core.DataObject.CPO.EK)">
+            <summary>RSA 解密</summary>
+            <param name="paramHexDada">傳入要解密的資料</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳解密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.RSAEncryptor(System.String,Core.DataObject.CPO.EK)">
+            <summary>RSA 加密</summary>
+            <param name="paramOriginalData">傳入原始數據</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳加密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.RSADecryptor(System.String,Core.DataObject.CPO.EK)">
+            <summary>RSA 解密</summary>
+            <param name="paramHexDada">傳入要解密的資料</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳解密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.GenerateKey(System.String@,System.String@)">
+            <summary>產生 XML 的 RSA Key</summary>
+            <param name="paramPublicKey">傳入要儲存公鑰資料的物件</param>
+            <param name="paramPrivate">傳入要儲存私鑰資料的物件</param>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.PEMToXML_All(System.String,System.Boolean)">
+            <summary>PEM格式的密钥转XML格式</summary>
+            <param name="pPEMKey">pem格式的密钥</param>
+            <param name="pIsPrivateKey">true：私钥;false：公钥</param>
+            <returns>xml格式密钥</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.XMLToPEM_Public(System.String)">
+            <summary>XML格式的公钥转PEM格式的公钥</summary>
+            <param name="pXMLPublicKey">xml格式的公钥</param>
+            <returns>pem格式的公钥</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.XMLToPEM_Private(System.String)">
+            <summary>
+            XML格式的私钥转PEM格式的私钥
+            </summary>
+            <param name="pXMLPrivateKey">xml格式的私钥</param>
+            <returns>pem格式的私钥</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Format(System.String,System.Boolean)">
+            <summary>
+            格式化公钥/私钥
+            </summary>
+            <param name="key">生成的公钥/私钥</param>
+            <param name="type">true:公钥 false:私钥</param>
+            <returns>PEM格式的公钥/私钥</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Base64UrlEncode(System.String)">
+            <summary>轉換資料為網路上可傳輸之 URL Base 64 編碼</summary>
+            <param name="paramData">傳入要轉換的資料</param>
+            <returns>將回傳轉換後的 Base 64 編碼資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.Base64UrlDecode(System.String)">
+            <summary>轉換網路上可傳輸之 URL Base 64 編碼為使用者資料</summary>
+            <param name="paramData">傳入 Base 64 編碼資料</param>
+            <returns>將回傳解譯後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.AES_Encrypt(System.String,System.String)">
+            <summary>AES 加密</summary>
+            <param name="pSource">傳入要加密的資料</param>
+            <param name="pCryptoKey">傳入進行加解密的金鑰資訊</param>
+            <returns>將回傳加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.AES_Decrypt(System.String,System.String)">
+            <summary>AES 解密</summary>
+            <param name="pSource">傳入要解密的資料</param>
+            <param name="pCryptoKey">傳入進行加解密的金鑰資訊</param>
+            <returns>將回傳解密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.ParseByte2HexStr(System.Byte[])">
+            <summary>將二进制转十六进制</summary>
+            <param name="pBuf">傳入要轉換的資料</param>
+            <returns>將回傳 16 进制的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.Crypto.ParseHexStr2Byte(System.String)">
+            <summary>十六进制转二进制</summary>
+            <param name="pHexStr"></param>
+            <returns>將回傳二进制的資料</returns>
+        </member>
+        <member name="T:Core.DataObject.CPO.CPK">
+            <summary>CPK</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.CPK.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.CPK.RPK">
+            <summary>Get RPK</summary>
+            <returns>return RPK Info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.CPK.RIV">
+            <summary>Get RIV</summary>
+            <returns>return RIV Info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.CPK.DPK">
+            <summary>Get DPK</summary>
+            <returns>return DPK Info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.CPK.DIV">
+            <summary>Get DIV</summary>
+            <returns>return DIV Info</returns>
+        </member>
+        <member name="T:Core.DataObject.CPO.EK">
+            <summary>EK</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.EK.XRPK">
+            <summary>XRPK</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.EK.XRIV">
+            <summary>XPI</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.EK.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.EK.#ctor(System.String,System.String)">
+            <summary>建構子</summary>
+        </member>
+        <member name="T:Core.DataObject.CPO.ICRT">
+            <summary>加解密介面</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.ICRT.CryptoKey">
+            <summary>用來儲存加解密的金鑰</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.Decryption(System.String)">
+            <summary>Decryption string</summary>
+            <param name="paramData">input string for decryption</param>
+            <returns>return decrypted info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.Encryption(System.String)">
+            <summary>Encryption string</summary>
+            <param name="paramData">input string for Encryption</param>
+            <returns>return encrypted info</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.MD5Encryption(System.String)">
+            <summary>MD5 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.SAH256Encryption(System.String)">
+            <summary>SAH256 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.SHA1Encryption(System.String)">
+            <summary>SHA1 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.SHA384Encryption(System.String)">
+            <summary>SHA384 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.SHA512Encryption(System.String)">
+            <summary>SHA512 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <returns>將回傳加密後的文字</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.DESEncryption(System.String,System.String,System.String)">
+            <summary>DES 加密</summary>
+            <param name="paramData">傳入要加密的文字</param>
+            <param name="paramPublicKey">Key，長度必須為 8 個 ASCII 字元</param>
+            <param name="paramPriverKey">IV，長度必須為 8 個 ASCII 字元</param>
+            <returns>將回傳 DES 加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.DESDecryption(System.String,System.String,System.String)">
+            <summary>DES 解密</summary>
+            <param name="paramHexData">傳入要加密的文字</param>
+            <param name="paramPublicKey">Key，長度必須為 8 個 ASCII 字元</param>
+            <param name="paramPriverKey">IV，長度必須為 8 個 ASCII 字元</param>
+            <returns>將回傳 DES 加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.RSAEncryptor(System.Byte[],Core.DataObject.CPO.EK)">
+            <summary>RSA 加密</summary>
+            <param name="paramOriginalData">傳入原始數據</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳加密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.RSADecryptor(System.Byte[],Core.DataObject.CPO.EK)">
+            <summary>RSA 解密</summary>
+            <param name="paramHexDada">傳入要解密的資料</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳解密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.RSAEncryptor(System.String,Core.DataObject.CPO.EK)">
+            <summary>RSA 加密</summary>
+            <param name="paramOriginalData">傳入原始數據</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳加密後的資訊</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.ICRT.RSADecryptor(System.String,Core.DataObject.CPO.EK)">
+            <summary>RSA 解密</summary>
+            <param name="paramHexDada">傳入要解密的資料</param>
+            <param name="paramEK">傳入EK資訊</param>
+            <returns>將回傳解密後的資訊</returns>
+        </member>
+        <member name="T:Core.DataObject.CPO.PER_DTO">
+            <summary>憑證資料結構</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.cpu_id">
+            <summary>CPU 編號</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.mac_id">
+            <summary>MAC 編號</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.deadline">
+            <summary>日期使用期限</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.machine_count">
+            <summary>機台數量</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.licenses_count">
+            <summary>憑證數量</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.other">
+            <summary>其他資訊</summary>
+        </member>
+        <member name="P:Core.DataObject.CPO.PER_DTO.verify_mode">
+            <summary>驗證模式</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.KEY">
+            <summary>用來儲存要進行加解密的金鑰物件</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.IsVerPermissions">
+            <summary>判断是否已经检验过使用权了</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.CPU_ID">
+            <summary>用来储存 CPU ID</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.MACList">
+            <summary>用来储存 MAC ID</summary>
+        </member>
+        <member name="F:Core.DataObject.CPO.PKH.ReCheckFlag">
+            <summary>判断是否已经检验过使用权了</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.#ctor">
+            <summary>建构子</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.Finalize">
+            <summary>解构子</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.GetLicensesInfo">
+            <summary>取得凭证资讯</summary>
+            <returns>将回传取得到的凭证资讯</returns>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.VerifyPK">
+            <summary>验证系统的使用权</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.SetCPUSerialNumber">
+            <summary>设定 CPU 编号</summary>
+        </member>
+        <member name="M:Core.DataObject.CPO.PKH.SetMediaAccessControlID">
+            <summary>設定網卡編號</summary>
+            <returns>將回傳該設備的所有 MAC 資訊</returns>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.AbstractUiCoordinator">
+            <summary>
+            Operates the database, extracts data from the UI controls, and sets data into the UI controls.
+            Implements IDataObject, ISchemaSupportable via Adaptor, Decorator design patterns.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.schemaDataObject">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.usedExecutedSql">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.usedQueryDt">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.ClearUiData">
+            <summary>
+            Clears the content of the UI controls to be empty.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            Executes an insert action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the insert sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Update(System.Boolean)">
+            <summary>
+            Executes an update action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the update sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            Executes an delete action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the delete sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Query(System.Boolean)">
+            <summary>
+            Executes an query action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the query sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.ExecutedSql">
+            <summary>
+            Gets the sql syntax after Insert(), Update(), or Delete() executed.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.QueryDataTable">
+            <summary>
+            Gets the result DataTable after Query() executed.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Insert">
+            <summary>
+            Executes the insert action right now. 
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Update">
+            <summary>
+            Executes the update action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Delete">
+            <summary>
+            Executes the delte action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.Query">
+            <summary>
+            Executes the query action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildWhereCondition(System.String,System.String,System.Type,Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildAction)">
+            <summary>
+            Builds the where clause of the query sql. 
+            </summary>
+            <param name="columnName"></param>
+            <param name="value"></param>
+            <param name="dataType"></param>
+            <param name="buildAction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildAction">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildAction.Query">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildAction.Update">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.BaseForm">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.BaseForm.DataInputView">
+            <summary>
+            Get or set DataInputView(FormView or DetailView)
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.BaseForm.DataListView">
+            <summary>
+            Get or set DataListView (GridView)
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.BaseForm.IsCheckin">
+            <summary>
+            Is Menu ,which workproduct maps, checking in
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.DataObjectSupportedUserControl">
+            Title: DataObject Supported User Control
+            SASD Person: Senshaw
+            SASD Created Date: 07/04/12
+            Coding Person: Sensahw
+            Coding Created Date: 07/04/12
+            Description:
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.DataObjectSupportedUserControl.Text">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.DataObjectSupportedUserControl.UpdatedControl">
+            <summary>
+            The child control is used to audi by DataObject
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.DropDownListDataSourceBase">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.IAudiBase">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query">
+            <summary>查詢</summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.Object)">
+            <summary>查詢</summary>
+            <param name="key1"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.Object,System.Object)">
+            <summary>查詢</summary>
+            <param name="key1"></param>
+            <param name="key2"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.Object,System.Object,System.Object)">
+            <summary>查詢</summary>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <param name="key3"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.String)">
+            <summary>查詢</summary>
+            <param name="sessionID"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.String,System.Object)">
+            <summary>查詢</summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.String,System.Object,System.Object)">
+            <summary>查詢</summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+            <param name="key2"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.Query(System.String,System.Object,System.Object,System.Object)">
+            <summary>查詢</summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <param name="key3"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.GetQueryCondition">
+            <summary>
+            Get query where condition via controls of FormView.
+            Delegate to WebBasedUiCoordinater.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.GetQueryCondition(System.String[])">
+            <summary>
+            Get query where condition via controls of FormView.
+            Delegate to WebBasedUiCoordinater.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.SaveData(System.String,Core.DataObject.BasedWebForm.AudiOperation)">
+            <summary>
+            Execute insert, update, delete operations
+            </summary>
+            <param name="newCommand"></param>
+            <param name="sessionID"></param>
+            <returns>Exected SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindDropDownList(System.String)">
+            <summary>
+            Used for DropDownList
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindDropDownList(System.Data.DataTable)">
+            <summary>
+            Used for DropDownList
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindGridViewList(System.Data.DataTable)">
+            <summary>
+            When DataTable of GridView is made manually
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindGridViewList(System.String,System.Data.DataTable)">
+            <summary>
+            When DataTable of GridView is made manually
+            </summary>
+            <param name="sessionID"></param>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindFormViewInput(System.String,System.Data.DataTable)">
+            <summary>
+            When DataTable of FormView is made manually
+            </summary>
+            <param name="dataTable"></param>
+            <param name="sessionID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.BindFormViewInput(System.Data.DataTable)">
+            <summary>
+            When DataTable of FormView is made manually
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IAudiBase.ClearDataToUi(System.String)">
+            <summary>
+            Clear data of all controls
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.IUiCoordinator">
+            <summary>
+            Operates the database, extracts data from the UI controls, and sets data into the UI controls.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IUiCoordinator.ClearUiData">
+            <summary>
+            Clears the content of the UI controls to be empty.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            Executes an insert action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the insert sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IUiCoordinator.Update(System.Boolean)">
+            <summary>
+            Executes an update action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the update sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            Executes an delete action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the delete sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.IUiCoordinator.Query(System.Boolean)">
+            <summary>
+            Executes an query action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the query sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.IUiCoordinator.ExecutedSql">
+            <summary>
+            Gets the sql syntax after Insert(), Update(), or Delete() executed.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.IUiCoordinator.QueryDataTable">
+            <summary>
+            Gets the result DataTable after Query() executed.
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.MessageException">
+            <summary>
+            Send message to BaeDataForm
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.MessageException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="newMessageKey">the key must be mapped to resource file</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.MessageException.#ctor(System.String,System.String[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="newMessageKey">the key must be mapped to resource file</param>
+            <param name="newArguments"></param>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.MessageException.MessageKey">
+            <summary>
+            Get messsage resource key
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.MessageException.MessageArguments">
+            <summary>
+            Get messsage arguments
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.MessageKeyNotFoundException">
+            <summary>
+            Message key is not found in resource file
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.MessageKeyNotFoundException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="newMessageKey">the key must be mapped to resource file</param>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.WebAudiBase">
+            Title: Web AUDI kernel
+            SASD Person: Senshaw
+            SASD Created Date: 06/12/18
+            Coding Person: Sensahw
+            Coding Created Date: 06/12/18
+            Description:
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.#ctor(System.String,System.Web.UI.WebControls.CompositeDataBoundControl,System.Web.UI.Page)">
+            <summary>
+            Constructors in Page_Load()
+            </summary>
+            <param name="newDatabaseTableName"></param>
+            <param name="newFormView">FormView or DetailView used to input data</param>
+            <param name="newBasedPage">Page reference</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.#ctor(System.Web.UI.WebControls.CompositeDataBoundControl,System.Web.UI.Page)">
+            <summary>
+            Constructors in Page_Load()
+            </summary>
+            <param name="newFormView">FormView or DetailView used to input data</param>
+            <param name="newBasedPage">Page reference</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.#ctor(System.String,System.Web.UI.WebControls.CompositeDataBoundControl,System.Web.UI.Page,System.Boolean)">
+            <summary>
+            Constructors in Page_Load()
+            </summary>
+            <param name="newDatabaseTableName"></param>
+            <param name="newFormView">FormView or DetailView used to input data</param>
+            <param name="newBasedPage">Page reference</param>
+            <param name="newIsUseListQuerySql">is ListQuerySql used, just for checking Query() method </param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.#ctor(System.String,System.Web.UI.WebControls.CompositeDataBoundControl,System.Web.UI.Page,System.String)">
+            <summary>
+            Constructors in Page_Load()
+            </summary>
+            <param name="newDatabaseTableName"></param>
+            <param name="newFormView">FormView or DetailView used to input data</param>
+            <param name="newBasedPage">Page reference</param>
+            <param name="newListQuerySql">Query sql of list region(GridView)</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query">
+            <summary>
+            Bind ObjectDataSourceList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.Object)">
+            <summary>
+            Bind ObjectDataSourceList and use one primary key
+            </summary>
+            <param name="key1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.Object,System.Object)">
+            <summary>
+            Bind ObjectDataSourceList and use two primary keys
+            </summary>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.Object,System.Object,System.Object)">
+            <summary>
+            Bind ObjectDataSourceList and use three primary keys
+            </summary>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <param name="key3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sessionID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.String,System.Object)">
+            <summary></summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.String,System.Object,System.Object)">
+            <summary></summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.Query(System.String,System.Object,System.Object,System.Object)">
+            <summary></summary>
+            <param name="sessionID"></param>
+            <param name="key1"></param>
+            <param name="key2"></param>
+            <param name="key3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.GetQueryCondition">
+            <summary>
+            Get query where condition via controls of FormView.
+            Delegate to WebBasedUiCoordinater.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.GetQueryCondition(System.String[])">
+            <summary>
+            Get query where condition via controls of FormView.
+            Delegate to WebBasedUiCoordinater.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.SaveData(System.String,Core.DataObject.BasedWebForm.AudiOperation)">
+            <summary>
+            Execute insert, update, delete operations
+            </summary>
+            <param name="newCommand"></param>
+            <param name="sessionID"></param>
+            <returns>Exected SQL</returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindDropDownList(System.String)">
+            <summary>
+            Bind ObjectDataSource which is used for dropdownlist
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindDropDownList(System.Data.DataTable)">
+            <summary>
+            Bind ObjectDataSource which is used for dropdownlist
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindGridViewList(System.Data.DataTable)">
+            <summary>
+            When DataTable of GridView is made manually
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindGridViewList(System.String,System.Data.DataTable)">
+            <summary>
+            When DataTable of GridView is made manually
+            </summary>
+            <param name="sessionID"></param>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindFormViewInput(System.Data.DataTable)">
+            <summary>
+            When DataTable of FormView is made manually
+            </summary>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.BindFormViewInput(System.String,System.Data.DataTable)">
+            <summary>
+            When DataTable of FormView is made manually
+            </summary>
+            <param name="sessionID"></param>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.ClearDataToUi(System.String)">
+            <summary>
+            Clear data of all controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.ShowMessage(System.String)">
+            <summary>
+            Show javascript message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.ShowMessage(System.Web.UI.Page,System.String)">
+            <summary>
+            Show javascript message
+            </summary>
+            <param name="basedPage"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.ClearResourceBySessionID(System.String)">
+            <summary></summary>
+            <param name="sessionID"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBase.CreateEmptyDataTable(System.String)">
+            <summary>
+            Create an empty DataTable via SchemaDataObject
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebAudiBase.ListQuerySql">
+            <summary>
+            Get or set query sql of list region(GridView)
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebAudiBase.DataObject">
+            <summary>
+            Get or set DataObject
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebAudiBase.WebFormID">
+            <summary>
+            Get or set WebForm ID
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebAudiBase.ResourceManager">
+            <summary>
+            Get or set ResourceManager
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.BindDropDownListException">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.BindDropDownListException.#ctor(System.String)">
+            <summary></summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.WebAudiBaseException">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBaseException.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebAudiBaseException.#ctor(System.String)">
+            <summary></summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker">
+            <summary>
+            Checks whether the content of the UI control matches the database schema definition.
+            Used for web based controls. 
+            It can check allowing null, the length of strings, the format of number and datetime by the database schema.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.controlCollection">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.itemCellHeader">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.#ctor(System.Web.UI.Page,System.Web.UI.WebControls.CompositeDataBoundControl,System.String,Core.DataObject.ISchemaSupportable,System.Resources.ResourceManager)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            Doesn't use ShowErrorMethod and doesn't check null. 
+            </summary>
+            <param name="newBasedPage">Based control which contains the UI controls which users input.</param>
+            <param name="newBasedView"></param>
+            <param name="newFormName"></param>
+            <param name="newRm"></param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.#ctor(System.Web.UI.Page,System.Web.UI.WebControls.CompositeDataBoundControl,System.String,Core.DataObject.ISchemaSupportable)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            Doesn't use ShowErrorMethod and doesn't check null. 
+            </summary>
+            <param name="newBasedPage">Based control which contains the UI controls which users input.</param>
+            <param name="newBasedView"></param>
+            <param name="newFormName"></param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.CheckedBasedView">
+            <summary>
+            Gets or sets the based control.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.DataGridControlCollection">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.DataGridItemCellHeader">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.CheckData">
+            <summary>
+            Only Checks the UI controls.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.CheckDataAndShowError">
+            <summary>
+            Checks the UI controls and show the error message if necessay.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.JavaScriptCheckNumber(System.String,System.String)">
+            <summary></summary>
+            <param name="columnName"></param>
+            <param name="controlId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedEnhancedDataChecker.JavaScriptCheckDateFunction">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator">
+            <summary>
+            Operates the database via controls and SchemaDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.#ctor(Core.DataObject.SchemaDataObject,System.Web.UI.WebControls.CompositeDataBoundControl)">
+            <summary>
+            Initializes a new instance of the WebBasedUiCoordinator via SchemaDataObject and controls.
+            Suggested strongly to use this constructor.
+            </summary>
+            <param name="newSchemaDataObject"></param>
+            <param name="newFormView"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates insert sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.ClearUiData">
+            <summary>
+            Clears the vlaues of the whole controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Update(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates update sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Query(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates query sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Query(System.Boolean,System.Object[])">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates query sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="keyValues"></param>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Query(System.Boolean,System.Object[],System.String)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates query sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="keyValues"></param>
+            <param name="newQuerySql"></param>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.GetQueryCondition">
+            <summary>
+            Get query where condition via controls of FormView.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.GetQueryCondition(System.String[])">
+            <summary>
+            Get query where condition via controls of FormView.
+            </summary>
+            <param name="controlIDs"></param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates delete sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.KeyFieldEnableScript">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.BuildWhereSql">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinator.BuildWhereCondition(System.String,System.String,System.Type,Core.DataObject.DataSourceSupport.AbstractUiCoordinator.BuildAction)">
+            <summary>
+            Builds the where clause of the query sql. 
+            </summary>
+            <param name="columnName"></param>
+            <param name="value"></param>
+            <param name="dataType"></param>
+            <param name="buildAction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.DataTypeNotSupportedByDataObjectException">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.DataTypeNotSupportedByDataObjectException.#ctor(System.Type)">
+            <summary>建構子</summary>
+            <param name="dataType"></param>
+        </member>
+        <member name="T:Core.DataObject.DataSourceSupport.WebBasedUiCoordinatorExcepiton">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataSourceSupport.WebBasedUiCoordinatorExcepiton.#ctor(System.String)">
+            <summary>建構子</summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Core.DataObject.DataCheck.DataChecker">
+            <summary>
+            DataChecker 的摘要描述。
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.DataChecker.schemaDataObject">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.DataChecker.isCheckNull">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.DataChecker.CheckedDataObject">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.DataChecker.CheckNull">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.DataChecker.CheckData">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.DataChecker.CheckDataAndShowError">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.DataCheck.IDataChecker">
+            <summary>
+            Checks whether the content of the UI control matches the database schema definition.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.IDataChecker.CheckData">
+            <summary>
+            Only Checks the UI controls.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.IDataChecker.CheckDataAndShowError">
+            <summary>
+            Checks the UI controls and show the error message if necessay.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="T:Core.DataObject.DataCheck.WebBasedDataChecker">
+            <summary>
+            Checks whether the content of the UI control matches the database schema definition.
+            Used for web based controls. 
+            It can check allowing null, the length of strings, the format of number and datetime by the database schema.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.WebBasedDataChecker.controlCollection">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.WebBasedDataChecker.itemCellHeader">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.#ctor(System.Web.UI.Page,System.String,Core.DataObject.ISchemaSupportable,System.String)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            Doesn't use ShowErrorMethod and doesn't check null. 
+            </summary>
+            <param name="newBasedControl">Based control which contains the UI controls which users input.</param>
+            <param name="newFormName"></param>
+            <param name="newConfigurationTableName"></param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WebBasedDataChecker.CheckedBasedControl">
+            <summary>
+            Gets or sets the based control.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WebBasedDataChecker.DataGridControlCollection">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WebBasedDataChecker.DataGridItemCellHeader">
+            <summary>
+            Used for CheckDataGridItemData()
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WebBasedDataChecker.ConfigurationTableName">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.CheckData">
+            <summary>
+            Only Checks the UI controls.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.CheckDataAndShowError">
+            <summary>
+            Checks the UI controls and show the error message if necessay.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.CheckDataGridItemData">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.JavaScriptCheckNumber(System.String,System.String)">
+            <summary></summary>
+            <param name="columnName"></param>
+            <param name="controlId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WebBasedDataChecker.JavaScriptCheckDateFunction">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.DataCheck.WindowsBasedDataChecker">
+            <summary>
+            Checks whether the content of the UI control matches the database schema definition.
+            Used for windows based controls. 
+            It can check allowing null, the length of strings, the format of number and datetime by the database schema.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.#ctor(System.Windows.Forms.Control,Core.DataObject.ISchemaSupportable)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            Doesn't use ShowErrorMethod and doesn't check null. 
+            </summary>
+            <param name="newBasedControl">Based control which contains the UI controls which users input.</param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.#ctor(System.Windows.Forms.Control,Core.DataObject.ISchemaSupportable,Core.DataObject.DataCheck.ShowErrorMethod)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            Suits to be used on the situation that you want to ignore ErrorProvider and don't check null.
+            </summary>
+            <param name="newBasedControl">Based control which contains the UI controls which users input.</param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+            <param name="newShowErrorMethod">The method how to show errors.</param>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.#ctor(System.Windows.Forms.Control,Core.DataObject.ISchemaSupportable,Core.DataObject.DataCheck.ShowErrorMethod,System.Windows.Forms.ErrorProvider)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            The most detailed configuration except for not to check null. 
+            </summary>
+            <param name="newBasedControl">Based control which contains the UI controls which users input.</param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+            <param name="newShowErrorMethod">The method how to show errors.</param>
+            <param name="newErrorProvider">The corresponding ErrorProvider</param>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.#ctor(System.Windows.Forms.Control,Core.DataObject.ISchemaSupportable,Core.DataObject.DataCheck.ShowErrorMethod,System.Windows.Forms.ErrorProvider,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            The most detailed configuration.
+            </summary>
+            <param name="newBasedControl">Based control which contains the UI controls which users input.</param>
+            <param name="newSchemaDataObject">A corresponding SchemaDataObject</param>
+            <param name="newShowErrorMethod">The method how to show errors.</param>
+            <param name="newUsedError">The corresponding ErrorProvider</param>
+            <param name="newCheckNull">Checks null or not.</param>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WindowsBasedDataChecker.CheckedBasedControl">
+            <summary>
+            Gets or sets the based control.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WindowsBasedDataChecker.UsedErrorProvider">
+            <summary>
+            Gets or sets the corresonding ErrorProvider.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WindowsBasedDataChecker.UsedShowErrorMethod">
+            <summary>
+            Gets or set the method how to show errors.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.DataCheck.WindowsBasedDataChecker.ErrorMessage">
+            <summary>
+            Gets or set the latest error message.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.CheckData">
+            <summary>
+            Only Checks the UI controls.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.CheckDataAndShowError">
+            <summary>
+            Checks the UI controls and show the error message if necessay.
+            </summary>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.CheckField(System.Windows.Forms.Control)">
+            <summary>
+            Only checks one control.
+            </summary>
+            <param name="newControl">the corresponding control.</param>
+            <returns>true if no error.</returns>
+        </member>
+        <member name="M:Core.DataObject.DataCheck.WindowsBasedDataChecker.ResetErrorProviders">
+            <summary>
+            Reset all error messages
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.DataCheck.ShowErrorMethod">
+            <summary>Only used by WindowsBasedDataChecker. The method how to show error messages.</summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.ShowErrorMethod.ErrorProvider">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataCheck.ShowErrorMethod.MessageBox">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.DataObjectConstants">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.FIELD_CONFIGURATION_PATH">
+            <summary>FieldConfigurationPath</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.TABLE_NAME">
+            <summary>TableName</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.VISIBLE">
+            <summary>Visible</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.VISIBLE_TRUE">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.VISIBLE_FALSE">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.COLUMN_NAME">
+            <summary>ColumnName</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.DISPLAY_CONTROL">
+            <summary>DisplayControl</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.EDIT_CONTROL">
+            <summary>EditControl</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.WIDTH">
+            <summary>Width</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.TEXT_FIELD">
+            <summary>TextField</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.VALUE_FIELD">
+            <summary>Value Field</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.DATA_SOURCE_SQL">
+            <summary>DataSourceSQL</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.DESCRIPTION">
+            <summary>ChineseName</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.REFERENCE_TABLE">
+            <summary>ReferenceTable</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.REFERENCE_FIELD">
+            <summary>ReferenceField</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.READONLY">
+            <summary>ReadOnly</summary>
+        </member>
+        <member name="F:Core.DataObject.DataObjectConstants.HEADER_GROUP_NAME">
+            <summary>HeaderGroupName</summary>
+        </member>
+        <member name="T:Core.DataObject.Exceptions.DatabaseNotSupportedException">
+            <summary>
+            Used database is not supported.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.Exceptions.DatabaseNotSupportedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DatabaseNotSupportedException.
+            </summary>
+            <param name="paramDatabase">The database name</param>
+        </member>
+        <member name="T:Core.DataObject.Exceptions.TableNotFoundException">
+            <summary>
+            Selected table is not found.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.Exceptions.TableNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the TableNotFoundException.
+            </summary>
+            <param name="paramTableName">The table name</param>
+            <param name="innerException">An inner exception</param>
+        </member>
+        <member name="T:Core.DataObject.Exceptions.UiCordinatorException">
+            <summary>
+            UiCoordinator operation error.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.Exceptions.UiCordinatorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UiCordinatorException.
+            </summary>
+            <param name="message">A error message</param>
+        </member>
+        <member name="M:Core.DataObject.Exceptions.UiCordinatorException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the UiCordinatorException.
+            </summary>
+            <param name="innerException">An inner exception</param>
+        </member>
+        <member name="T:Core.DataObject.IConnectionBuilder">
+            <summary>Manages database connection relevant objects.</summary>
+        </member>
+        <member name="M:Core.DataObject.IConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+        <member name="M:Core.DataObject.IConnectionBuilder.GetConnection">
+            <summary>取得Oredr連線物件</summary>
+            <returns>將回傳Oredr連線物件</returns>
+        </member>
+        <member name="M:Core.DataObject.IConnectionBuilder.GetDataAdapter">
+            <summary>取得 Oredr Data Adapter 物件</summary>
+            <returns>將回傳 Oredr Data Adapter 物件</returns>
+        </member>
+        <member name="M:Core.DataObject.IConnectionBuilder.GetDbCommand">
+            <summary>取得 Oredr Data Command 物件</summary>
+            <returns>將回傳 Oredr Data Command 物件</returns>
+        </member>
+        <member name="M:Core.DataObject.IConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="T:Core.DataObject.IDataObject">
+            <summary>
+            Database operator
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.ExecuteNonQuery(System.String)">
+            <summary>
+            Executes a insert, update or delete sql.
+            </summary>
+            <param name="sql"></param>
+            <returns>Affected rows. If the value is more than 0, it means the sql succeeded.</returns>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>
+            Executes a insert, update or delete sql.
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.GetDataTableBySql(System.String)">
+            <summary>
+            Executes a query sql.
+            </summary>
+            <param name="sql"></param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.GetDataTableBySql(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>
+            Executes a query sql.
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.GetDataTableBySql(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Executes a query sql and return paticular range of rows.
+            </summary>
+            <param name="sql"></param>
+            <param name="startRecord">The zero-based record number to start with.</param>
+            <param name="maxRecord">The maximum number of records to retrieve.</param>
+            <param name="srcTable">The name of the source table to use for table mapping.</param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.BeginTransaction">
+            <summary>
+            Begins a transaction.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.Commit">
+            <summary>
+            Commits the transaction.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.IDataObject.Rollback">
+            <summary>
+            Rollbacks the transaction.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.IDataObject.Connection">
+            <summary>
+            Get Connection
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.ISchemaSupportable">
+            <summary>
+            Supports database schema relevant functions.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.ISchemaSupportable.GetSchemaTable">
+            <summary>
+            Gets the corresponding schema table.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ISchemaSupportable.GetSchemaTable(System.String)">
+            <summary>
+            Gets the corresponding schema table.
+            </summary>
+            <param name="newTableOrSql">Table Name or Sql select Command</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.ISchemaSupportable.GenerateColumnString(System.String,System.Type)">
+            <summary>
+            Decorates the value via the sql type.
+            </summary>
+            <param name="value"></param>
+            <param name="sqlType"></param>
+            <returns>the decorated vlaue</returns>
+        </member>
+        <member name="P:Core.DataObject.ISchemaSupportable.TableName">
+            <summary>
+            Gets the corresponding table name.
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.OleDbConnectionBuilder">
+            <summary>Ole DB Connection Builder</summary>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.#ctor(System.String)">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.GetConnection">
+            <summary>
+            Gets the OleConnection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.GetDataAdapter">
+            <summary>
+            Gets the OleDbDataAdapter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.GetDbCommand">
+            <summary>
+            Gets the OleDbCommand.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="M:Core.DataObject.OleDbConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+        <member name="T:Core.DataObject.OracleConnectionBuilder">
+            <summary>ODBC Connection Builder</summary>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.#ctor(System.String)">
+            <summary>建構子</summary>
+            <param name="paramConnectionString">傳入連線字串</param>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.GetConnection">
+            <summary>取得Oredr連線物件</summary>
+            <returns>將回傳Oredr連線物件</returns>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.GetDataAdapter">
+            <summary>取得 Oredr Data Adapter 物件</summary>
+            <returns>將回傳 Oredr Data Adapter 物件</returns>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.GetDbCommand">
+            <summary>取得 Oredr Data Command 物件</summary>
+            <returns>將回傳 Oredr Data Command 物件</returns>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="M:Core.DataObject.OracleConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+        <member name="T:Core.DataObject.PermissionsInfoProvider">
+            <summary>凭证资讯提供者</summary>
+        </member>
+        <member name="F:Core.DataObject.PermissionsInfoProvider.PKHandler">
+            <summary>用来储存凭证资讯处理者</summary>
+        </member>
+        <member name="F:Core.DataObject.PermissionsInfoProvider.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DataObject.PermissionsInfoProvider.KEY">
+            <summary>用來儲存要進行加解密的金鑰物件</summary>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.#ctor">
+            <summary>建构子</summary>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.Finalize">
+            <summary>解构子</summary>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetVerifyMode">
+            <summary>取得设备可用数量</summary>
+            <returns>将回传该设备可以使用的数量</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetCPUKey">
+            <summary>取得註冊時的 CPU ID</summary>
+            <returns>将回传註冊時的 CPU ID</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetTimeLimit">
+            <summary>取得註冊時的 CPU ID</summary>
+            <returns>将回传註冊時的 CPU ID</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetMACKey">
+            <summary>取得註冊時的 MAC ID</summary>
+            <returns>将回传註冊時的 MAC ID</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetMachineCount">
+            <summary>取得设备可用数量</summary>
+            <returns>将回传该设备可以使用的数量</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetLicensesCount">
+            <summary>取得凭证可用数量</summary>
+            <returns>将回传该凭证上所注记可以使用的数量</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.GetOtherInfo">
+            <summary>取得其它备注信息</summary>
+            <returns>将回传其它备注信息</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.ComparisonCiphertext(System.String,System.String)">
+            <summary>比对密文信息</summary>
+            <param name="pCiphertext">传入密文资料</param>
+            <param name="pPlaintext">传入要比对的明文资料</param>
+            <returns>将回传比对的结果</returns>
+        </member>
+        <member name="M:Core.DataObject.PermissionsInfoProvider.RSAEncode(System.String)">
+            <summary>资料编码</summary>
+            <param name="pPlaintext">传入要进行编码的明文资料</param>
+            <returns>将回传编码后的资料</returns>
+        </member>
+        <member name="F:Core.DataObject.PublicUtility.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="F:Core.DataObject.PublicUtility.UtilityInstance">
+            <summary>建立singleton pattern存取的FileUtility Instance</summary>
+        </member>
+        <member name="F:Core.DataObject.PublicUtility.UtilityLock">
+            <summary>用來解決同一時間會有兩條執行緒搶New的程式</summary>
+        </member>
+        <member name="M:Core.DataObject.PublicUtility.#ctor">
+            <summary>FileUtility建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.PublicUtility.GetInstance">
+            <summary>利用single pattern取得FileUtility的實體</summary>
+            <returns>將會回傳一個ProjectBase.GetInstance的實體</returns>
+        </member>
+        <member name="M:Core.DataObject.PublicUtility.ReadFile(System.String)">
+            <summary>讀取檔案</summary>
+            <param name="paramFilePath">傳入要讀取得目錄 + 檔案名稱</param>
+            <returns>將回傳讀取得內容</returns>
+        </member>
+        <member name="M:Core.DataObject.PublicUtility.WriteFile(System.String,System.String,System.Text.Encoding)">
+            <summary>寫入檔案</summary>
+            <param name="paramFilePath">傳入要寫入的檔案目錄 + 名稱</param>
+            <param name="paramWriteContent">傳入要寫入的內容</param>
+            <param name="paramEncoder">傳入資料編碼</param>
+        </member>
+        <member name="M:Core.DataObject.PublicUtility.MakeDirectory(System.String)">
+            <summary>建立指定的資料夾</summary>
+            <param name="paramFolderPath">傳入指定的檔案路徑</param>
+            <returns>將回傳驗證是否成功</returns>
+        </member>
+        <member name="T:Core.DataObject.SchemaDataObject">
+            <summary>
+            Supports database schema relevant functions.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SchemaDataObject.
+            Creates DataObject via ConnectionStrings.xml.
+            Search ConnectionStrings.xml priority: 1. application configuration &lt;appSettings&gt; tag's "ConnectionStringsPath" key 
+            2. ConnectionStrings.xml in current assembly path.
+            </summary>
+            <param name="newTableOrSql">A table name or a view sql</param>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="newTableOrSql"></param>
+            <param name="newXmlPath"></param>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.#ctor(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="newTableOrSql"></param>
+            <param name="databaseKind"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.GetSchemaTable(System.String)">
+            <summary>
+            Gets the corresponding schema table.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.GetSchemaTable">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.SchemaDataObject.GenerateColumnString(System.String,System.Type)">
+            <summary>
+            Decorates the value via the sql type.
+            </summary>
+            <param name="value"></param>
+            <param name="sqlType"></param>
+            <returns>the decorated vlaue</returns>
+        </member>
+        <member name="P:Core.DataObject.SchemaDataObject.TableName">
+            <summary>
+            Gets table name
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.SchemaHashtable">
+            <summary>
+            Contains the mapping of the control name and the control.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SchemaHashtable.Add(System.String,System.Windows.Forms.Control)">
+            <summary>
+            Adds a group of the mapping.
+            </summary>
+            <param name="columnName">A table column name</param>
+            <param name="control">A control</param>
+        </member>
+        <member name="P:Core.DataObject.SchemaHashtable.Item(System.String)">
+            <summary>
+            Gets or sets a control name with a control.
+            </summary>
+            <param name="controlName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DataObject.SchemaHashtable.Count">
+            <summary>
+            Gets the number of mapping set.
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.SimpleDataObject">
+            <summary>
+            Provides the basic abilites of data access, which is executed by sql.
+            All methods are thread-safe.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.connection">
+            <summary>用來處理資料庫連線</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.dataAdapter">
+            <summary>用來處理與資料庫交易的處理者</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.command">
+            <summary>用來處理與資料庫交易的指令物件</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.Mark">
+            <summary>用來儲存SQL參數的Mark</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.Reader">
+            <summary>用來讀取資料的 Reader</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.ConnectionBuilder">
+            <summary>資料庫物件提供者</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.SQL_TYPE">
+            <summary>資料庫類型</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.IsDisposed">
+            <summary>用來判斷是否已經有被釋放過記憶體的 Flag</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.dbTransaction">
+            <summary>Controls whether this SimpleDataObject is transactional.</summary>       
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.IsTransaction">
+            <summary>用來判定是否有做交易處理</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.KEY">
+            <summary>用來儲存要進行加解密的金鑰物件</summary>
+        </member>
+        <member name="F:Core.DataObject.SimpleDataObject.ReflectorFlag">
+            <summary>用来处理反解析的 Flag</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ModifyConnectionSeting(System.Configuration.ConnectionStringSettings@,System.Int32)">
+            <summary>變更連線資訊</summary>
+            <param name="paramConnSet">傳入連線設定檔物件</param>
+            <param name="paramDecryptionMode">解密模式【1】RSA【2】DES</param>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            </summary> 
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.#ctor(System.Configuration.ConnectionStringSettings)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the SimpleDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Finalize">
+            <summary>
+            Releases the relevant unmanageable resource.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.OnTransacted(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter},System.Exception)">
+            <summary>當交易完成時所觸發的事件</summary>
+            <param name="paramCommandText">傳入當時交易的 SQL Command</param>
+            <param name="parameterCollection">傳入交易時所需的參數</param>
+            <param name="paramException">傳入交易時發生的Exception</param>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ExecuteNonQuery(System.String)">
+            <summary>Executes a insert, update or delete sql.</summary>
+            <param name="sql"></param>w
+            <returns>Affected rows. If the value is more than 0, it means the sql succeeded.</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>執行 SQL 交易</summary>
+            <param name="sql">傳入 SQL 語法</param>
+            <param name="parameters">傳入交易時所需的參數</param>
+            <returns>將回傳交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter},System.Boolean,System.Boolean)">
+            <summary>執行 SQL 交易</summary>
+            <param name="paramSQL">傳入 SQL 語法</param>
+            <param name="parameters">傳入交易時所需的參數</param>
+            <param name="paramIsLog">傳入是否要記錄Log</param>
+            <param name="paramHandleException">當發生Exception時是否需要處理</param>
+            <returns>將回傳交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter},System.Int32,System.Boolean)">
+            <summary>保證交易</summary>
+            <param name="paramCommandText">傳入要交易的 Command</param>
+            <param name="paramParamList">傳入要交易的參數</param>
+            <param name="paramRepeatCount">傳入當交易失敗時，要重複交易的次數</param>
+            <param name="paramIsSaveLog">是否要儲存Log</param>
+            <returns>將回傳交易的總筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.ThrowTransactionError(System.Exception,System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>丟出交易失敗的Exception</summary>
+            <param name="ex">傳入要丟出的Exception</param>
+            <param name="paramSql">傳入當時交易的SQL</param>
+            <param name="parameters">傳入交易當時的參數</param>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.GetDataTableBySql(System.String)">
+            <summary>Executes a query sql.</summary>
+            <param name="paramSql">傳入要交易的SQL Command</param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.GetDataTableBySql(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>Executes a query sql.</summary>
+            <param name="paramSql">傳入要交易的SQL Command</param>
+            <param name="parameters">傳入交易時所需要的參數</param>
+            <returns>將回傳查詢的的資料表物件</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.GetDataReaderBySql(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>Executes a query sql.</summary>
+            <param name="paramSql">傳入要交易的SQL Command</param>
+            <param name="parameters">傳入交易時所需要的參數</param>
+            <returns>將回傳 DataReader 的物件</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.AppendFillData(System.Data.DataTable@,System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>Executes a query sql.</summary>
+            <param name="paramData">傳入要指定加入的來源資料表</param>
+            <param name="paramSqlCommand">傳入要查詢的SQL Command</param>
+            <param name="parameters">傳入要交易資料庫的參數物件</param>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.GetDataTableBySql(System.String,System.Int32,System.Int32,System.String)">
+            <summary>Executes a query sql and return paticular range of rows.</summary>
+            <param name="sql"></param>
+            <param name="startRecord">The zero-based record number to start with.</param>
+            <param name="maxRecord">The maximum number of records to retrieve.</param>
+            <param name="srcTable">The name of the source table to use for table mapping.</param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.BeginTransaction">
+            <summary>Begins a transaction.</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Commit">
+            <summary>Commits the transaction.</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Rollback">
+            <summary>Rollbacks the transaction.</summary>
+        </member>
+        <member name="P:Core.DataObject.SimpleDataObject.Connection">
+            <summary>Get Connection</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Dispose">
+            <summary>
+            Releases the relevant unmanag           eable resource.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Base_GetDbParamInstance">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Base_GetDbParamInstance(System.String,System.Object)">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.Base_GetDbParamInstance(System.String,System.Object,System.Data.DbType)">
+            <summary>取得參數的執行個體</summary> 
+            <returns>回傳參數的執行個體</returns> 
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.VerifyPK">
+            <summary>验证系统的使用权</summary>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.GetSqlParamMark">
+            <summary>取得資料庫參數的前置符號</summary>
+            <returns>將回傳資料庫參數的前置符號</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.MapData``1(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>查詢SQL資料，並整合成List物件轉換出去</summary>
+            <typeparam name="T">傳入轉換後可以接收的物件型別</typeparam>
+            <param name="paramSql">傳入要查詢的SQL語法</param>
+            <param name="parameters">傳入查詢資料的必要參數</param>
+            <returns>將查詢到的查詢SQL資料，整合成List物件轉換出去</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.MapDataJson``1(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary>查詢 SQL 資料，並整合成 JSon 轉換出去</summary>
+            <typeparam name="T">傳入轉換後可以接收的物件型別</typeparam>
+            <param name="paramSql">傳入要查詢的SQL語法</param>
+            <param name="parameters">傳入查詢資料的必要參數</param>
+            <returns>將查詢到的查詢SQL資料，整合成List物件轉換出去</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.DataDecryption(System.Object,System.Object)">
+            <summary>資料解密</summary>
+            <param name="paramValue">傳入要解密的資料</param>
+            <param name="paramCDOAttr">傳入 CDO 的 Attribute 物件</param>
+            <returns>將回傳解密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.DataEncryption(Core.DataObject.CDOAttribute,System.Object)">
+            <summary>資料加密</summary>
+            <param name="paramCDOAttr">傳入 CDO 的 Attribute 物件</param>
+            <param name="paramValue">傳入要加密的資輛</param>
+            <returns>將回傳加密後的資料</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitInsert``1(``0,System.Boolean)">
+            <summary>執行新增作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDO">傳入要交易的CDO物件</param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳完成交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitMultiInsert``1(System.Collections.Generic.List{``0},System.Boolean)">
+            <summary>執行多資料交易的新增作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDOList">傳入要交易的 CDO 清單物件</param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳完成交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitUpdate``1(``0,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>執行修改作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDO">傳入要交易的CDO物件</param>
+            <param name="paramDBNullColumnName"></param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳完成交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitMultiUpdate``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>執行多資料的修改作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDOList">傳入要交易的 CDO 清單物件</param>
+            <param name="paramDBNullColumnName">傳入要更新為 NULL 的欄位清單</param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳完成交易的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitDelete``1(``0,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>執行刪除作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDO">傳入要交易的CDO物件</param>
+            <param name="paramConditionColumnName">傳入自定義 WHETE 使用非 PK 欄位的條件</param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳交易到的筆數</returns>
+        </member>
+        <member name="M:Core.DataObject.SimpleDataObject.SubmitMultiDelete``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>執行多筆刪除作業</summary>
+            <typeparam name="T">指定要交易的CDO物件</typeparam>
+            <param name="paramCDOList">傳入要交易的 CDO 清單物件</param>
+            <param name="paramConditionColumnName">傳入要刪除的依據（非Key欄位）</param>
+            <param name="paramIsSaveLog">是否要儲存Maintain Log</param>
+            <returns>將回傳完成交易的筆數</returns>
+        </member>
+        <member name="T:Core.DataObject.SqlConnectionBuilder">
+            <summary>SQL Server Connection Builder.</summary>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.#ctor(System.String)">
+            <summary></summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.GetConnection">
+            <summary>Gets the SqlConnection.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.GetDataAdapter">
+            <summary>Gets the SqlDataAdapter.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.GetDbCommand">
+            <summary>Gets the SqlCommand.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="M:Core.DataObject.SqlConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.AbstractUiCoordinator">
+            <summary>
+            Operates the database, extracts data from the UI controls, and sets data into the UI controls.
+            Implements IDataObject, ISchemaSupportable via Adaptor, Decorator design patterns.
+            </summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.schemaSupportable">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.dataObject">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.usedExecutedSql">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.usedQueryDt">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.DisplayDataToUI(System.Data.DataRow)">
+            <summary>
+            Sets data into the UI controls via a DataRow.
+            </summary>
+            <param name="newDataRow">A DataRow whichs contains the corresponding data.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.ClearUiData">
+            <summary>
+            Clears the content of the UI controls to be empty.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            Executes an insert action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the insert sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Update(System.Boolean)">
+            <summary>
+            Executes an update action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the update sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            Executes an delete action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the delete sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Query(System.Boolean)">
+            <summary>
+            Executes an query action.
+            </summary>
+            <param name="isExectueNow">If this value is true, it will execute right now. If not, it just produces the query sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.AbstractUiCoordinator.ExecutedSql">
+            <summary>
+            Gets the sql syntax after Insert(), Update(), or Delete() executed.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.AbstractUiCoordinator.QueryDataTable">
+            <summary>
+            Gets the result DataTable after Query() executed.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Insert">
+            <summary>
+            Executes the insert action right now. 
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Update">
+            <summary>
+            Executes the update action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Delete">
+            <summary>
+            Executes the delte action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Query">
+            <summary>
+            Executes the query action right now.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.BuildWhereCondition(System.String,System.String,System.Type,Core.DataObject.UiCoordinator.AbstractUiCoordinator.BuildAction)">
+            <summary>
+            Builds the where clause of the query sql. 
+            </summary>
+            <param name="columnName"></param>
+            <param name="value"></param>
+            <param name="dataType"></param>
+            <param name="buildAction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.AbstractUiCoordinator.BuildAction">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.BuildAction.Query">
+            <summary></summary>
+        </member>
+        <member name="F:Core.DataObject.UiCoordinator.AbstractUiCoordinator.BuildAction.Update">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GetSchemaTable">
+            <summary>
+            Gets the corresponding schema table. Delegates SchemaDataObject.GetSchemaTable().
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GetSchemaTable(System.String)">
+            <summary>
+            Gets the corresponding schema table. Delegates SchemaDataObject.GetSchemaTable().
+            </summary>
+            <param name="newTableOrSql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GenerateColumnString(System.String,System.Type)">
+            <summary>
+            Decorates the value via the sql type. Delegates SchemaDataObject.GenerateColumnString().
+            </summary>
+            <param name="value"></param>
+            <param name="sqlType"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.AbstractUiCoordinator.TableName">
+            <summary>
+            Gets table name. Delegates SchemaDataObject.TableName
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.ExecuteNonQuery(System.String)">
+            <summary>
+            Executes a insert, update or delete sql. Delegates SchemaDataObject.ExecuteNonQuery().
+            </summary>
+            <param name="sql"></param>
+            <returns>Affected rows. If the value is more than 0, it means the sql succeeded.</returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GetDataTableBySql(System.String)">
+            <summary>
+            Executes a query sql. Delegates SchemaDataObject.GetDataTableBySql()
+            </summary>
+            <param name="sql"></param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GetDataTableBySql(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Executes a query sql and return paticular range of rows.
+            </summary>
+            <param name="sql"></param>
+            <param name="startRecord">The zero-based record number to start with.</param>
+            <param name="maxRecord">The maximum number of records to retrieve.</param>
+            <param name="srcTable">The name of the source table to use for table mapping.</param>
+            <returns>Contains the query result.</returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.BeginTransaction">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Commit">
+            <summary></summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Rollback">
+            <summary></summary>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.AbstractUiCoordinator.Connection">
+            <summary>
+            Get Connection
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.ExecuteNonQuery(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary></summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.AbstractUiCoordinator.GetDataTableBySql(System.String,System.Collections.Generic.List{System.Data.IDbDataParameter})">
+            <summary></summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.PrimaryKeyNoValueException">
+            <summary>
+            Primary Key Column has no value.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.PrimaryKeyNoValueException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the PrimaryKeyNoValueException.
+            </summary>
+            <param name="columnName">Column name</param>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.IUiCoordinator">
+            <summary>
+            Operates the database, extracts data from the UI controls, and sets data into the UI controls.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.DisplayDataToUI(System.Data.DataRow)">
+            <summary>
+            Sets data into the UI controls via a DataRow.
+            </summary>
+            <param name="newDataRow"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.ClearUiData">
+            <summary>
+            Clears the content of the UI controls to be empty.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            Executes an insert action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the insert sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.Update(System.Boolean)">
+            <summary>
+            Executes an update action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the update sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            Executes an delete action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the delete sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.IUiCoordinator.Query(System.Boolean)">
+            <summary>
+            Executes an query action.
+            </summary>
+            <param name="isExecuteNow">If this value is true, it will execute right now. If not, it just produces the query sql, you can get it via ExecuteSql property.</param>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.IUiCoordinator.ExecutedSql">
+            <summary>
+            Gets the sql syntax after Insert(), Update(), or Delete() executed.
+            </summary>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.IUiCoordinator.QueryDataTable">
+            <summary>
+            Gets the result DataTable after Query() executed.
+            </summary>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.WebBasedUiCoordinator">
+            <summary>
+            Operates the database via controls and SchemaDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.#ctor(Core.DataObject.SchemaDataObject,System.Web.UI.ControlCollection)">
+            <summary>
+            Initializes a new instance of the WebBasedUiCoordinator via SchemaDataObject and controls.
+            Suggested strongly to use this constructor.
+            </summary>
+            <param name="newSchemaDataObject"></param>
+            <param name="newCollection"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.#ctor(Core.DataObject.SchemaDataObject,Core.DataObject.SchemaHashtable)">
+            <summary>
+            Initializes a new instance of the WebBasedUiCoordinator via SchemaDataObject and SchemaHashtable.
+            </summary>
+            <param name="newSchemaDataObject"></param>
+            <param name="schemaHashtable"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.DisplayDataToUI(System.Data.DataRow)">
+            <summary>
+            Extracts data from the data row and puts it on corresponding controls.
+            </summary>
+            <param name="newDataRow"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates insert sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.ClearUiData">
+            <summary>
+            Clears the vlaues of the whole controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.Update(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates update sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.Query(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates query sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates delete sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.KeyFieldEnableScript">
+            <summary></summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.BuildWhereSql">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Core.DataObject.UiCoordinator.WebBasedUiCoordinator.ChildControls">
+            <summary></summary>
+        </member>
+        <member name="T:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator">
+            <summary>
+            Operates the database via controls and SchemaDataObject.
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.#ctor(Core.DataObject.SchemaDataObject,System.Windows.Forms.Control)">
+            <summary>
+            Initializes a new instance of the WindowsBasedUiCoordinator via SchemaDataObject and controls.
+            Suggested strongly to use this constructor.
+            </summary>
+            <param name="newSchemaDataObject"></param>
+            <param name="newBasedControl"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.#ctor(Core.DataObject.SchemaDataObject,Core.DataObject.SchemaHashtable)">
+            <summary>
+            Initializes a new instance of the WindowsBasedUiCoordinator via SchemaDataObject and SchemaHashtable.
+            </summary>
+            <param name="newSchemaDataObject"></param>
+            <param name="schemaHashtable"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.DisplayDataToUI(System.Data.DataRow)">
+            <summary>
+            Extracts data from the data row and puts it on corresponding controls.
+            </summary>
+            <param name="newDataRow"></param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.Insert(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates insert sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.ClearUiData">
+            <summary>
+            Clears the vlaues of the whole controls
+            </summary>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.Update(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates update sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.Query(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates query sql syntax and you can get the sql by ExecuteSql property.
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.Delete(System.Boolean)">
+            <summary>
+            If isExecuteNow == ture, it executes the generated sql right now.
+            If isExecuteNow == false,it only generates delete sql syntax and you can get the sql by ExecuteSql property.
+            If primary keys have no value, it'll throw PrimaryKeyNoValueException
+            </summary>
+            <param name="isExecuteNow">Whether the sql is executed right now</param>
+        </member>
+        <member name="M:Core.DataObject.UiCoordinator.WindowsBasedUiCoordinator.BuildWhereSql">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Core.DataObject.OdbcConnectionBuilder">
+            <summary>ODBC Connection Builder</summary>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.#ctor(System.String)">
+            <summary>建構子</summary>
+            <param name="paramConnectionString">傳入連線字串</param>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.GetConnection">
+            <summary>Gets the ODBCConnection.</summary>
+            <returns>Return ODBCConnection</returns>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.GetDataAdapter">
+            <summary>Gets the OdbcDataAdapter.</summary>
+            <returns>Return OdbcDataAdapter</returns>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.GetDbCommand">
+            <summary>Gets the OdbcCommand.</summary>
+            <returns>Return OdbcCommand</returns>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="M:Core.DataObject.OdbcConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+        <member name="T:Core.DataObject.NpgsqlConnectionBuilder">
+            <summary>Postgres SQL Connection Builder</summary>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.#ctor(System.String)">
+            <summary>建構子</summary>
+            <param name="connectionString">連線字串</param>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.GetConnection">
+            <summary>Gets the NpgsqlConnection.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.GetDataAdapter">
+            <summary>Gets the NpgsqlDataAdapter.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.GetDbCommand">
+            <summary>Gets the NpgsqlCommand.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.GetMark">
+            <summary>取得參數Mark</summary>
+            <returns>將傳回參數的Mark</returns>
+        </member>
+        <member name="M:Core.DataObject.NpgsqlConnectionBuilder.SQL_TYPE">
+            <summary>資料庫類型</summary>
+            <returns>將回傳資料庫類型</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,44 @@
+﻿.TableMain
+{
+    font-family: 微軟正黑體; 
+    font-size: 12px; 
+    font-weight: bold; 
+    color: #0055FF; 
+    border: 1px solid #003366; 
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    width: 100%; 
+    position: static; 
+    border-collapse: collapse;
+}
+.CellStyle
+{
+    text-align: right; 
+    background-color: #f0f0f0; 
+    padding: 2px
+}
+.HeadScroll
+{
+    border-collapse:collapse;
+    width:98%
+    }
+    table.HeadScroll tbody td
+    {
+        border-bottom-style: solid;
+        border-bottom-width: 1.5px;
+        border-bottom-color:#B2BF84;
+        color:#41434A;
+        text-align:left ;
+        padding :5px 3px;
+        cursor:pointer;
+    }  
+    table.HeadScroll thead th
+    {
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color:#6678b1;
+        color:#039;
+        text-align:left ;
+        padding :8px 3px;
+        font-weight:bold;
+    }

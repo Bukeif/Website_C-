@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonInterfaceObject</name>
+    </assembly>
+    <members>
+        <member name="T:Core.CIO.DeviceInterface.ConnPLCEntity">
+            <summary>連線方式相關資訊</summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ConnPLCEntity.#ctor(System.UInt16)">
+            <summary>設定連線方式</summary>
+            <param name="pWaitTime">傳入連線的 Waiting Time</param>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.PLCType">
+            <summary>連線方式</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.ServerIP">
+            <summary>服務器的 IP</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.ServerPort">
+            <summary>服務器的 Port</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.LocalIP">
+            <summary>服務器的 IP</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.LocalPort">
+            <summary>服務器的 Port</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.ServerName">
+            <summary>服務器的名稱</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.PLCName">
+            <summary>PLC 名稱 </summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.ProfaceName">
+            <summary>Proface 名稱 </summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.WaitTime">
+            <summary>連線 Waiting Time</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.LogicNumber">
+            <summary>邏輯站號</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.UID">
+            <summary>使用者帳號</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.PWD">
+            <summary>使用者密碼</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.NeedCRC">
+            <summary>是否要加入 CRC Check Y/N</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.NcType">
+            <summary>機台型號</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPLCEntity.BitReversal">
+            <summary>處理高低位差</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.ConnPrintEnity">
+            <summary>連線方式相關資訊</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPrintEnity.PrintIP">
+            <summary> 噴碼機 IP </summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.ConnPrintEnity.PrintPort">
+            <summary>噴碼機監聽 Port </summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.DataDetial">
+            <summary>抓取 PLC 資料的詳細資訊</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.PLCDataArea">
+            <summary>抓取的區域</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.PLCDataType">
+            <summary>资料类型</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.DB">
+            <summary>DB 位置</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.StartByteAdr">
+            <summary>起始 Byte 位置</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.BitAdr">
+            <summary>Bit 位置的資訊</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.Count">
+            <summary>數量</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.FullPoitn">
+            <summary>完整的點位資訊</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.Value">
+            <summary>要寫入的資料</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.DataDetial.RealType">
+            <summary>真實資料型態</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PLCModel">
+            <summary>連線方式</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MX">
+            <summary>MX Component</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.OPC">
+            <summary>OPC Server</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.PROFACE">
+            <summary>Pro-Server</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.KEYENCE">
+            <summary>KEYENCE PLC</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.FINS">
+            <summary>FINS 協議</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MCASPLC">
+            <summary>三菱 A 系列装置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MCQSPLC">
+            <summary>三菱 Q 系列装置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MODBUS">
+            <summary>Modbus Tcp</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MODBUS_RTU">
+            <summary>Modbus Rtu</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MC">
+            <summary>MC</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.EZSOCKET">
+            <summary>三菱 EZSocket</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.FANUC_CNC">
+            <summary>CNC</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.OPCUA">
+            <summary>OPCUA</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.SIEMENS_S7">
+            <summary>西門子 S7 </summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PLCModel.MEWTOCOL">
+            <summary>國際 FP 系列</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.DataArea">
+            <summary>作業記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.CIO">
+            <summary>MR 內部輔助繼電器</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.WR">
+            <summary>VM 工作記憶體</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.DR">
+            <summary>DM 資料記憶體</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.EM">
+            <summary> EM 擴充資料記憶體</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.D">
+            <summary> D 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.W">
+            <summary> W 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.M">
+            <summary> M 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.L">
+            <summary> L 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.X">
+            <summary> X 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.Y">
+            <summary> Y 區記憶體位置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.LS">
+            <summary> LS 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.USR">
+            <summary> USR 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.R">
+            <summary> R 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.B">
+            <summary> B 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.F">
+            <summary> F 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.T">
+            <summary> T 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.C">
+            <summary> C 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.HR">
+            <summary> HR 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.DI">
+            <summary> DI 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.DQ">
+            <summary> DQ 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.IR">
+            <summary> IR 區記憶體位置</summary>	
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataArea.OUTPUT">
+            <summary> Output 區記憶體位置</summary>	
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PMCDataType">
+            <summary>資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PMCDataType.BYTE">
+            <summary>Byte 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PMCDataType.WORD">
+            <summary> Int16 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PMCDataType.LONG">
+            <summary> UInt16 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PMCDataType.FOLAD32">
+            <summary> UInt32 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PMCDataType.FOLAD64">
+            <summary> Int32 資料類型</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.DataType">
+            <summary>資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.INT16">
+            <summary> Int16 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.UINT16">
+            <summary> UInt16 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.UINT32">
+            <summary> UInt32 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.INT32">
+            <summary> Int32 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.BIT">
+            <summary> BIT 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.BYTE">
+            <summary>Byte 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.FLOAD">
+            <summary>Fload 資料類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.DataType.CHART">
+            <summary>字串資料類型</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.NC_Type">
+            <summary>EZSocket 機台型號</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.NC_Type.M700L">
+            <summary>M700L</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.NC_Type.M700M">
+            <summary>M700M</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.NC_Type.M800L">
+            <summary>M800L</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.NC_Type.M800M">
+            <summary>M800M</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.AreaType">
+            <summary> 位置資料 </summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AreaType.NC">
+            <summary> NC </summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AreaType.PLC">
+            <summary> PLC </summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.EDCType">
+            <summary>EDC 類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.None">
+            <summary>不指定</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.COUNTER">
+            <summary>計數器</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.ALIVE_TIME">
+            <summary>開機時間</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.STATUS">
+            <summary>狀態</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.RUN_TIME">
+            <summary>運轉時間</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.START_TIME">
+            <summary>自動運轉時間</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.ALARM">
+            <summary>報警</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.FEED">
+            <summary>進給</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.SPINDLEMONITOR">
+            <summary>轉速</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.TOOL_LIFE">
+            <summary>工具壽命</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.EDCType.PROGRAMNAME">
+            <summary>程式名稱</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.CNC_Area">
+            <summary>CNC 的区域</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.G">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.F">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.Y">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.X">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.A">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.R">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.T">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.K">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.C">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.D">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.M">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.N">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.E">
+            <summary></summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.CNC_Area.Z">
+            <summary></summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.AlarmType">
+            <summary>報警信息種類</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AlarmType.M_ALM_NC_ALARM">
+            <summary>NC alarm</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AlarmType.M_ALM_STOP_CODE">
+            <summary>Stop code</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AlarmType.M_ALM_PLC_ALARM">
+            <summary>PLC alarm message</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AlarmType.M_ALM_OPE_MSG">
+            <summary>Operator message</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.AlarmType.M_ALM_ALL_ALARM">
+            <summary>No alarm type distinction</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.MachineStatus">
+            <summary>機台狀態</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.STOP">
+            <summary>停止</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.INITIAL">
+            <summary>復位</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.READY">
+            <summary>準備</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.RUN">
+            <summary>運行</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.IDLE">
+            <summary>閒置</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.EDIT">
+            <summary>編輯模式</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.ALARM">
+            <summary>報警</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.MachineStatus.HOLD">
+            <summary>暫停</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PrintType">
+            <summary>列印類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PrintType.NONE">
+            <summary>不指定類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PrintType.DATAMATRIX">
+            <summary>資料矩陣類型</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PrintType.QRCODE">
+            <summary>QR Code 類型</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.IDriver">
+            <summary>PLC Driver Interface</summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.GetLinkCount">
+            <summary>去得连线的总数量</summary>
+            <returns>将回传目前与模块或连线的总数量</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.GetPLCHandler">
+            <summary>取得当前 PLCHandler 值</summary>
+            <returns>将回传当前 PLCHandler 的值</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.ReStartPlc(System.String)">
+            <summary> 重新啟動 PLC 硬體物件 </summary>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.IDriver.DriverModel">
+            <summary>驱动类型</summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>建立連線</summary>
+            <param name="pConnectInfo">傳入 PLC 資訊</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.DeLink">
+            <summary>移除所建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdRead(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@,System.String)">
+            <summary>利用 PLC 地址讀取區間記憶體資料</summary>
+            <param name="pDataArea">傳入要作業的作業區</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pAddress">傳入要作業的資料位置</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <param name="pLogicNumber">傳入從站的站號</param>
+            <returns>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdRead(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>用標籤讀取區間記憶體資料</summary>
+            <param name="pTage">傳入標籤名稱</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要取得的個數</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <returns>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdWrite(Core.CIO.DeviceInterface.DataArea,Core.CIO.DeviceInterface.DataType,System.String,System.UInt16,System.Object[]@)">
+            <summary>利用 PLC 地址寫入區間記憶體資料</summary>
+            <param name="pDataArea">傳入要作業的作業區</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pAddress">傳入要作業的資料位置</param>
+            <param name="pCount">傳入要寫入的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdWrite(System.String,Core.CIO.DeviceInterface.DataType,System.UInt16,System.Object[]@)">
+            <summary>用標籤寫入區間記憶體資料</summary>
+            <param name="pTage">傳入標籤名稱</param>
+            <param name="pDataType">傳入要作業的資料類型</param>
+            <param name="pCount">傳入要寫入的個數</param>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>利用標籤清單成批讀取資料</summary>
+            <param name="pTagList">傳入標籤清單</param>
+            <param name="pData">傳入要接收讀取到的資料</param>
+            <returns>>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IDriver.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>利用標籤成批寫入資料</summary>
+            <param name="pData">傳入要寫入的資料</param>
+            <returns>回傳作業結果，當回傳結果不為 0 的時後，建議要重新連線 PLC</returns>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.IPLCClient">
+            <summary></summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.DeLink(System.Int32)">
+            <summary>移除与PLC建立的连线</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.EntLink(System.String,System.UInt16,System.String,System.UInt16,System.Int32@,System.UInt16)">
+            <summary>与PLC建立的连线</summary>
+            <param name="pPC_IP">本机的 IP</param>
+            <param name="pPC_Port">本机的通讯埠 Port</param>
+            <param name="pPLC_IP">PLC 的 IP</param>
+            <param name="pPLC_Port">PLC 的通讯埠 IP</param>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pWaitTime">传入建立连线 Timeout 的时间</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.Bit_Reset(System.Int32,Core.CIO.DeviceInterface.PlcMemory,System.UInt16,System.UInt16)">
+            <summary>将 BIT 资料压 0 到指定的位置区</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pMemoryArea">传入要作业的资料区域</param>
+            <param name="pAddress">传入要作业记忆体位置</param>
+            <param name="pBit">指定要压入的记忆体 BIT 点位 (0 ~ 15)</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.Bit_Set(System.Int32,Core.CIO.DeviceInterface.PlcMemory,System.UInt16,System.UInt16)">
+            <summary>将 BIT 资料压 1 到指定的位置区</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pMemoryArea">传入要作业的资料区域</param>
+            <param name="pAddress">传入要作业记忆体位置</param>
+            <param name="pBit">指定要压入的记忆体 BIT 点位 (0 ~ 15)</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.Bit_Test(System.Int32,Core.CIO.DeviceInterface.PlcMemory,System.UInt16,System.UInt16,System.Boolean@)">
+            <summary>读取单一点位的 bit 资料</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pMemoryArea">传入要作业的资料区域</param>
+            <param name="pAddress">传入要作业记忆体位置</param>
+            <param name="pBit">指定要读取的记忆体 BIT 点位 (0 ~ 15)</param>
+            <param name="pState">传入用来接收读取到的资料 true:1 / false:0</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.CmdRead(System.Int32,Core.CIO.DeviceInterface.PlcMemory,Core.CIO.DeviceInterface.DataType,System.UInt16,System.UInt16,System.Object[]@)">
+            <summary>读取区间记忆体资料</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pMemoryArea">传入要作业的资料区域</param>
+            <param name="pValueType">传入要读取出来转换的资料类型</param>
+            <param name="pAddress">传入要作业记忆体位置</param>
+            <param name="pCount">指定要读取的点位长度</param>
+            <param name="pData">传入要接收读取到的资料</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPLCClient.CmdWrite(System.Int32,Core.CIO.DeviceInterface.PlcMemory,Core.CIO.DeviceInterface.DataType,System.UInt16,System.UInt16,System.Object[]@)">
+            <summary>写入区间记忆体资料</summary>
+            <param name="pHandle">传入当初连线到 PLC 的记忆体位置</param>
+            <param name="pMemoryArea">传入要作业的资料区域</param>
+            <param name="pValueType">传入要写入出来转换的资料类型</param>
+            <param name="pAddress">传入要作业记忆体位置</param>
+            <param name="pCount">指定要写入的点位长度</param>
+            <param name="pData">传入要写入的资料</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PlcMemory">
+            <summary>PLC 内存器</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PlcMemory.CIO">
+            <summary>MR 內部輔助繼電器</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PlcMemory.WR">
+            <summary>VM 工作記憶體</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PlcMemory.DR">
+            <summary>DM 資料記憶體</summary>
+        </member>
+        <member name="F:Core.CIO.DeviceInterface.PlcMemory.EM">
+            <summary>EM 擴充資料記憶體</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.ICNCDriver">
+            <summary>CNC 驱动</summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ICNCDriver.EntLink(Core.CIO.DeviceInterface.ConnPLCEntity)">
+            <summary>建立連線</summary>
+            <param name="pConnectInfo">傳入 PLC 資訊</param>
+            <returns>將回傳作業的的結果 0::成功 / OTHER::失敗</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ICNCDriver.CmdRead(Core.CIO.DeviceInterface.EDCType,System.String,System.Nullable{System.UInt16},Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[]@)">
+            <summary>讀取資料</summary>
+            <param name="pEdcType">作業類型</param>
+            <param name="pPoint">點位</param>
+            <param name="pLength">長度</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">區域位置</param>
+            <param name="pData">回傳的資料結果</param>
+            <returns>回傳作業結果 Code </returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ICNCDriver.CmdWrite(System.String,System.UInt16,Core.CIO.DeviceInterface.DataType,System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.Object[])">
+            <summary>寫入資料</summary>
+            <param name="pAddress">起始位置</param> 
+            <param name="pCount">數量</param>
+            <param name="pDataType">資料類型</param>
+            <param name="pCNCArea">區域位置</param>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ICNCDriver.CmdWriteBit(System.Nullable{Core.CIO.DeviceInterface.CNC_Area},System.String,System.UInt16,System.Boolean)">
+            <summary>寫入 BIT 資料</summary>
+            <param name="pAddress">起始位置</param>
+            <param name="pBitIndex">Bit 索引位置</param>
+            <param name="pCNCArea">區域位置</param>
+            <param name="pData">要寫入的資料</param>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.ICNCDriver.DeLink">
+            <summary>斷開連線</summary>
+            <returns>回傳作業結果 Code</returns>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.IPrintDriver">
+            <summary>噴印機驅動介面</summary>
+        </member>
+        <member name="M:Core.CIO.DeviceInterface.IPrintDriver.PrintStart(Core.CIO.DeviceInterface.PrintType,Core.CIO.DeviceInterface.PrintSettingInfo,Core.CIO.DeviceInterface.ConnPrintEnity)">
+            <summary>開始列印</summary>
+            <param name="pPrintType">傳入列印型別</param>
+            <param name="pSettingInfo">傳入列印相關資訊</param>
+            <param name="pConnectInfo">連線資訊</param>
+            <returns></returns>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PrintSettingInfo">
+            <summary>噴碼機列印相關資訊</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.Message_Info">
+            <summary>要列印的訊息</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.SaveName">
+            <summary>噴碼機內的圖檔名稱</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.Multiple">
+            <summary>放大係數</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.Width">
+            <summary>圖形寬</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.Height">
+            <summary>圖形高</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintSettingInfo.PrgNo">
+            <summary>雷雕機程序編號</summary>
+        </member>
+        <member name="T:Core.CIO.DeviceInterface.PrintMessage">
+            <summary>要寫給噴碼機的信息</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintMessage.Index">
+            <summary>訊息的索引值</summary>
+        </member>
+        <member name="P:Core.CIO.DeviceInterface.PrintMessage.Message">
+            <summary>要列印的資訊</summary>
+        </member>
+        <member name="T:Core.CIO.OPC.IOPCClient">
+            <summary></summary>
+        </member>
+        <member name="P:Core.CIO.OPC.IOPCClient.Error">
+            <summary>用来储存异常资讯</summary>
+        </member>
+        <member name="M:Core.CIO.OPC.IOPCClient.GetOPCServers(System.String,System.Collections.Generic.List{System.String})">
+            <summary>取得指定 IP 下的所有 OPC Server 清單</summary>
+            <param name="pOPC_IP">傳入要查找的 OPC Server IP</param>
+            <param name="pOPCServerList">傳入要儲存接收到的 OPC Server 清單</param>
+            <returns>将回传查詢結果</returns>
+        </member>
+        <member name="M:Core.CIO.OPC.IOPCClient.EntLink(System.String,System.UInt16,System.UInt16)">
+            <summary>与 OPC 建立的连线</summary>
+            <param name="pOPC_IP">OPC 的 IP</param>
+            <param name="pOPC_ServerName">OPC 的服務器名稱</param>
+            <param name="pWaitTime">传入建立连线 Timeout 的时间</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.CIO.OPC.IOPCClient.DeLink">
+            <summary>移除与PLC建立的连线</summary>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+        </member>
+        <member name="M:Core.CIO.OPC.IOPCClient.CmdRead(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>读取区间记忆体资料</summary>
+            <param name="pTagList">传入要作业的资料区域</param>
+            <param name="pData">传入要接收读取到的资料</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+        <member name="M:Core.CIO.OPC.IOPCClient.CmdWrite(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>写入区间记忆体资料</summary>
+            <param name="pData">传入要写入的资料</param>
+            <returns>将回传作业的的结果 0::成功 / OTHER::失败</returns>
+            <remarks>当回传结果不为 0 的时后，建议要重新连线 PLC</remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1414 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sockets</name>
+    </assembly>
+    <members>
+        <member name="T:Core.Base.DataLink.EventArgs.ExceptionArgument">
+            <summary>定義Exception Event Argument</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.ExceptionArgument.usedExceptionData">
+            <summary>取得Exception的資料</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.ExceptionArgument.usedExceptionFrom">
+            <summary>取得觸發Exception的Namespace</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.EventArgs.ExceptionArgument.Exception">
+            <summary>取得Exception的資料</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.EventArgs.ExceptionArgument.From">
+            <summary>取得觸發Exception的Namespace</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument">
+            <summary>定義SocketConnectChanged event Argument</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.LocalIP">
+            <summary>近端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.LocalPort">
+            <summary>近端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.RemoteIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.RemotePort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.BuildTime">
+            <summary>連線建立時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketConnectChangedArgument.IsConnected">
+            <summary>連線狀態</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.EventArgs.SocketErrorSendingArgument">
+            <summary>定義Error Sending event Argument</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.EventArgs.SocketErrorSendingArgument.Message">
+            <summary>訊息內容(byte[])</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.EventArgs.SocketErrorSendingArgument.GetStringMessage">
+            <summary>取得訊息內容(String)</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.FTP.FTPService">
+            <summary>FTP 作業</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.FTPAddress">
+            <summary>用來儲存 FTP 地址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.UID">
+            <summary>用來儲存 FTP 的帳號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.PWD">
+            <summary>用來儲存 FTP 的密碼</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.FTPResponse">
+            <summary>儲存 FTP 回傳的 Response </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.FTPRequest">
+            <summary>FTP 請求物件 </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.RequestStream">
+            <summary>用來接收請求的串流</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.FTP.FTPService.ResultCode">
+            <summary>用來儲存接收回復的信息代碼</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.FTP.FTPService.#ctor(System.String,System.String,System.String)">
+            <summary>建構子</summary>
+            <param name="pFTPAddress">FTP 位置</param>
+            <param name="pUID">帳號</param>
+            <param name="pPWD">密碼</param>
+        </member>
+        <member name="M:Core.Base.DataLink.FTP.FTPService.UploadFile(System.String,System.Byte[],System.Boolean,System.Boolean)">
+            <summary>上傳檔案至 FTP</summary>
+            <param name="pFileName">上傳至 FTP 要儲存的名稱</param>
+            <param name="pFileByteData">檔案的 Byte 陣列</param>
+            <param name="pPassiveMode">是否開啟 Passive 模式，預設為不開啟</param>
+            <param name="pCreateDir">是否自動建立資料夾</param>
+            <returns>回傳作業結果，如果成功上傳則回 0 ，否則回傳 FTP 的 Status Code</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.FTP.FTPService.UpLoadWork(System.Byte[],System.Boolean)">
+            <summary>進行檔案上傳作業</summary>
+            <param name="pFileByteData">檔案的 byte 陣列</param>
+            <param name="pPassiveMode">是否有開啟 PassiveMode</param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.Base.DataLink.FTP.FTPService.MakeFTPDir">
+            <summary> 建立子資料夾</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.FTP.FTPService.CheckFTPDir(System.String)">
+            <summary> 判斷資料夾路徑是否存在</summary>
+            <param name="pFTPAddress">傳入 FTP 地址</param>
+            <returns>回傳是否建立成功</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ISocketClient">
+            <summary>
+            SocketClient的Interface
+            </summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ISocketClient.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ISocketClient.ErrorSending">
+            <summary>訊息傳送錯誤時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.LocalIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.RemoteIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.RemotePort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.SendPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.BuildTime">
+            <summary>Client建立時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.LastAccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketClient.IsStop">
+            <summary>Client是否為停用狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.Start">
+            <summary>啟用Client</summary>
+            <returns>傳回是否啟用成功</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.Stop">
+            <summary>停用Client</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.Close">
+            <summary>關閉Client，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.SendMessage(System.String)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.SendMessage(System.Byte[])">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketClient.GetSendQueueCounter">
+            <summary>取得訊息傳送佇列內未傳送訊息數量</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ISocketMessage">
+            <summary>
+            SocketMessage的Interface
+            </summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketMessage.Message">
+            <summary>訊息的內容(byte[])</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketMessage.RemoteIP">
+            <summary>傳送端IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketMessage.RemotePort">
+            <summary>傳送端連接埠</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketMessage.GetStringMessage">
+            <summary>取得訊息內容(String)</summary>
+            <return>傳回訊息內容</return>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketMessage.Copy">
+            <summary>複製物件</summary>
+            <return>傳回複製物件</return>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ISocketServer">
+            <summary>
+            SocketServer的Interface
+            </summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ISocketServer.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketServer.LocalIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketServer.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketServer.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketServer.MessageReceivedSignal">
+            <summary>訊息接收訊號</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketServer.IsStop">
+            <summary>是否為停用狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketServer.Start">
+            <summary>啟動Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketServer.Stop">
+            <summary>停用Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketServer.Close">
+            <summary>關閉Socket，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketServer.GetReceivedData">
+            <summary>取得訊息內容</summary>
+            <returns>回傳接收到訊息，PS.訊息一經讀取便不再保留請務必要使用變數承接起來，以免訊息流失</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketServer.GetReceivedQueueCounter">
+            <summary>取得訊息佇列內未讀取訊息數量</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ExceptionHappenEventHandler">
+            <summary>元件內部發生Exception時的委派函數</summary>
+            <param name="Sender">觸發Exception的物件</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ErrorSendingEventHandler">
+            <summary>訊息傳送錯誤時觸發的委派函數</summary>
+            <param name="Sender">訊息傳送錯誤的物件</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ConnectChangedEventHandler">
+            <summary>連線狀態改變時觸發的委派函數</summary>
+            <param name="Sender">連線狀態改變的物件</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.SocketStatus">
+            <summary>
+            Socket Status 列舉型別
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.None">
+            <summary>
+            Not Initialize
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.Init">
+            <summary>
+            Initialize
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.Bind">
+            <summary>
+            Bind Local IPEndPoint
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.Listen">
+            <summary>
+            Listen Connection
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.Connected">
+            <summary>
+            Already Connected
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketStatus.Disconnected">
+            <summary>
+            Not Connected
+            </summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.SocketMessage">
+            <summary>訊息的內容(包含傳送端資訊)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketMessage.MessageCotent">
+            <summary>訊息的內容(byte[])</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketMessage.SenderIP">
+            <summary>傳送端IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketMessage.SenderPort">
+            <summary>傳送端連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketMessage.Message">
+            <summary>訊息的內容(byte[])</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketMessage.RemoteIP">
+            <summary>傳送端IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketMessage.RemotePort">
+            <summary>傳送端連接埠</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketMessage.#ctor(System.Byte[],System.String,System.Int32)">
+            <summary>初始化訊息內容</summary>
+            <param name="paramMessage">訊息內容(byte[])</param>
+            <param name="paramRemoteIP">傳送端IP位址</param>
+            <param name="paramRemotePort">傳送端連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketMessage.GetStringMessage">
+            <summary>取得訊息內容(String)</summary>
+            <return>傳回訊息內容</return>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketMessage.Copy">
+            <summary>複製物件</summary>
+            <return>傳回複製物件</return>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketMessage.Dispose">
+            <summary>清除相關所有資源</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.IConnectionServer">
+            <summary>
+            SocketConnection's Parent的Interface
+            </summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.IConnectionServer.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.IConnectionServer.SendPauseTime">
+            <summary>各Connection內處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.CollectMessage(Core.Base.DataLink.Sockets.ISocketMessage)">
+            <summary>將接收的訊息加入訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.PerformConnectChanged(Core.Base.DataLink.Sockets.ISocketConnection,System.Boolean)">
+            <summary>觸發ConnectChanged事件</summary>
+            <param name="paramConnection">連線物件</param>
+            <param name="paramIsConnected">連線狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.PerformErrorSending(Core.Base.DataLink.Sockets.ISocketConnection,System.Byte[])">
+            <summary>觸發Error Sending事件</summary>
+            <param name="paramConnection">連線物件</param>
+            <param name="paramMessage">訊息內容(byte[])</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.KillConnection(System.String)">
+            <summary>移除Connection List及相關項目</summary>
+            <param name="paramConnectName">連線名稱</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IConnectionServer.GetConnectionName(System.String,System.Int32)">
+            <summary>取得連線名稱</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>回傳連線名稱</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ISocketConnection">
+            <summary>
+            SocketConnection的Interface
+            </summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.Name">
+            <summary>
+            連線名稱。
+            遠端連線各IP只容許單一連線時為IPAddress，否則為IPAddress:Port
+            </summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.RemoteIP">
+            <summary>遠端結束點IP(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.RemotePort">
+            <summary>遠端結束點Port(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.BindIP">
+            <summary>近端結束點IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.BindPort">
+            <summary>近端結束點連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.BuildTime">
+            <summary>連線建立時間(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.LastReceivedTime">
+            <summary>最後接收訊息時間(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ISocketConnection.IsConnected">
+            <summary>連線狀態(ReadOnly)</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketConnection.SendData(System.String)">
+            <summary>將(字串)訊息加入傳送訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketConnection.SendData(System.Byte[])">
+            <summary>將(字元陣列)訊息加入傳送訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ISocketConnection.Close">
+            <summary>關閉SocketConnection，並釋放所有相關資源</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ITcpSocketClient">
+            <summary>
+            TcpSocketClient的Interface
+            </summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ITcpSocketClient.ConnectChanged">
+            <summary>連線狀態改變時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.BindIP">
+            <summary>近端結束點IP位址(Actual)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.BindPort">
+            <summary>近端結束點連接埠(Actual)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.CheckTestPeriod">
+            <summary>檢查是否傳送測試訊息的時間間隔(單位:秒，預設為0不傳送)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.TestMessage">
+            <summary>當Server端由其他廠商製作時可在此設定固定測試訊息內容</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.ChatMessageTimeout">
+            <summary>ChatMessageTimeout時間(單位:秒，預設3秒)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.MessageReceivedSignal">
+            <summary>訊息接收並處置完成置入訊息接收佇列等待應用程式讀取或連線物件結束時觸發的訊號</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.IsAutoConnect">
+            <summary>是否自動連線</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketClient.AutoConnectWaitTime">
+            <summary>自動連線斷線嘗試重新連線等候時間(單位:秒，預設為30秒)</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketClient.GetReceivedData">
+            <summary>取得訊息內容(使用迴圈並搭配MessageReceivedSignal會有較佳的效率)</summary>
+            <returns>回傳接收到的訊息，PS.訊息一經讀取便不再保留請務必要使用變數承接起來，以免訊息流失</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketClient.ChatMessage(System.String)">
+            <summary>以同步方式(Blocking)發送訊息，會等待訊息回應</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>訊息回應的內容(逾時則為null)</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketClient.ChatMessage(System.Byte[])">
+            <summary>以同步方式(Blocking)發送訊息，會等待訊息回應</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>訊息回應的內容(逾時則為null)</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.ITcpSocketServer">
+            <summary>
+            TcpSocketServer的Interface
+            </summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ITcpSocketServer.ConnectChanged">
+            <summary>連線狀態改變時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.ITcpSocketServer.ErrorSending">
+            <summary>訊息傳送錯誤時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketServer.NonCommunicationTimeout">
+            <summary>無通訊時結束連線的時間(單位:秒，預設為0不監看)，搭配Client端CheckTestPeriod可清除多餘的連線</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketServer.IsIPSingleConnection">
+            <summary>遠端連線各IP是否只容許單一連線(預設為單一連線)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.ITcpSocketServer.SendPauseTime">
+            <summary>各Connection內處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketServer.GetConnectionCounter">
+            <summary>取得連線數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketServer.SendMessage(System.String,System.String,System.Int32)">
+            <summary>發送訊息</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">要傳送的目的地IP位址</param>
+            <param name="paramRemotePort">要傳送的目的地連接埠</param>
+            <returns>回傳Connection是否存在</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.ITcpSocketServer.SendMessage(System.Byte[],System.String,System.Int32)">
+            <summary>發送訊息</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">要傳送的目的地IP位址</param>
+            <param name="paramRemotePort">要傳送的目的地連接埠</param>
+            <returns>回傳Connection是否存在</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.SocketCommand">
+            <summary>
+            定義Socket Client端對Server端的Command。
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketCommand.Delimeter">
+            <summary>特殊Socket通訊分隔字元</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketCommand.SPECIAL_PROMPT">
+            <summary>特殊Socket通訊提示字串</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketCommand.COMMAND_CONNECTIONTEST">
+            <summary>測試連線狀態的指令字串</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketCommand.IsSocketCommand(System.Byte[],System.String@)">
+            <summary>檢驗是否為特殊Socket指令或回應</summary>
+            <param name="paramMessage">待檢驗的字元陣列</param>
+            <param name="paramCommand">指令字串</param>
+            <returns>若為真，依paramCommand判定為哪一個特殊Socket指令或回應</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketCommand.GetHeader(System.String)">
+            <summary>取得特殊Socket指令或回應表頭字串</summary>
+            <param name="paramCommand">特殊Socket指令或回應字串</param>
+            <returns>回傳表頭字串</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.SocketConnection">
+            <summary>
+            Server端接受遠端連線請求後產生的Instance，用來處理訊息接收與傳送。
+            </summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.Parent">
+            <summary>Socket Server Reference</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.Connection">
+            <summary>連線Socket物件</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ConnectionName">
+            <summary>連線名稱。遠端連線各IP只容許單一連線時為IPAddress，否則為IPAddress:Port</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.SendPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.BufferSize">
+            <summary>Socket讀取訊息緩衝區大小</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ReadBuffer">
+            <summary>Socket讀取訊息的緩衝區</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.IOWriteStream">
+            <summary>Socket的基礎資料流(for write)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.BindingIP">
+            <summary>近端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.BindingPort">
+            <summary>近端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ConnectionIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ConnectionPort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.CreateTime">
+            <summary>連線建立時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.AccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.MessageBufferQueue">
+            <summary>訊息接收緩衝佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ReceivedMessageThread">
+            <summary>處理訊息接收緩衝佇列內訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.MessageBufferSignal">
+            <summary>訊息接收緩衝佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.SendMessageQueue">
+            <summary>訊息傳送佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.SendMessageThread">
+            <summary>處理訊息傳送佇列內訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.SendSignal">
+            <summary>訊息傳送佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.SendPauseSignal">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送訊號(暫止時間為SendPauseTime)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ReceivedTime">
+            <summary>最後接收訊息時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.ConnectionStatus">
+            <summary>連線狀態旗標，控制非同步讀取及傳送訊息執行緒是否停止</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.TcpSocketStatus">
+            <summary>Socket Status(內部控制用)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.SocketConnection.IsSelfTerminated">
+            <summary>是否為本物件自行結束，若為真則CollectResource須執行Parent.KillConnection，以清除集合物件內的資料</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.#ctor(System.Net.Sockets.Socket,Core.Base.DataLink.Sockets.IConnectionServer)">
+            <summary>建立連線物件以處理訊息收送</summary>
+            <param name="paramConnection">連線的Socket物件</param>
+            <param name="paramParent">Socket Server Reference</param>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.Name">
+            <summary>
+            連線名稱。
+            遠端連線各IP只容許單一連線時為IPAddress，否則為IPAddress:Port
+            </summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.RemoteIP">
+            <summary>遠端結束點IP(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.RemotePort">
+            <summary>遠端結束點Port(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.BindIP">
+            <summary>近端結束點IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.BindPort">
+            <summary>近端結束點連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.BuildTime">
+            <summary>連線建立時間(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.LastAccessTime">
+            <summary>最後通訊時間(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.LastReceivedTime">
+            <summary>最後接收訊息時間(ReadOnly)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.SocketConnection.IsConnected">
+            <summary>連線狀態(ReadOnly)</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.SendData(System.String)">
+            <summary>將(字串)訊息加入傳送訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.SendData(System.Byte[])">
+            <summary>將(字元陣列)訊息加入傳送訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.SocketReceiver(System.IAsyncResult)">
+            <summary>Socket訊息非同步讀取的委派函數</summary>
+            <param name="paramAr">表示非同步作業 (Asynchronous Operation) 的狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.ReceiveMessageInQueue">
+            <summary>處理接收訊息佇列內訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.SendMessageInQueue">
+            <summary>傳送訊息佇列內訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.Close">
+            <summary>關閉SocketConnection，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.SocketConnection.CollectResource">
+            <summary>釋放所有相關資源</summary>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.TcpSocketClient">
+            <summary>TCP Client端的Socket物件，本物件實作ITcpSocketClient</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.Read_Buffer_Size">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ReadBuffer">
+            <summary>Socket讀取訊息的緩衝區</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ListenIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ListenPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.BindingIP">
+            <summary>近端結束點IP位址(Actual)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.BindingPort">
+            <summary>近端結束點連接埠(Actual)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ConnectionIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ConnectionPort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.MessageQueue">
+            <summary>訊息接收佇列，應用程式由此讀取)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ReceivedSignal">
+            <summary>訊息接收並處置完成置入訊息接收佇列等待應用程式讀取或連線物件結束時觸發的訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.MessageBufferQueue">
+            <summary>訊息接收緩衝佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ReceivedMessageThread">
+            <summary>處理訊息接收緩衝佇列內訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.MessageBufferSignal">
+            <summary>訊息接收緩衝佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendMessageQueue">
+            <summary>訊息傳送佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendMessageThread">
+            <summary>處理訊息傳送佇列內訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendSignal">
+            <summary>訊息傳送佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendingPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendPauseSignal">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送訊號(暫止時間為SendPauseTime)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendQueueCounter">
+            <summary>紀錄訊息傳送佇列內訊息數量</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.SendingLock">
+            <summary>封鎖訊息傳送的物件</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.TestMessageThread">
+            <summary>傳送測試訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.TestPeriod">
+            <summary>檢查是否傳送測試訊息的時間間隔(單位:秒，預設為0不傳送)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.TestPeriodSignal">
+            <summary>檢查是否測試訊息的定時(TestPeriod)訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.TestMessageData">
+            <summary>當Server端由其他廠商製作時設定測試訊息內容</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.EventQueue">
+            <summary>事件佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.MonitorEventThread">
+            <summary>處理事件佇列內事件的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.EventSignal">
+            <summary>事件佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ChatWaitAckTimeout">
+            <summary>ChatMessageTimeout時間(單位:秒，預設3秒)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.IsChating">
+            <summary>內部控制用的旗標，標示是否正在傳送需回應的訊息(應用於ChatMessage、CollectMessage)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.AckMessage">
+            <summary>紀錄訊息回應的內容</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ChatAckSignal">
+            <summary>訊息回應逾時觸發的訊號(應用於ChatMessage)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.Client">
+            <summary>Socket物件</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.IOWriteStream">
+            <summary>Socket的基礎資料流(for write)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.CreateTime">
+            <summary>連線建立時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.AccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.TcpSocketStatus">
+            <summary>Socket Status(內部控制用:Reconnect...)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.ConnectionStatus">
+            <summary>連線狀態旗標，控制非同步讀取及各類執行緒是否停止</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.AutoConnect">
+            <summary>是否自動連線(預設為True)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketClient.AutoConnectTime">
+            <summary>自動連線斷線嘗試重新連線等候時間(單位:秒，預設為30秒)</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.#ctor(System.String,System.Int32)">
+            <summary>初始化TcpSocketClient</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.#ctor(System.String,System.Int32,System.String,System.Int32)">
+            <summary>初始化TcpSocketClient</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <param name="paramLocalIP">近端結束點IP位址</param>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketClient.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketClient.ConnectChanged">
+            <summary>連線狀態改變時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketClient.ErrorSending">
+            <summary>訊息傳送錯誤時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.LocalIP">
+            <summary>近端結束點IP位址(Setup))</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.BindIP">
+            <summary>近端結束點IP位址(Actual))</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.BindPort">
+            <summary>近端結束點連接埠(Actual)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.RemoteIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.RemotePort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.CheckTestPeriod">
+            <summary>檢查是否傳送測試訊息的時間間隔(單位:秒，預設為0不傳送)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.TestMessage">
+            <summary>當Server端由其他廠商製作時設定測試訊息內容</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.ChatMessageTimeout">
+            <summary>ChatMessageTimeout時間(單位:秒，預設3秒)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.SendPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.BuildTime">
+            <summary>連線建立時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.LastAccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.MessageReceivedSignal">
+            <summary>訊息接收並處置完成置入訊息接收佇列等待應用程式讀取或連線物件結束時觸發的訊號</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.IsStop">
+            <summary>連線是否為停止狀態</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.IsAutoConnect">
+            <summary>是否自動連線</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketClient.AutoConnectWaitTime">
+            <summary>自動連線斷線嘗試重新連線等候時間(單位:秒，預設為30秒)</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.Start">
+            <summary>啟動TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.Stop">
+            <summary>停止TcpSocketClient</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.Close">
+            <summary>關閉TcpSocketClient，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.GetReceivedData">
+            <summary>取得訊息內容(使用迴圈並搭配MessageReceivedSignal會有較佳的效率)</summary>
+            <returns>回傳接收到的訊息，PS.訊息一經讀取便不再保留請務必要使用變數承接起來，以免訊息流失</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.SendMessage(System.String)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.SendMessage(System.Byte[])">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.ChatMessage(System.String)">
+            <summary>以同步方式(Blocking)發送訊息，會等待訊息回應</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>訊息回應的內容(逾時則為null)</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.ChatMessage(System.Byte[])">
+            <summary>以同步方式(Blocking)發送訊息，會等待訊息回應</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>訊息回應的內容(逾時則為null)</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.GetSendQueueCounter">
+            <summary>取得訊息傳送佇列內未傳送訊息數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.InitSocket">
+            <summary>初始化Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.ReConnect">
+            <summary>重新連線</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.SocketReceiver(System.IAsyncResult)">
+            <summary>Socket訊息非同步讀取的委派函數</summary>
+            <param name="paramAr">表示非同步作業 (Asynchronous Operation) 的狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.ReceiveMessageInQueue">
+            <summary>處理訊息接收緩衝佇列內的訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.SendMessageInQueue">
+            <summary>傳送訊息佇列內的訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.MonitorEvent">
+            <summary>監看事件佇列</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.SendTestMessage">
+            <summary>傳送測試訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.CollectMessage(Core.Base.DataLink.Sockets.SocketMessage)">
+            <summary>將訊息內容加入訊息佇列或作為ChatMessage的傳回值</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.AddSendMessage(System.Byte[])">
+            <summary>將訊息加入訊息傳送佇列</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.IsAllowSending">
+            <summary>檢查Socket連線狀態及相關設定，判斷是否允許傳送訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.PerformConnectChanged(System.Boolean)">
+            <summary>觸發ConnectChanged事件</summary>
+            <param name="paramIsConnected">連線狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketClient.PerformErrorSending(System.Byte[])">
+            <summary>觸發Error Sending事件</summary>
+            <param name="paramMessage">訊息內容(byte[])</param>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.TcpSocketServer">
+            <summary>TCP Server端的Socket物件，本物件實作ITcpSocketServer</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#SendPauseTime">
+            <summary>各Connection內處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#CollectMessage(Core.Base.DataLink.Sockets.ISocketMessage)">
+            <summary>將接收的訊息加入訊息佇列</summary>
+            <param name="paramMessage">訊息內容</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#PerformConnectChanged(Core.Base.DataLink.Sockets.ISocketConnection,System.Boolean)">
+            <summary>觸發ConnectChanged事件</summary>
+            <param name="paramConnection">連線物件</param>
+            <param name="paramIsConnected">連線狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#PerformErrorSending(Core.Base.DataLink.Sockets.ISocketConnection,System.Byte[])">
+            <summary>觸發Error Sending事件</summary>
+            <param name="paramConnection">連線物件</param>
+            <param name="paramMessage">訊息內容(byte[])</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#KillConnection(System.String)">
+            <summary>移除Connection List和雜湊表項目</summary>
+            <param name="paramConnectName">連線名稱</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Core#Base#DataLink#Sockets#IConnectionServer#GetConnectionName(System.String,System.Int32)">
+            <summary>取得連線名稱</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>回傳連線名稱</returns>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.Read_Buffer_Size">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.IPSingleConnection">
+            <summary>遠端連線各IP是否只容許單一連線(預設為單一連線)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.clientTimeout">
+            <summary>無通訊時結束連線的時間(單位:秒，預設為0不監看)，搭配Client端CheckTestPeriod可清除多餘的連線</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.SendingPauseTime">
+            <summary>各Connection內處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.Listener">
+            <summary>建立一條Tcp Socket</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ListenIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ListenPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.TcpSocketStatus">
+            <summary>Socket Status(內部控制用)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.MessageQueue">
+            <summary>資料接收佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.EventQueue">
+            <summary>事件佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.MessageQueueCounter">
+            <summary>紀錄訊息佇列內訊息數量</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.HashConnection">
+            <summary>記錄所有Connection的雜湊表</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ListConnection">
+            <summary>記錄所有Connection Key的ArrayList</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.MonitorTimeoutThread">
+            <summary>監看Client端Timeout的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.MonitorEventThread">
+            <summary>監聽事件發生的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.CheckTimeOutSignal">
+            <summary>檢查Client端Timeou訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.EventSignal">
+            <summary>事件發生時觸發的訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ReceivedSignal">
+            <summary>訊息接收時觸發的訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ListenStatus">
+            <summary>監聽連線狀態</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.TcpSocketServer.ConnectionCounter">
+            <summary>紀錄連線數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.#ctor">
+            <summary>初始化TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.#ctor(System.Int32)">
+            <summary>初始化TcpSocketServer</summary>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.#ctor(System.String,System.Int32)">
+            <summary>初始化TcpSocketServer</summary>
+            <param name="paramLocalIP">近端結束點IP位址</param>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketServer.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketServer.ConnectChanged">
+            <summary>連線狀態改變時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.TcpSocketServer.ErrorSending">
+            <summary>訊息傳送錯誤時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.LocalIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.NonCommunicationTimeout">
+            <summary>無通訊時結束連線的時間(單位:秒，預設為0不監看)，搭配Client端CheckTestPeriod可清除多餘的連線</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.IsIPSingleConnection">
+            <summary>遠端連線各IP是否只容許單一連線(預設為單一連線)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.SendPauseTime">
+            <summary>各Connection內處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.MessageReceivedSignal">
+            <summary>訊息接收訊號</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.TcpSocketServer.IsStop">
+            <summary>連線是否為停止狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Start">
+            <summary>啟動TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Stop">
+            <summary>停止TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.Close">
+            <summary>關閉TcpSocketServer，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.GetReceivedData">
+            <summary>取得訊息內容</summary>
+            <returns>回傳接收到訊息，PS.訊息一經讀取便不再保留請務必要使用變數承接起來，以免訊息流失</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.GetReceivedQueueCounter">
+            <summary>取得訊息佇列內未讀取訊息數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.GetConnectionCounter">
+            <summary>取得連線數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.SendMessage(System.String,System.String,System.Int32)">
+            <summary>發送訊息</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">要傳送的目的地IP位址</param>
+            <param name="paramRemotePort">要傳送的目的地連接埠</param>
+            <returns>回傳Connection是否存在</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.SendMessage(System.Byte[],System.String,System.Int32)">
+            <summary>發送訊息</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">要傳送的目的地IP位址</param>
+            <param name="paramRemotePort">要傳送的目的地連接埠</param>
+            <returns>回傳Connection是否存在</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.InitSocket">
+            <summary>初始化Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.MonitorTimeout">
+            <summary>監看Client端Timeout</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.MonitorEvent">
+            <summary>監看事件佇列</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.AcceptConnection(System.IAsyncResult)">
+            <summary>處理遠端連線請求</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.StopAccept">
+            <summary>結束監聽遠端連線請求</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.GetConnection(System.String,System.Int32)">
+            <summary>取得連線物件</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.PerformConnectChanged(Core.Base.DataLink.Sockets.ISocketConnection,System.Boolean)">
+            <summary>觸發ConnectChanged事件</summary>
+            <param name="paramConnection">連線物件</param>
+            <param name="paramIsConnected">連線狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.TcpSocketServer.GetConnectionName(System.String,System.Int32)">
+            <summary>取得連線名稱</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>回傳連線名稱</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.IUdpSocketClient">
+            <summary>
+            UdpSocketClient的Interface
+            </summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IUdpSocketClient.SendMessageTo(System.String,System.String,System.Int32)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.IUdpSocketClient.SendMessageTo(System.Byte[],System.String,System.Int32)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.UdpSocketClient">
+            <summary>Udp Client端的Socket物件，本物件實作IUdpSocketClient</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.ListenIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.ListenPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.ConnectionIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.ConnectionPort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessageQueue">
+            <summary>訊息傳送佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessageThread">
+            <summary>處理訊息傳送佇列內訊息的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendSignal">
+            <summary>訊息傳送佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendingPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendPauseSignal">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送訊號(暫止時間為SendPauseTime)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.SendQueueCounter">
+            <summary>紀錄訊息傳送佇列內訊息數量</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.EventQueue">
+            <summary>事件佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.MonitorEventThread">
+            <summary>處理事件佇列內事件的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.EventSignal">
+            <summary>事件佇列內新增內容或連線物件結束時觸發，用以啟動暫止執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.Client">
+            <summary>Socket物件</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.CreateTime">
+            <summary>連線建立時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.AccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.UdpSocketStatus">
+            <summary>Socket Status(內部控制用)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketClient.InitStatus">
+            <summary>連線狀態旗標，控制各類執行緒是否停止</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.#ctor(System.String,System.Int32)">
+            <summary>初始化TcpSocketClient</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.#ctor(System.String,System.Int32,System.String,System.Int32)">
+            <summary>初始化TcpSocketClient</summary>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <param name="paramLocalIP">近端結束點IP位址</param>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.UdpSocketClient.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.UdpSocketClient.ErrorSending">
+            <summary>訊息傳送錯誤時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.LocalIP">
+            <summary>近端結束點IP位址(Setup))</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.RemoteIP">
+            <summary>遠端結束點IP位址</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.RemotePort">
+            <summary>遠端結束點連接埠</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.SendPauseTime">
+            <summary>處理訊息傳送佇列執行緒內暫止訊息傳送時間(單位:毫秒，預設為2)，以避免前後傳送訊息相連</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.BuildTime">
+            <summary>Client建立時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.LastAccessTime">
+            <summary>最後通訊時間</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketClient.IsStop">
+            <summary>是否為停用狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.Start">
+            <summary>啟用Client</summary>
+            <returns>傳回是否啟用成功</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.Stop">
+            <summary>停用Client</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.Close">
+            <summary>關閉Client，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessage(System.String)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessage(System.Byte[])">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessageTo(System.String,System.String,System.Int32)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessageTo(System.Byte[],System.String,System.Int32)">
+            <summary>判斷是否為可傳送狀態並將訊息加入訊息傳送佇列依序傳送</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+            <returns>傳回是否為可傳送狀態</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.GetSendQueueCounter">
+            <summary>取得訊息傳送佇列內未傳送訊息數量</summary>
+            <returns>傳回訊息傳送佇列內未傳送訊息數量</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.InitSocket">
+            <summary>初始化Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.SendMessageInQueue">
+            <summary>傳送訊息佇列內的訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.MonitorEvent">
+            <summary>監看事件佇列</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.IsAllowSending">
+            <summary>檢查Socket連線狀態及相關設定，判斷是否允許傳送訊息</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.AddSendMessage(System.Byte[],System.String,System.Int32)">
+            <summary>將訊息加入訊息傳送佇列</summary>
+            <param name="paramMessage">要傳送的訊息</param>
+            <param name="paramRemoteIP">遠端結束點IP位址</param>
+            <param name="paramRemotePort">遠端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketClient.PerformErrorSending(System.Byte[])">
+            <summary>觸發Error Sending事件</summary>
+            <param name="paramMessage">訊息內容(byte[])</param>
+        </member>
+        <member name="T:Core.Base.DataLink.Sockets.UdpSocketServer">
+            <summary>Udp Server端的Socket物件，本物件實作ISocketServer</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.Read_Buffer_Size">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.ReadBuffer">
+            <summary>Socket讀取訊息的緩衝區</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.Receiver">
+            <summary>Socket物件</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.ListenIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.ListenPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.TcpSocketStatus">
+            <summary>Socket Status(內部控制用)</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.MessageQueue">
+            <summary>訊息接收佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.ReceivedSignal">
+            <summary>訊息接收時觸發的訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.EventQueue">
+            <summary>事件佇列</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.MessageQueueCounter">
+            <summary>紀錄訊息佇列內訊息數量</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.MonitorEventThread">
+            <summary>監聽事件發生的執行緒</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.EventSignal">
+            <summary>事件發生時觸發的訊號</summary>
+        </member>
+        <member name="F:Core.Base.DataLink.Sockets.UdpSocketServer.ReceiveStatus">
+            <summary>監聽連線狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.#ctor">
+            <summary>初始化TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.#ctor(System.Int32)">
+            <summary>初始化TcpSocketServer</summary>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.#ctor(System.String,System.Int32)">
+            <summary>初始化TcpSocketServer</summary>
+            <param name="paramLocalIP">近端結束點IP位址</param>
+            <param name="paramLocalPort">近端結束點連接埠</param>
+        </member>
+        <member name="E:Core.Base.DataLink.Sockets.UdpSocketServer.ExceptionHappened">
+            <summary>元件內部發生Exception時觸發的事件</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketServer.LocalIP">
+            <summary>近端結束點IP位址(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketServer.LocalPort">
+            <summary>近端結束點連接埠(Setup)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketServer.ReadBufferSize">
+            <summary>單筆訊息的最大資料長度(預設 8192 Bytes，最小為1024 Bytes)</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketServer.MessageReceivedSignal">
+            <summary>訊息接收訊號</summary>
+        </member>
+        <member name="P:Core.Base.DataLink.Sockets.UdpSocketServer.IsStop">
+            <summary>是否為停用狀態</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.Start">
+            <summary>啟動TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.Stop">
+            <summary>停止TcpSocketServer</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.Close">
+            <summary>關閉TcpSocketServer，並釋放所有相關資源</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.GetReceivedData">
+            <summary>取得訊息內容</summary>
+            <returns>回傳接收到訊息，PS.訊息一經讀取便不再保留請務必要使用變數承接起來，以免訊息流失</returns>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.GetReceivedQueueCounter">
+            <summary>取得訊息佇列內未讀取訊息數量</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.InitSocket">
+            <summary>初始化Socket</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.SocketReceiver(System.IAsyncResult)">
+            <summary>Socket訊息非同步讀取的委派函數</summary>
+            <param name="paramAr">表示非同步作業 (Asynchronous Operation) 的狀態</param>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.MonitorEvent">
+            <summary>監看事件佇列</summary>
+        </member>
+        <member name="M:Core.Base.DataLink.Sockets.UdpSocketServer.PerformExeceptionEvent(System.Exception,System.String)">
+            <summary>觸發Exeception Event事件</summary>
+            <param name="paramEx">傳入所觸發的Exception</param>
+            <param name="paramExceptionFrom">傳入觸發Exception的Namespace.Method</param>
+        </member>
+    </members>
+</doc>

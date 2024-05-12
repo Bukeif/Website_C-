@@ -1,0 +1,2137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WindowsUI</name>
+    </assembly>
+    <members>
+        <member name="T:Core.WindowsUI.Times.Clock">
+            <summary>時鐘控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Times.Clock.Text">
+            <summary>用來儲存</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Times.Clock.Format">
+            <summary>設定或是取得時鐘的Format</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.Start">
+            <summary>啟動時鐘</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.timerClock_Tick(System.Object,System.EventArgs)">
+            <summary>當計時器開始計時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.Stop">
+            <summary>時鐘停止</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Times.Clock.components">
+            <summary> 
+            設計工具所需的變數。
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.Dispose(System.Boolean)">
+            <summary> 
+            清除任何使用中的資源。
+            </summary>
+            <param name="disposing">如果應該處置 Managed 資源則為 true，否則為 false。</param>
+        </member>
+        <member name="M:Core.WindowsUI.Times.Clock.InitializeComponent">
+            <summary> 
+            此為設計工具支援所需的方法 - 請勿使用程式碼編輯器
+            修改這個方法的內容。
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.DatabaseMode">
+            <summary>資料庫模式</summary>
+        </member>
+        <member name="F:Core.WindowsUI.DatabaseMode.OleDB">
+            <summary>設定資料庫型別為OleDB</summary>
+        </member>
+        <member name="F:Core.WindowsUI.DatabaseMode.ODBC">
+            <summary>設定資料庫型別為ODBC</summary>
+        </member>
+        <member name="F:Core.WindowsUI.DatabaseMode.MS_SQL">
+            <summary>設定資料庫型別為MS_SQL</summary>
+        </member>
+        <member name="T:Core.WindowsUI.LocationMode">
+            <summary>鋼胚區域的型別</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.Normal">
+            <summary>未處理</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.Furnace">
+            <summary>加熱爐</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.Mill">
+            <summary>軋延區</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.DoubleChain">
+            <summary>強制風冷區</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.Load">
+            <summary>上鉤區</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.T26">
+            <summary>T26</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.Weight">
+            <summary>秤重站</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.UnLoad">
+            <summary>盤元已下鉤/直棒鋼儲區</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.CoilBed">
+            <summary>直棒鋼冷卻床</summary>
+        </member>
+        <member name="F:Core.WindowsUI.LocationMode.BarOS7">
+            <summary>直棒鋼切剪區</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Exception.DataGridVerifyException">
+            <summary>該Exception觸發於專案層在執行資料新增時所產生的Exception</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Exception.DataGridVerifyException.#ctor(System.String)">
+            <summary>觸發於當使用者在利用DataGrid進行資料維護時，所觸發的 Exception</summary>
+            <param name="paramException">傳入要觸發 Exception 的訊息</param>
+        </member>
+        <member name="M:Core.WindowsUI.Exception.DataGridVerifyException.#ctor(System.String,System.Exception)">
+            <summary>觸發於當使用者在利用DataGrid進行資料維護時，所觸發的 Exception</summary>
+            <param name="paramException">傳入要觸發Exception的訊息</param>
+            <param name="paramInnerException">導致目前例外狀況的例外。如果 innerException 參數不是 Null 參考，目前的例外狀況 (Exception) 會在處理內部例外的 catch 區塊中引發。</param>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.Exception.MarqueeException">
+            <summary>建立跑馬燈的基底Exception</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Exception.MarqueeException.#ctor(System.String)">
+            <summary>跑馬燈的基底錯誤型別</summary>
+            <param name="paramException">傳入錯誤訊息</param>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Exception.MarqueeException.#ctor(System.String,System.Exception)">
+            <summary>跑馬燈的基底錯誤型別</summary>
+            <param name="paramException">傳入錯誤訊息</param>
+            <param name="paramInnerException">傳入原有的InnerException</param>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.Exception.NullReferenceException">
+            <summary>建立查無資訊的錯誤型別</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Exception.NullReferenceException.#ctor(System.String)">
+            <summary>跑馬燈資源發生NULL型態時所要觸發的錯誤型別</summary>
+            <param name="paramException">傳入錯誤訊息</param>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Exception.NullReferenceException.#ctor(System.String,System.Exception)">
+            <summary>跑馬燈資源發生NULL型態時所要觸發的錯誤型別</summary>
+            <param name="paramException">傳入錯誤訊息</param>
+            <param name="paramInnerException">傳入原有的InnerException</param>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.DataEventArg">
+            <summary>DataEventArg</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.DataEventArg.RacetrackText">
+            <summary>出現在跑馬燈上的字</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.DataEventArg.RacetrackQuantityTotal">
+            <summary>跑馬燈所跑完的數量</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.Marquee">
+            <summary>跑馬燈</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.NeonLampPoint">
+            <summary>用來存放MessageLabel的位置</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.NeonLampSize">
+            <summary>用來存放MessageLabel的Size</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.MoveVelocity">
+            <summary>跑馬燈訊息移動的速度</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.CheckShowFrequency">
+            <summary>判斷目前跑馬燈已經跑過的次數</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.MarqueeShowFrequency">
+            <summary>紀錄跑馬燈總共要跑的次數</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.CatchMessageCount">
+            <summary>記錄要擷取幾個訊息</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankState">
+            <summary>跑馬燈的嚴重層級</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.MarqueeText">
+            <summary>紀錄跑馬燈的字串</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.CollectionMessage">
+            <summary>接收所有的訊息的容器(陣列)</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankColor_1">
+            <summary>紀錄五種層級所要呈現出來的顏色</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankColor_2">
+            <summary>紀錄五種層級所要呈現出來的顏色</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankColor_3">
+            <summary>紀錄五種層級所要呈現出來的顏色</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankColor_4">
+            <summary>紀錄五種層級所要呈現出來的顏色</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.RankColor_5">
+            <summary>紀錄五種層級所要呈現出來的顏色</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.ReceiverStatus">
+            <summary>紀錄目前是否為停止接收訊息</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.MarqueeMoveType">
+            <summary>設定目前是否為靜止狀態的跑馬燈</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.StaticAlign">
+            <summary>紀錄當跑馬燈為靜止狀態時所要擺放的位置</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.ComboBoxBouuonVisible">
+            <summary>紀錄是否要顯示下拉的按鈕</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.ChackSway">
+            <summary>紀錄搖擺狀態的Flas：true = 前進, false = 後退</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.AutoCirculate">
+            <summary>自動循環</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.Marquee.EveryQuantity">
+            <summary>觸發於當跑馬燈每跑完一次時的delegate</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.Marquee.HavingQuantity">
+            <summary>觸發於當跑馬燈跑完指定數量的最後一次時的delegate</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="E:Core.WindowsUI.Neon.Marquee.OnEveryQuantityEnd">
+            <summary>觸發於當跑馬燈每跑完一次時的事件</summary>
+        </member>
+        <member name="E:Core.WindowsUI.Neon.Marquee.OnHavingQuantityEnd">
+            <summary>觸發於當跑馬燈跑完指定數量的最後一次時的事件</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.SetTimState(System.Boolean)">
+            <summary>設定時間器起訖狀態</summary>
+            <param name="paramState">設定是否需要啟動</param>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.SetStateHoming">
+            <summary>重新設定跑馬燈的紀錄</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.Marquee_ClearCatchMessage">
+            <summary>清除所有紀錄在記憶區的資訊</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.Marquee_SetMarqueeText(System.String)">
+            <summary>設定跑馬燈的字串</summary>
+            <param name="paramMarqueeText">設定將要顯示在跑馬燈上的訊息字串</param>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_MoveVelocity">
+            <summary>設定跑馬燈速度，預設速度為1</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RepeatFrequency">
+            <summary>設定跑馬燈次數，預設次數為0(無限次數)</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_Rank">
+            <summary>設定等級性，預設等級為Rank5</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RankColor1">
+            <summary>設定等級性1的顏色</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RankColor2">
+            <summary>設定等級性2的顏色</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RankColor3">
+            <summary>設定等級性3的顏色</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RankColor4">
+            <summary>設定等級性4的顏色</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_RankColor5">
+            <summary>設定等級性5的顏色</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_AutoCircleRankColor">
+            <summary>設定或取得是否自動循環等級顏色，預設為false</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_CatchMessageCount">
+            <summary>設定記憶數量，預設數量為10</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_ReceiverStatus">
+            <summary>設定跑馬燈接收訊息的狀態，預設狀態為on</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_MoveMode">
+            <summary>設定跑馬燈移動的模式，預設移動的模式為Move</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_StaticAlign">
+            <summary>設定跑馬燈的移動狀態為靜止模式時，指定控制項中的物件或文字如何水平對齊於相關的控制項項目，預設為水平垂直置中</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Neon.Marquee.Marquee_DropListVisible">
+            <summary>設定跑馬燈下拉式選單，預設顯現的模式為True</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.AutoCirculateRankColor">
+            <summary>自動更換顏色等級</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.MarqueeMoveInCircle">
+            <summary>重複巡迴移動</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.Marquee_ShowDroppedDownList">
+            <summary>顯示下拉選單的項目</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.buttonDroppedDown_Click(System.Object,System.EventArgs)">
+            <summary>當點選下拉選單的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.Marquee.components">
+            <summary> 
+            設計工具所需的變數。
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.Dispose(System.Boolean)">
+            <summary> 
+            清除任何使用中的資源。
+            </summary>
+            <param name="disposing">如果應該公開 Managed 資源則為 true，否則為 false。</param>
+        </member>
+        <member name="M:Core.WindowsUI.Neon.Marquee.InitializeComponent">
+             <summary> 
+             此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改這個方法的內容。
+            
+             </summary>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.MarqueeStatus">
+            <summary>跑馬燈狀態</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeStatus.on">
+            <summary>啟動</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeStatus.off">
+            <summary>停止</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.MarqueeMoveMode">
+            <summary>跑馬燈移動的模式</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeMoveMode.Move">
+            <summary>字體會動的模式</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeMoveMode.Static">
+            <summary>字體靜止並停駐於中間的模式</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeMoveMode.Sway">
+            <summary>左右搖擺的模式</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Neon.MarqueeRank">
+            <summary>跑馬燈的狀態等級</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeRank.Rank1">
+            <summary>訊息等極為1</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeRank.Rank2">
+            <summary>訊息等極為2</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeRank.Rank3">
+            <summary>訊息等極為3</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeRank.Rank4">
+            <summary>訊息等極為4</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Neon.MarqueeRank.Rank5">
+            <summary>訊息等極為5</summary>
+        </member>
+        <member name="T:Core.WindowsUI.ImportExport.DataGridViewExportExcel">
+            <summary>DataGridView 匯出成 Excel</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.ExportExcel(System.Windows.Forms.DataGridView@)">
+            <summary>汇出Excel</summary>
+            <param name="paramGrid">传入要汇出的 DataGridView</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.SetHeadCode(System.Windows.Forms.DataGridView@)">
+            <summary>设定标头的资料</summary>
+            <param name="paramGrid">传入要汇出的 DataGridView</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.SetBodyCode(System.Windows.Forms.DataGridView@)">
+            <summary>设定本体的资料</summary>
+            <param name="paramGrid">传入要汇出的 DataGridView</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.GetExportPath">
+            <summary>取得要汇出的路径</summary>
+            <returns>將回傳要汇出的路径</returns>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.WriteFile(System.String,System.String@)">
+            <summary>寫入檔案</summary>
+            <param name="paramFilePath">傳入要寫入的檔案目錄 + 名稱</param>
+            <param name="paramWriteContent">傳入要寫入的內容</param>
+            <param name="paramEncoding">传入当写入档案时，所使用的格式</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewExportExcel.WriteFile(System.String,System.String@,System.String)">
+            <summary>寫入檔案</summary>
+            <param name="paramFilePath">傳入要寫入的檔案目錄 + 名稱</param>
+            <param name="paramWriteContent">傳入要寫入的內容</param>
+            <param name="paramEncoding">传入当写入档案时，所使用的格式</param>
+        </member>
+        <member name="F:Core.WindowsUI.ImportExport.DataGridViewExportExcel.HtmlTemplement">
+            <summary>用来储存要汇出 HTML 的样板</summary>
+        </member>
+        <member name="T:Core.WindowsUI.ImportExport.DataGridViewStyleHandler">
+            <summary>匯入匯出 DataGridView Style 的處理器</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.GetDataGridViewStyle(System.Windows.Forms.Form,System.String)">
+            <summary>取得 DataGridView 的 Style</summary>
+            <param name="paramForm">傳入指定的表單</param>
+            <param name="paramGridViewName">傳入指定表單的 DataGridView 的名稱</param>
+            <returns>將回傳指定的 DataGridView 的 Style</returns>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.InitializeStyle(System.Windows.Forms.Form,System.String)">
+            <summary>初始化 DataSet</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.ReadXml(System.Data.DataSet@,System.String)">
+            <summary>讀取XML定義檔</summary>
+            <param name="paramDataSet">傳入要接收結果的DataSet</param>
+            <param name="paramFormName">傳入要讀取的 XML 表單名稱</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.SaveDataGridViewStyle(System.Windows.Forms.Form,System.Windows.Forms.DataGridView)">
+            <summary>儲存 DataGridView 的 Style</summary>
+            <param name="paramForm">傳入要儲存的表單</param>
+            <param name="paramGridView">傳入該表單的DataGridView</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.AppendDataTable(System.Data.DataSet@,System.String)">
+            <summary>加入 DataTable 到指定的 DataSet 中</summary>
+            <param name="paramDataSet">傳入主要的 DataSet</param>
+            <param name="paramTableName">傳入要加入的 TableName</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.UpdateGridViewStyle(System.Data.DataTable@,System.Windows.Forms.DataGridView)">
+            <summary>更新 DataGridView 的 Style</summary>
+            <param name="patamDataTable">傳入 DataGridView 相對應的 DataTable</param>
+            <param name="paramGridView">傳入 Source 的 DataGridView </param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.ChangeDataGridViewStyle(System.Windows.Forms.Form,System.Windows.Forms.DataGridView)">
+            <summary>改變傳入的 DataGridView 的 Style</summary>
+            <param name="paramForm">傳入作業的表單</param>
+            <param name="paramGridView">傳入要改變的DataGrird</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.ClearDataSet(System.Data.DataSet@)">
+            <summary>釋放DataSet資源</summary>
+            <param name="paramDataSet">傳入將要釋放資源的DataSet</param>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.DataGridViewStyleHandler.ResetDataSet(System.Data.DataSet@)">
+            <summary>Reset DataSet資源</summary>
+            <param name="paramDataSet">傳入將要Reset資源的DataSet</param>
+        </member>
+        <member name="T:Core.WindowsUI.ImportExport.CDODataGridViewStyle">
+            <summary>儲存DataGridView Style的 CDO 物件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.ImportExport.CDODataGridViewStyle.ColumnName">
+            <summary>設定或是取得欄位名稱</summary>
+        </member>
+        <member name="P:Core.WindowsUI.ImportExport.CDODataGridViewStyle.Width">
+            <summary>設定或是取得欄位寬度</summary>
+        </member>
+        <member name="P:Core.WindowsUI.ImportExport.CDODataGridViewStyle.Visible">
+            <summary>設定或是取得欄位是否顯示</summary>
+        </member>
+        <member name="P:Core.WindowsUI.ImportExport.CDODataGridViewStyle.DisplayIndex">
+            <summary>設定或是取得欄位顯示的位置</summary>
+        </member>
+        <member name="T:Core.WindowsUI.ImportExport.ExportResourcesFile">
+            <summary>提供用來進行匯出 Resources 檔案</summary>
+        </member>
+        <member name="F:Core.WindowsUI.ImportExport.ExportResourcesFile.ResourcesXMLData">
+            <summary>用來處理Resources XML 的資料</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.ExportResourcesFile.ParseResourcesXML(System.Windows.Forms.Control,System.Windows.Forms.Form)">
+            <summary>匯出 Resources XML 檔</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.ExportResourcesFile.ParseResourcesXML(System.Windows.Forms.Control)">
+            <summary>匯出 Resources XML 檔</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.ExportResourcesFile.ParseResourcesXMLByToolStrip(System.Windows.Forms.ToolStrip)">
+            <summary>匯出 Resources XML 檔</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.ExportResourcesFile.ParseResourcesXMLByDataGridView(System.Windows.Forms.DataGridView)">
+            <summary>匯出 Resources XML 檔</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.ExportResourcesFile.AddentTextToFile(System.IO.FileStream,System.String)">
+            <summary>加入文字到文字檔中</summary>
+            <param name="paramFileStream">傳入用來處理塞入文字到檔案的資料流</param>
+            <param name="paramValue">傳入要存入的字串</param>
+        </member>
+        <member name="T:Core.WindowsUI.ImportExport.IExportResourcesFile">
+            <summary>提供用來進行匯出 Resources 檔案</summary>
+        </member>
+        <member name="M:Core.WindowsUI.ImportExport.IExportResourcesFile.ParseResourcesXML(System.Windows.Forms.Control,System.Windows.Forms.Form)">
+            <summary>匯出 Resources XML 檔</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Properties.Resources">
+            <summary>
+              用於查詢當地語系化字串等的強類型資源類別。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.ResourceManager">
+            <summary>
+              傳回這個類別使用的快取的 ResourceManager 執行個體。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Culture">
+            <summary>
+              覆寫目前執行緒的 CurrentUICulture 屬性，對象是所有
+              使用這個強類型資源類別的資源查閱。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Clear">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Control_12">
+            <summary>
+              查詢類似 (圖示) 的類型 System.Drawing.Icon 當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Control_16">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Input">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.output">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Play">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.quick">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Record">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Recycle___61_">
+            <summary>
+              查詢類似 (圖示) 的類型 System.Drawing.Icon 當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Recycle_58">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.reverse">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.stop">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.suspend">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Symbol001__110_">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.Properties.Resources.Symbol001__111_">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.Record.IReceiver">
+            <summary>接收者的介面</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.IReceiver.ReceiveData(System.Object)">
+            <summary>接收播放器所錄製的訊息</summary>
+            <param name="paramReceiveData">將傳入所錄製的訊息</param>
+        </member>
+        <member name="T:Core.WindowsUI.Record.Recorder">
+            <summary>物件錄製器</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.MaxCount">
+            <summary>儲存最大錄製的容量</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.BroadcastInterval">
+            <summary>儲存播放器在進行播放時的頻率</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.BroadcastIntervalBack">
+            <summary>儲存播放器在進行播放時的頻率(備份)</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.Receiver">
+            <summary>儲存接收錄製訊息的Class</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.RecordData">
+            <summary>儲存播放器所錄製到的訊息</summary>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.BroadcastThread">
+            <summary>播放器的Thread</summary>
+        </member>
+        <member name="T:Core.WindowsUI.Record.Recorder.BroadcastDelegate">
+            <summary>播放資料的代理程式</summary>
+            <param name="paramRecordData">傳入要播放給接收者的資料</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Record.Recorder.Recorder_RecordMaxCount">
+            <summary>取得或是設定最大錄製的比數,預設為500筆資料量,如果設定為0表示無限制</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Record.Recorder.Recorder_BroadcastInterval">
+            <summary>取得或是設定播放器在播放時的頻率</summary>
+        </member>
+        <member name="P:Core.WindowsUI.Record.Recorder.Recorder_Receiver">
+            <summary>取得或是設定接收錄製訊息的Class</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.InitializeControl">
+            <summary>初始化控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.AddRecordColumns">
+            <summary>加入存放錄製器資料的欄位</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.Recorder_RecordData(System.Object)">
+            <summary>錄製訊息</summary>
+            <param name="paramRecordData">傳入所要錄製的資料</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.radioButton_Record_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>當點選到錄製訊息的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.button_Clear_Click(System.Object,System.EventArgs)">
+            <summary>當點選到清除訊息的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.button_Stop_Click(System.Object,System.EventArgs)">
+            <summary>當點選到停止的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.radioButton_Play_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>當點選到播放訊息的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.BroadcastMessageToIn">
+            <summary>播放訊息的代理Method</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.BroadcastMessageToOut(System.Object)">
+            <summary>播放訊息到Receiver</summary>
+            <param name="paramRecordData">傳入要播放給接收者的資料</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.BroadcastToReceiver(System.Object)">
+            <summary>播放訊息到Receiver</summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.radioButton_Quick_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>當點選到快轉訊息的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.radioButton_Suspend_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>當點選到暫停的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.radioButton_Reverse_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>當點選到倒轉訊息的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.button_Output_Click(System.Object,System.EventArgs)">
+            <summary>當點選到匯出的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.button_Inout_Click(System.Object,System.EventArgs)">
+            <summary>當點選到匯入的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.Record.Recorder.components">
+            <summary> 
+            設計工具所需的變數。
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.Dispose(System.Boolean)">
+            <summary> 
+            清除任何使用中的資源。
+            </summary>
+            <param name="disposing">如果應該公開 Managed 資源則為 true，否則為 false。</param>
+        </member>
+        <member name="M:Core.WindowsUI.Record.Recorder.InitializeComponent">
+             <summary> 
+             此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改這個方法的內容。
+            
+             </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsDataGridView">
+            <summary>用來處理DataGridView相關事項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.#ctor(System.ComponentModel.IContainer)">
+            <summary>建構子</summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.RaiseDataErrorEvent(System.String)">
+            <summary>用來觸發DataGridView的資料錯誤事件</summary>
+            <param name="paramErrorMessage">傳入錯誤訊息</param>
+            <remarks>
+            當外部資料分析或驗證操作錯誤時引發異常，或當企圖進行將不正確的資料輸入到資料來源失敗時
+            </remarks>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.OnDataError(System.Boolean,System.Windows.Forms.DataGridViewDataErrorEventArgs)">
+            <summary>用來觸發DataGridView產生Error</summary>
+            <param name="displayErrorDialogIfNoHandler"></param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsDataGridView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsDataGridView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.HFilterAlignment">
+            <summary>過濾器顯示出來時，控制項橫向的擺放方向</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.HFilterAlignment.Top">
+            <summary>靠上</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.HFilterAlignment.Bottom">
+            <summary>靠下</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.HFilterAlignment.Middle">
+            <summary>置中</summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.VFilterAlignment">
+            <summary>過濾器顯示出來時，控制項垂直的擺放方向</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.VFilterAlignment.Left">
+            <summary>靠左</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.VFilterAlignment.Right">
+            <summary>靠右</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.VFilterAlignment.Center">
+            <summary>置中</summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter">
+            <summary>這個基底類別是用來處理過濾器的資訊</summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterExpressionBuilding">
+            <summary>當過濾器過濾後的資料與控制項重新Bilding時所觸發的事件</summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterInitializing">
+            <summary>當過濾器列即將被初始化時所觸發的事件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterApplySoon">
+            <summary>設定或是取得過濾器觸發後是否成功改變</summary>
+            <value>將回傳成功與否; <c>true</c> 改變成功; <c>false</c>改變失敗</value>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterExpression">
+            <summary>取得或是設定過濾器表示式</summary>
+            <remarks>
+            這是用來表達過濾器過濾的內容，它<see cref="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterManager"/>主要是用建置整個過濾表示式。
+            它會去觸發 Base Class 的 <see cref="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)"/> 事件.
+            本類別的過濾原則不能違反 DataView 的<see cref="P:System.Data.DataView.RowFilter"/>屬性
+            </remarks>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterCaption">
+            <summary>設定或是取得過濾器的標題</summary>
+            <remarks>
+            將回觸發 Base Class 的<see cref="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)"/>事件.
+            </remarks>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.Active">
+            <summary>設定或是取得過濾器是否啟動</summary>
+            <value>將回傳過濾器是否啟動</value>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.HFilterAlignment">
+            <summary>設定或是取得版面要顯示橫向的模式</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.VFilterAlignment">
+            <summary>設定或是取得版面要顯示縱向的模式</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.BoundDataView">
+            <summary>取得過濾後 <b>DataView</b> Bound <b>DataGridView</b>的資料來源</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterHost">
+            <summary>取得控制器的基底物件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterManager">
+            <summary>取得過濾管理企：<i>filter manager</i>.</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.DataGridViewColumn">
+            <summary>取得<i>column filter</i>正在處理的資料表欄位</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.ColumnDataType">
+            <summary>取得目前處理中的<b>DataGridView</b>欄位的資料型態</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.OriginalDataGridViewColumnHeaderText">
+            <summary>取得原本<b>DataGridView</b>在改變欄位名稱之前的標題文字.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.Init(Core.WindowsUI.GridView.DandsGridView.FilterManager,Core.WindowsUI.GridView.DandsGridView.BaseFilterHost,System.Windows.Forms.DataGridViewColumn,System.Data.DataView)">
+            <summary>初始化欄位過濾器</summary>
+            <param name="paramFilterManager">傳入 <i>FilterManager</i> 類別.</param>
+            <param name="paramFilterHost">傳入控制過濾器的控制項</param>
+            <param name="paramGridColumn">傳入要受控制的面板</param>
+            <param name="paramBoundDataView">傳入Bound DataGridView的資料來源</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.OnFilterInitializing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>觸發過濾器<see cref="E:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterInitializing"/>初始化的事件</summary>
+            <param name="sender">傳入該物件代碼</param>
+            <param name="e">傳入該事件代碼<see cref="T:System.ComponentModel.CancelEventArgs"/> 預設為事件資料</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterExpressionBuild">
+            <summary>建立或重新建立過濾器的表示式</summary>
+            <remarks>
+            該功能主要是用來表示當 <see cref="P:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterManager"/> 控制項關閉時
+            重新建立過濾器的表示式
+            </remarks>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>觸發過濾器表示式建置<see cref="E:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FilterExpressionBuilding"/>的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">實體化過濾器條件的事件代碼<see cref="T:System.ComponentModel.CancelEventArgs"/></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.StringEscape(System.String)">
+            <summary>解析過濾表示式的符號</summary>
+            <param name="paramExpression">傳入過濾表示式的資料</param>
+            <returns>將回傳解析後的資料</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.FormatValue(System.Object,System.Type)">
+            <summary>格式化通過後的資料</summary>
+            <param name="paramValue">傳入要解析的資料</param>
+            <param name="paramTargetType">傳入要解析資料的類型</param>
+            <returns>將回傳格式化通過後的資料</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.GetNullCondition(System.String)">
+            <summary>取得空資料的過濾表示式</summary>
+            <param name="paramDataColumnName">傳入要表空字串的欄位名稱</param>
+            <returns>將回傳空資料的條件表示式</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter.GetNotNullCondition(System.String)">
+            <summary>取得非空資料的過濾表示式</summary>
+            <param name="paramDataColumnName">傳入要表非空字串的欄位名稱</param>
+            <returns>將回傳非空資料的條件表示式</returns>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost">
+             <summary>該控制項是<i>filter host</i>的基底控制項類別</summary>
+             <remarks>
+             這個類別的目的是要讓 <i>filter host</i> 的控制項出現在滑鼠點右鍵時滑鼠附近的位置
+             當點選右鍵時啟用<i>column filter</i>的控制項
+             <b>BaseFilterHost</b> 主要用來配合<see cref="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.FilterManager"/>.  
+             <para>
+             NOTE: 
+             該類別為抽象類別，必須要透過繼承才可使用
+             </para>
+             </remarks>
+             <example>
+             <code>
+            public partial class FilterHost : BaseFilterHost {
+            
+                public FilterHost() {
+                    InitializeComponent();
+                    this.CurrentColumnFilterChanged += new EventHandler(FilterHost_CurrentColumnFilterChanged);
+                }
+             
+                void FilterHost_CurrentColumnFilterChanged(object sender, EventArgs e) {
+                    lblColumnName.Text = CurrentColumnFilter.OriginalDataGridViewColumnHeaderText;
+                }
+             
+                public override Control FilterClientArea {
+                    get {
+                        return this.panelFilterArea;
+                    }
+                }
+             
+                private void tsOK_Click(object sender, EventArgs e) {
+                    FilterManager.ActivateFilter(true);
+                    this.Popup.Close();
+                }
+             
+                private void tsRemove_Click(object sender, EventArgs e) {
+                    FilterManager.ActivateFilter(false);
+                    this.Popup.Close();
+                }
+             
+                private void tsRemoveAll_Click(object sender, EventArgs e) {
+                    FilterManager.ActivateAllFilters(false);
+                    this.Popup.Close();
+                }
+             
+            }
+             </code>
+             </example>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.CurrentColumnFilterChanged">
+            <summary>當目前的篩選條件被改變時所觸發的事件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.FilterClientArea">
+            <summary>取得要被加入<i>column filters</i>控制項的面積</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.Popup">
+            <summary>取得要顯示出來的<b>ToolStripDropDown</b> 面板</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.FilterManager">
+            <summary>取得或是設定<i>filter manger</i> </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.CurrentColumnFilter">
+            <summary>取得或是設定目前正在過濾的<i>column filter</i>控制項</summary> 
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.SizeDifference">
+            <summary>取得原始大小的差異</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.RegisterComboBox(System.Windows.Forms.ComboBox)">
+            <summary>註冊ComboBox的事件</summary>
+            <param name="paramComboBox">傳入要註冊事件的ComboBox</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.onDropDown(System.Object,System.EventArgs)">
+            <summary>當 ComboBox 出現下拉選單時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.onDropDownClosed(System.Object,System.EventArgs)">
+            <summary>當 ComboBox 關閉下拉選單時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.DoAutoFit">
+            <summary>放大或是縮小<i>filter host</i>到可容納所有<i>column filter</i>的最適當的大小</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.AlignFilter">
+            <summary>對齊<i>column filter</i>到控制面板的面積中</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.BaseFilterHost.BitmapToRegion(System.Drawing.Bitmap,System.Drawing.Color)">
+            <summary>設定區域間的透明顏色</summary>
+            <param name="paramBitmap">傳入要設定透明色的Bitmap區域</param>
+            <param name="paramTransparencyColor">傳入要設定為透明色的顏色</param>
+            <returns>將會回傳設定完透明色的區域</returns>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventHandler">
+            <summary>表示將要處理過濾器方法的相關事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e"><see cref="T:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs"/>包含條件的事件代碼</param>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs">
+            <summary>提供給當事件觸發時被篩選的資料</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs.Column">
+            <summary>取得觸發事件的欄位物件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs.ColumnFilter">
+            <summary>取得或是設定欄位篩選器的 instance </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs.Handled">
+            <summary>取得或是設定<see cref="T:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs"/> 指定的資料是否要處理</summary>
+            <value><c>true</c>處理; <c>false</c>不處理</value>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.ColumnFilterEventArgs.#ctor(System.Windows.Forms.DataGridViewColumn,Core.WindowsUI.GridView.DandsGridView.BaseColumnFilter)">
+            <summary>建構子</summary>
+            <param name="paramColumn">傳入觸發事件的DataGrid欄位</param>
+            <param name="paramColumnFilter">傳入觸發事件欄位篩選的 instance </param>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter">
+            <summary>
+            Add column show/hide capability to a DataGridView. When user right-clicks 
+            the cell origin a popup, containing a list of checkbox and column names, is
+            shown. 
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.mDataGridView">
+            <summary>the DataGridView to which the DataGridViewColumnSelector is attached</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.mCheckedListBox">
+            <summary>a CheckedListBox containing the column header text and checkboxes</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.mPopup">
+            <summary>a ToolStripDropDown object used to show the popup</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.MaxHeight">
+            <summary>The max height of the popup</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.Width">
+            <summary>The width of the popup</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.#ctor(System.Windows.Forms.DataGridView)">
+            <summary>建構子</summary>
+            <param name="paramDataGridView">傳入要做欄位篩選的<b>DataGridView</b></param>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.ColumnSelectorFilter.DataGridView">
+            <summary>Gets or sets the DataGridView to which the DataGridViewColumnSelector is attached</summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell">
+            <summary>提供擁有下拉篩選清單的 DataGridViewColumnHeaderCell</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBox">
+            <summary>用來提供所有下拉清單資料的 ListBox</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.filters">
+            <summary>
+            A list of filters available for the owning column stored as 
+            formatted and unformatted string values. 
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.selectedFilterValue">
+            <summary>
+            The drop-down list filter value currently in effect for the owning column. 
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.currentColumnFilter">
+            <summary>
+            The complete filter string currently in effect for the owning column. 
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.filtered">
+            <summary>
+            Indicates whether the DataGridView is currently filtered by the owning column.  
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.#ctor(System.Windows.Forms.DataGridViewColumnHeaderCell)">
+            <summary>
+            Initializes a new instance of the DataGridViewColumnHeaderCell 
+            class and sets its property values to the property values of the 
+            specified DataGridViewColumnHeaderCell.
+            </summary>
+            <param name="oldHeaderCell">The DataGridViewColumnHeaderCell to copy property values from.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.#ctor">
+            <summary>
+            Initializes a new instance of the DataGridViewColumnHeaderCell 
+            class. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.Clone">
+            <summary>
+            Creates an exact copy of this cell.
+            </summary>
+            <returns>An object that represents the cloned DataGridViewAutoFilterColumnHeaderCell.</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.OnDataGridViewChanged">
+            <summary>
+            Called when the value of the DataGridView property changes
+            in order to perform initialization that requires access to the 
+            owning control and column. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.VerifyDataSource">
+            <summary>
+            Confirms that the data source, if it has been set, is a BindingSource.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.HandleDataGridViewEvents">
+            <summary>
+            Add handlers to various DataGridView events, primarily to invalidate 
+            the drop-down button bounds, hide the drop-down list, and reset 
+            cached filter values when changes in the DataGridView require it.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_Scroll(System.Object,System.Windows.Forms.ScrollEventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds when the user scrolls horizontally.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A ScrollEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_ColumnDisplayIndexChanged(System.Object,System.Windows.Forms.DataGridViewColumnEventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds when the column display index changes.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_ColumnWidthChanged(System.Object,System.Windows.Forms.DataGridViewColumnEventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds when a column width changes
+            in the DataGridView control. A width change in any column of the 
+            control has the potential to affect the drop-down button location, 
+            depending on the current horizontal scrolling position and whether
+            the changed column is to the left or right of the current column. 
+            It is easier to invalidate the button in all cases. 
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A DataGridViewColumnEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_ColumnHeadersHeightChanged(System.Object,System.EventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds when the height of the column headers changes.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">An EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_SizeChanged(System.Object,System.EventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds when the size of the DataGridView changes.
+            This prevents a painting issue that occurs when the right edge of the control moves 
+            to the right and the control contents have previously been scrolled to the right.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">An EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_DataBindingComplete(System.Object,System.Windows.Forms.DataGridViewBindingCompleteEventArgs)">
+            <summary>
+            Invalidates the drop-down button bounds, hides the drop-down 
+            filter list, if it is showing, and resets the cached filter values
+            if the filter has been removed. 
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A DataGridViewBindingCompleteEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_DataSourceChanged(System.Object,System.EventArgs)">
+            <summary>
+            Verifies that the data source meets requirements, invalidates the 
+            drop-down button bounds, hides the drop-down filter list if it is 
+            showing, and resets the cached filter values if the filter has been removed. 
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">An EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.ResetDropDown">
+            <summary>
+            Invalidates the drop-down button bounds and hides the filter
+            list if it is showing.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.ResetFilter">
+            <summary>
+            Resets the cached filter values if the filter has been removed.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DataGridView_ColumnSortModeChanged(System.Object,System.Windows.Forms.DataGridViewColumnEventArgs)">
+            <summary>
+            Throws an exception when the column sort mode is changed to Automatic.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A DataGridViewColumnEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
+            <summary>
+            Paints the column header cell, including the drop-down button. 
+            </summary>
+            <param name="graphics">The Graphics used to paint the DataGridViewCell.</param>
+            <param name="clipBounds">A Rectangle that represents the area of the DataGridView that needs to be repainted.</param>
+            <param name="cellBounds">A Rectangle that contains the bounds of the DataGridViewCell that is being painted.</param>
+            <param name="rowIndex">The row index of the cell that is being painted.</param>
+            <param name="cellState">A bitwise combination of DataGridViewElementStates values that specifies the state of the cell.</param>
+            <param name="value">The data of the DataGridViewCell that is being painted.</param>
+            <param name="formattedValue">The formatted data of the DataGridViewCell that is being painted.</param>
+            <param name="errorText">An error message that is associated with the cell.</param>
+            <param name="cellStyle">A DataGridViewCellStyle that contains formatting and style information about the cell.</param>
+            <param name="advancedBorderStyle">A DataGridViewAdvancedBorderStyle that contains border styles for the cell that is being painted.</param>
+            <param name="paintParts">A bitwise combination of the DataGridViewPaintParts values that specifies which parts of the cell need to be painted.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.OnMouseDown(System.Windows.Forms.DataGridViewCellMouseEventArgs)">
+            <summary>
+            Handles mouse clicks to the header cell, displaying the 
+            drop-down list or sorting the owning column as appropriate. 
+            </summary>
+            <param name="e">A DataGridViewCellMouseEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.SortByColumn">
+            <summary>
+            Sorts the DataGridView by the current column if AutomaticSortingEnabled is true.
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.dropDownListBoxShowing">
+            <summary>
+            Indicates whether dropDownListBox is currently displayed 
+            for this header cell. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.ShowDropDownList">
+            <summary>
+            Displays the drop-down filter list. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.HideDropDownList">
+            <summary>
+            Hides the drop-down filter list. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.SetDropDownListBoxBounds">
+            <summary>
+            Sets the dropDownListBox size and position based on the formatted 
+            values in the filters dictionary and the position of the drop-down 
+            button. Called only by ShowDropDownListBox.  
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBoxMaxHeightInternal">
+            <summary>
+            Gets the actual maximum height of the drop-down list, in pixels.
+            The maximum height is calculated from the DropDownListBoxMaxLines 
+            property value, but is limited to the available height of the 
+            DataGridView control. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.HandleDropDownListBoxEvents">
+            <summary>
+            Adds handlers to ListBox events for handling mouse
+            and keyboard input.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.UnhandleDropDownListBoxEvents">
+            <summary>
+            Removes the ListBox event handlers. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBox_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Adjusts the filter in response to a user selection from the drop-down list. 
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A MouseEventArgs that contains the event data.</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.lostFocusOnDropDownButtonClick">
+            <summary>
+            Indicates whether the drop-down list lost focus because the
+            user clicked the drop-down button. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBox_LostFocus(System.Object,System.EventArgs)">
+            <summary>
+            Hides the drop-down list when it loses focus. 
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">An EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handles the ENTER and ESC keys.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">A KeyEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.PopulateFilters">
+            <summary>
+            Populates the filters dictionary with formatted and unformatted string
+            representations of each unique value in the column, accounting for all 
+            filters except the current column's. Also adds special filter options. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.FilterWithoutCurrentColumn(System.String)">
+            <summary>
+            Returns a copy of the specified filter string after removing the part that filters the current column, if present. 
+            </summary>
+            <param name="filter">The filter string to parse.</param>
+            <returns>A copy of the specified filter string without the current column's filter.</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.UpdateFilter">
+            <summary>
+            Updates the BindingSource.Filter value based on a user selection
+            from the drop-down filter list. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.RemoveFilter(System.Windows.Forms.DataGridView)">
+            <summary>
+            Removes the filter from the BindingSource bound to the specified DataGridView. 
+            </summary>
+            <param name="dataGridView">The DataGridView bound to the BindingSource to unfilter.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.GetFilterStatus(System.Windows.Forms.DataGridView)">
+            <summary>
+            Gets a status string for the specified DataGridView indicating the 
+            number of visible rows in the bound, filtered BindingSource, or 
+            String.Empty if all rows are currently visible. 
+            </summary>
+            <param name="dataGridView">The DataGridView bound to the 
+            BindingSource to return the filter status for.</param>
+            <returns>A string in the format "x of y records found" where x is 
+            the number of rows currently displayed and y is the number of rows 
+            available, or String.Empty if all rows are currently displayed.</returns>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.dropDownButtonBoundsValue">
+            <summary>
+            The bounds of the drop-down button, or Rectangle.Empty if filtering 
+            is disabled or the button bounds need to be recalculated. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownButtonBounds">
+            <summary>
+            The bounds of the drop-down button, or Rectangle.Empty if filtering
+            is disabled. Recalculates the button bounds if filtering is enabled
+            and the bounds are empty.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.InvalidateDropDownButtonBounds">
+            <summary>
+            Sets dropDownButtonBoundsValue to Rectangle.Empty if it isn't already empty. 
+            This indicates that the button bounds should be recalculated. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.SetDropDownButtonBounds">
+            <summary>
+            Sets the position and size of dropDownButtonBoundsValue based on the current 
+            cell bounds and the preferred cell height for a single line of header text. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.AdjustPadding(System.Int32)">
+            <summary>
+            Adjusts the cell padding to widen the header by the drop-down button width.
+            </summary>
+            <param name="newDropDownButtonPaddingOffset">The new drop-down button width.</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.currentDropDownButtonPaddingOffset">
+            <summary>
+            The current width of the drop-down button. This field is used to adjust the cell padding.  
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.filteringEnabledValue">
+            <summary>
+            Indicates whether filtering is enabled for the owning column. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.FilteringEnabled">
+            <summary>
+            Gets or sets a value indicating whether filtering is enabled.
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.automaticSortingEnabledValue">
+            <summary>
+            Indicates whether automatic sorting is enabled. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.AutomaticSortingEnabled">
+            <summary>
+            Gets or sets a value indicating whether automatic sorting is enabled for the owning column. 
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.dropDownListBoxMaxLinesValue">
+            <summary>
+            The maximum number of lines in the drop-down list. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterColumnHeaderCell.DropDownListBoxMaxLines">
+            <summary>
+            Gets or sets the maximum number of lines to display in the drop-down filter list. 
+            The actual height of the drop-down list is constrained by the DataGridView height. 
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn">
+            <summary>
+            Represents a DataGridViewTextBoxColumn with a drop-down filter list accessible from the header cell.  
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.#ctor">
+            <summary>
+            Initializes a new instance of the DataGridViewAutoFilterTextBoxColumn class.
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.DefaultHeaderCellType">
+            <summary>
+            Returns the AutoFilter header cell type. This property hides the 
+            non-virtual DefaultHeaderCellType property inherited from the 
+            DataGridViewBand class. The inherited property is set in the 
+            DataGridViewAutoFilterTextBoxColumn constructor. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.SortMode">
+            <summary>
+            Gets or sets the sort mode for the column and prevents it from being 
+            set to Automatic, which would interfere with the proper functioning 
+            of the drop-down button. This property hides the non-virtual 
+            DataGridViewColumn.SortMode property from the designer. The inherited 
+            property is set in the DataGridViewAutoFilterTextBoxColumn constructor.
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.FilteringEnabled">
+            <summary>
+            Gets or sets a value indicating whether filtering is enabled for this column. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.AutomaticSortingEnabled">
+            <summary>
+            Gets or sets a value indicating whether automatic sorting is enabled for this column. 
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.DropDownListBoxMaxLines">
+            <summary>
+            Gets or sets the maximum height of the drop-down filter list for this column. 
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.RemoveFilter(System.Windows.Forms.DataGridView)">
+            <summary>
+            Removes the filter from the BindingSource bound to the specified DataGridView. 
+            </summary>
+            <param name="dataGridView">The DataGridView bound to the BindingSource to unfilter.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.DataGridViewAutoFilterTextBoxColumn.GetFilterStatus(System.Windows.Forms.DataGridView)">
+            <summary>
+            Gets a status string for the specified DataGridView indicating the 
+            number of visible rows in the bound, filtered BindingSource, or 
+            String.Empty if all rows are currently visible. 
+            </summary>
+            <param name="dataGridView">The DataGridView bound to the 
+            BindingSource to return the filter status for.</param>
+            <returns>A string in the format "x of y records found" where x is 
+            the number of rows currently displayed and y is the number of rows 
+            available, or String.Empty if all rows are currently displayed.</returns>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.FilterColumn.FilterListBox">
+            <summary>用來做為DataGridView過濾器的下拉選單</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.FilterListBox.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.FilterListBox.IsInputKey(System.Windows.Forms.Keys)">
+            <summary>設定由 FilterListBox 自行管理Key的事件而不使用系統</summary>
+            <param name="keyData">傳入輸入鍵盤的值</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterColumn.FilterListBox.ProcessKeyMessage(System.Windows.Forms.Message@)">
+            <summary>直接處理鍵盤的事件，避免被DataGridView截取</summary>
+            <param name="m">A Message, passed by reference, that represents the window message to process.</param>
+            <returns>true if the message was processed by the control;
+            otherwise, false.</returns>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.FilterManager">
+            <summary>這個主要的類別是用來賦予 <b>DataGridView</b> 有的篩選能力</summary>
+            <remarks>
+            這個類別主要是用來賦予 <b>DataGridView</b> 有的篩選能力
+            指定的<b>DataGridView</b> 必須要 bound <b>DataTable</b> 或 <b>DataView</b> 或 <b>BindingSource</b> 
+            當你將<b>DataGridView</b> 指配給 <b>FilterManager</b>時，會自動對會賦予滑鼠點擊右鍵到標題列的事件。
+            當你在<b>DataGridView</b> 標題列點擊滑鼠右鍵時，  <b>FilterManager</b> 會 popup 到附近的欄位，該控制項將作為控制每個列的主控面板。
+            </remarks>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterControl">
+            <summary>用來儲存要 popup 的控制面板</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterDataGridView">
+            <summary>用來儲存要過濾的</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.GridBoundDataView">
+            <summary>用來儲存 DataGridView bound 的 Source By DataView</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.GridBindingSource">
+            <summary>用來儲存 DataGridView bound 的 Source By BindingSource</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.CurrentColumnIndex">
+            <summary>用來儲存這在觸發過濾器的 Column Index </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterIsActive">
+            <summary>用來儲存是否使用過濾器</summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.FilterManager.ColumnFilterAdding">
+            <summary>當正在建立<i>column filter</i>實體時所觸發的事件</summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.FilterManager.ColumnFilterAdded">
+            <summary>當<i>column filter</i>的實體被建立完成時所觸發的事件</summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.DandsGridView.FilterManager.PopupShowing">
+            <summary>當控制面板顯示出來時所觸發的事件</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.#ctor(System.Windows.Forms.DataGridView)">
+            <summary>建構子</summary>
+            <param name="paramDataGridView">傳入要被賦予篩選功能的<b>DataGridView</b></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.#ctor(System.Windows.Forms.DataGridView,System.Boolean)">
+            <summary>建構子</summary>
+            <param name="paramDataGridView">傳入要被賦予篩選功能的<b>DataGridView</b></param>
+            <param name="paramAutoCreateFilters">傳入是否要自動建立篩選的功能，預設為True</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.SelColumnsNameToTag">
+            <summary>重新設定欄位名稱</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ResetColumnsName">
+            <summary>重新設定資料表欄位名稱</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.AutoCreateFilters">
+            <summary>取得或是設定是否必須建立<i>column filters</i></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterHost">
+            <summary>取得或是設定正在使用中的 <i>filter host</i> </summary>
+            <remarks>
+            預設將會回傳<see cref="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterHost"/> 的Instance 
+            </remarks>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.DataGridView">
+            <summary>設定或是取得要被賦予篩選功能的<b>DataGridView</b></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.AddControllableGridColumns">
+            <summary>加入可被控制的 DataGridView 欄位</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.FilterDataGridView_DataSourceChanged(System.Object,System.EventArgs)">
+            <summary>觸發於當DataGridView的資料改變時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.BaseFilter">
+            <summary>設定或是取得過濾器的表示式</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.FilterManager._ColumnFilterList">
+            <summary>用來儲存所有過濾的條件</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.Item(System.Int32)">
+            <summary>設定或是取得目前<i>column filter</i>正在控制的 ColumnIndex</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.Item(System.String)">
+            <summary>設定或是取得<i>column filter</i>正在控制的 ColumnName</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.FilterManager.FunnelPicture">
+            <summary>取得漏斗的圖片</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.FindDataView">
+            <summary>檢查<b>DataGridView</b>的資料來源是否可以被接受</summary>
+            <remarks>
+            可被接受的<b>DataGridView</b> Source 有下列：
+            1. BindingSource
+            2. DataSet
+            3. DataTable
+            4. DataView
+            </remarks>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.CreateColumnFilter(System.Windows.Forms.DataGridViewColumn)">
+            <summary>建立欄位的過濾器</summary>
+            <param name="paramColumn">傳入要建立的 DataGridView 欄位</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.DataGridView_ColumnRemoved(System.Object,System.Windows.Forms.DataGridViewColumnEventArgs)">
+            <summary>當DataGridView移除欄位時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.DataGridView_ColumnAdded(System.Object,System.Windows.Forms.DataGridViewColumnEventArgs)">
+            <summary>當DataGridView加入欄位時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.DataGridView_CellPainting(System.Object,System.Windows.Forms.DataGridViewCellPaintingEventArgs)">
+            <summary>DataGridView正在Painting的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.OnFilteredGridPaint(System.Object,System.Windows.Forms.DataGridViewCellPaintingEventArgs)">
+            <summary>當某個欄位正在進行篩選時，畫出一個漏斗</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.OnHighlightedColumnPaint(System.Object,System.Windows.Forms.DataGridViewCellPaintingEventArgs)">
+            <summary>當正在定義了某一個欄位時將該欄位的四周畫出一個框框</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.OnFilteredColumnPaint(System.Object,System.Windows.Forms.DataGridViewCellPaintingEventArgs)">
+            <summary></summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.Popup_Closed(System.Object,System.Windows.Forms.ToolStripDropDownClosedEventArgs)">
+            <summary>當篩選控制面板被關閉時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.DataGridView_CellMouseClick(System.Object,System.Windows.Forms.DataGridViewCellMouseEventArgs)">
+            <summary>當點到DataGridView右建時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ShowPopup(System.Int32)">
+            <summary>顯示篩選控制面板.</summary>
+            <param name="paramColumnIndex">傳入被觸發的 ColumnIndex</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ActivateFilter(System.Boolean,System.Int32)">
+            <summary>啟用或是停用過濾器</summary>
+            <param name="paramActive">傳入是否要起用過濾器</param>
+            <param name="paramColumnIndex">傳入要起用或是停用的 ColumnIndex</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ActivateFilter(System.Boolean,System.String)">
+            <summary>啟用或是停用過濾器</summary>
+            <param name="paramActive">傳入是否要起用過濾器</param>
+            <param name="paramColumnName">傳入要起用或是停用的欄位名稱</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ActivateFilter(System.Boolean)">
+            <summary>啟用或是停用過濾器</summary>
+            <param name="paramActive">傳入是否要起用過濾器</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ActivateAllFilters(System.Boolean)">
+            <summary>啟用或是停用所有的過濾器</summary>
+            <param name="paramActive">傳入是否要起用過濾器</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.RebuildFilter">
+            <summary>重新建立過濾表示式</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.GetAllFilterExpression">
+            <summary>取得所有的過濾表示式</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ResetFilterExpression(System.String@)">
+            <summary>設定過濾表示式</summary>
+            <param name="paramFilterValue">傳入要設定的過濾表示式</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.FilterManager.ApplyFilter(System.String)">
+            <summary>啟用篩選器</summary>
+            <param name="paramFilter">傳入過濾表示式</param>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter">
+            <summary> CheckBox 欄位的<i>column filter</i></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.ComboBoxOperator">
+            <summary>取得使用中的 ComboBox 控制項</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.CheckBoxValue">
+            <summary>取得畫面中的CheckBox 控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.OnFilterInitializing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>執行過濾器初始化並觸發FilterInitializing的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>建立過濾表示式並觸發 FilterExpressionBuilding 的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.onFilterChanged(System.Object,System.EventArgs)">
+            <summary>觸發過濾表示式變更的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.CheckBoxColumnFilter.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter">
+            <summary> ComboBox 欄位的<i>column filter</i></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.ComboBoxOperator">
+            <summary>取得畫面中 ComboBox 的控制項</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.ComboBoxValue">
+            <summary>取得畫面中 ComboBox Value 的控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.OnFilterInitializing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>執行過濾器初始化並觸發FilterInitializing的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.RefreshValues">
+            <summary>Refresh Values</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>建立過濾表示式並觸發 FilterExpressionBuilding 的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.onFilterChanged(System.Object,System.EventArgs)">
+            <summary>觸發過濾表示式變更的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.ComboBoxColumnFilter.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter">
+            <summary> 日期欄位的<i>column filter</i></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.ComboBoxOperator">
+            <summary>取得畫面中 ComboBox 的控制項</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.DateTimePickerValue">
+            <summary>取得畫面中 DateTimePicker 的控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.OnFilterInitializing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>執行過濾器初始化並觸發FilterInitializing的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>建立過濾表示式並觸發 FilterExpressionBuilding 的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.onFilterChanged(System.Object,System.EventArgs)">
+            <summary>觸發過濾表示式變更的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.DateColumnFilter.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost">
+            <summary>過濾器面板</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.ToolStripButtonOK_Click(System.Object,System.EventArgs)">
+            <summary>當執行「確認」時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.ToolStripButtonRemove_Click(System.Object,System.EventArgs)">
+            <summary>當執行「清除篩選條件」時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.ToolStripButtonRemoveAll_Click(System.Object,System.EventArgs)">
+            <summary>當執行「清除所有篩選條件」時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.DgvFilterHost_CurrentColumnFilterChanged(System.Object,System.EventArgs)">
+            <summary>當篩選條件改變時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.FilterClientArea">
+            <summary>將回傳所有被過濾器加入的條件</summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.FilterHost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter">
+            <summary> TextBox 欄位的<i>column filter</i></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.ComboBoxOperator">
+            <summary>取得畫面中 ComboBox 的控制項</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.TextBoxValue">
+            <summary>取得畫面中 TextBox 的控制項</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.OnFilterInitializing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>執行過濾器初始化並觸發FilterInitializing的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.OnFilterExpressionBuilding(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>建立過濾表示式並觸發 FilterExpressionBuilding 的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.onFilterChanged(System.Object,System.EventArgs)">
+            <summary>觸發過濾表示式變更的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DandsGridView.Implementations.TextBoxColumnFilter.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.DownloadTemplates">
+            <summary>用來處理下載範本的元件</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.#ctor(System.ComponentModel.IContainer)">
+            <summary>建構子</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DownloadTemplates.TemplatesFilePath">
+            <summary>設定或是取得樣版存放路徑</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.DownloadTemplates.SaveFileName">
+            <summary>設定或是取得要存檔的預設名稱</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.Download">
+            <summary>當點選下載按鈕時所觸發的事件</summary>
+            <returns>將回傳下載是否成功</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.VerifyError">
+            <summary>驗證是否有錯誤</summary>
+            <returns>將回傳驗證是否通過，True [通過] / False [失敗] </returns>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.DownloadTemplates.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.DownloadTemplates.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.ExTextBox">
+            <summary>強化TextBox的類別</summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.ExTextBox.ReadOnlyColor">
+            <summary>設定或是取得當 TextBox ReadOnly 時的顏色</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.ExTextBox.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.ExTextBox.ExTextBox_BackColorChanged(System.Object,System.EventArgs)">
+            <summary>當TextBox 背景顏色改變時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.ExTextBox.ExTextBox_ReadOnlyChanged(System.Object,System.EventArgs)">
+            <summary>當TextBox ReadOnly時所觸發的事件</summary>
+            <param name="sender">物件代碼</param>
+            <param name="e">事件代碼</param>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary">
+            <summary>
+            Todo. Add RightToLeft Support for ReadOnlyTextbox
+            </summary>    
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.displaySumRowHeader">
+            <summary>
+            If true a row header at the left side 
+            of the summaryboxes is displayed.
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.sumRowHeaderText">
+            <summary>
+            Text displayed in the row header
+            of the summary row.
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.sumRowHeaderTextBold">
+            <summary>
+            Text displayed in the row header
+            of the summary row.
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.summaryColumns">
+            <summary>
+            Add columns to sum up in text form
+            </summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.summaryRowVisible">
+            <summary>
+            Display the summary Row
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.ScrollBars">
+            <summary>
+            advoid user from setting the scrollbars manually
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.RefreshSummary">
+            <summary>
+            Refresh the summary
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.calculateColumnsWidth">
+            <summary>
+            Calculate the width of all visible columns
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.hScrollBar_Scroll(System.Object,System.Windows.Forms.ScrollEventArgs)">
+            <summary>
+            Moves viewable area of DataGridView according to the position of the scrollbar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.OnCreateSummary(System.Object,System.EventArgs)">
+            <summary>
+            Calls the CreateSummary event
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.adjustSumControlToGrid">
+            <summary>
+            Position the summaryControl under the
+            DataGridView
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.adjustScrollbarToSummaryControl">
+            <summary>
+            Position the hScrollbar under the summaryControl
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.resizeHScrollBar">
+            <summary>
+            Resizes the horizontal scrollbar acording
+            to the with of the client size and maximum size of the scrollbar
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.hScrollBar_VisibleChanged(System.Object,System.EventArgs)">
+            <summary>
+            Recalculate the width of the summary control according to 
+            the state of the scrollbar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.summaryControl_VisibilityChanged(System.Object,System.EventArgs)">
+            <summary>
+            Recalculate the height of the DataGridView
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.changeParent">
+            <summary>
+            When the DataGridView is visible for the first time a panel is created.
+            The DataGridView is then removed from the parent control and added as 
+            child to the newly created panel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox">
+            <summary></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.#ctor(System.ComponentModel.IContainer)">
+            <summary></summary>
+            <param name="container"></param>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.IsSummary">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.IsLastColumn">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.FormatString">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.TextAlign">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.Trimming">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.BorderColor">
+            <summary></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.ReadOnlyTextBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.InitialHeight">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.LastVisibleState">
+            <summary></summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.SummaryRowBackColor">
+            <summary></summary>
+        </member>
+        <member name="E:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.VisibilityChanged">
+            <summary>
+            Event is raised when visibility changes and the
+            lastVisibleState is not the new visible state
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.#ctor(Core.WindowsUI.GridView.SummaryDataGridView.DataGridViewSummary)">
+            <summary></summary>
+            <param name="dgv"></param>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.IsInteger(System.Object)">
+            <summary>
+            Checks if passed object is of type of integer
+            </summary>
+            <param name="o">object</param>
+            <returns>true/ false</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.IsDecimal(System.Object)">
+            <summary>
+            Checks if passed object is of type of decimal/ double
+            </summary>
+            <param name="o">object</param>
+            <returns>true/ false</returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.RefreshSummary">
+            <summary>
+            Enable manual refresh of the SummaryDataGridView
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.calcSummaries">
+            <summary>
+            Calculate the Sums of the summary columns
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.reCreateSumBoxes">
+            <summary>
+            Create summary boxes for each Column of the DataGridView        
+            </summary>
+        </member>
+        <member name="P:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.SortedColumns">
+            <summary>
+            Order the columns in the way they are displayed
+            </summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.SummaryControlContainer.resizeSumBoxes">
+            <summary>
+            Resize the summary Boxes depending on the 
+            width of the Columns of the DataGridView
+            </summary>
+        </member>
+        <member name="T:Core.WindowsUI.GridView.SummaryDataGridView.TextHelper">
+            <summary></summary>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.TextHelper.TranslateAligment(System.Windows.Forms.HorizontalAlignment)">
+            <summary></summary>
+            <param name="aligment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.TextHelper.TranslateGridColumnAligment(System.Windows.Forms.DataGridViewContentAlignment)">
+            <summary></summary>
+            <param name="aligment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.TextHelper.TranslateAligmentToFlag(System.Windows.Forms.HorizontalAlignment)">
+            <summary></summary>
+            <param name="aligment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Core.WindowsUI.GridView.SummaryDataGridView.TextHelper.TranslateTrimmingToFlag(System.Drawing.StringTrimming)">
+            <summary></summary>
+            <param name="trimming"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

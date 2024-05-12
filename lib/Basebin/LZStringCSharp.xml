@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LZStringCSharp</name>
+    </assembly>
+    <members>
+        <member name="T:LZStringCSharp.LZString">
+            <summary>
+            Converted from lz-string 1.4.4
+            https://github.com/pieroxy/lz-string/blob/c58a22021000ac2d99377cc0bf9ac193a12563c5/libs/lz-string.js
+            </summary>
+        </member>
+    </members>
+</doc>

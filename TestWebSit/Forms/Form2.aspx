@@ -1,0 +1,128 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form2.aspx.cs" Inherits="TestWebSit.WebForm2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HAHA</title>
+    <!--PageSytle-->
+    <link href="../Content/PageStyle.css" rel="stylesheet" />
+    <!--JQUERY-->
+    <script src="../Scripts/jquery.min.js"></script>
+    <!-- JQUERYUI -->
+    <script src="../Scripts/jqueryUI/jqueryUI.min.js"></script>
+    <script src="../Scripts/jqueryUI/jquery.ui.datepicker-zh-TW.js"></script>
+    <link href="../Scripts/jqueryUI/HotSneaks/jquery.ui.all.css" rel="stylesheet" />
+    <!-- 第三方套件 -->
+    <script src="../Scripts/jquery-jtemplates.js"></script>
+    <script src="../Scripts/json2.js"></script>
+    <script src="../Scripts/scrollbarTable-0.1.min.js"></script>
+    <!-- JQUERY PLING -->
+    <script src="../Scripts/jServicePlugin.js"></script>
+    <script src="../Scripts/jPlugin.js"></script>
+    
+    <script type="text/javascript">
+        // <summary> 用來儲存表單編號資訊< /summary>
+        var ServerURL = "./Form2.aspx/";
+
+        // <summary> 當表單啟動時所觸發的事件< /summary>
+        $(function(){
+            // 配置 Data Grid View 的樣板
+            $("#DivDataList").setTemplateURL('./JTemplates/From2_List.htm');
+            // 建立按鈕樣式
+            $(':button').button(); 
+            // 設定日期選單
+            $('#birthday').SetDatePicker(2);
+            // 註冊當使用者點選到查詢時所觸發的事件
+            $('#ButtonQuery').click($.ButtonQuery_Click);
+            // 註冊當使用者點選到新增時所觸發的事件
+            $('#ButtonInsert').click($.ButtonInsert_Click);
+            // 註冊當使用者點選到修改時所觸發的事件
+            $('#ButtonUpdate').click($.ButtonUpdate_Click);
+            // 註冊當使用者點選到刪除時所觸發的事件
+            $('#ButtonDelete').click($.ButtonDelete_Click);
+            // 註冊當使用者點選到清除時所觸發的事件
+            $('#ButtonClear').click($.ButtonClear_Click);
+            
+            // <summary>當使用者點選到資料表時所觸發的事件</summary>
+            $("#DivDataList").on('click', 'table tbody tr', $.DivDataList_Click);
+            // Refresh Form Data
+            $.RefreshFormData();
+
+
+        });
+
+        $.DivDataList_Click = function () {
+            $('#id').val($.trim($(this).find('td:eq(1)').text()));
+            $('#emp_name').val($.trim($(this).find('td:eq(2)').text()));
+            $('#birthday').val($.trim($(this).find('td:eq(3)').text()));
+        }
+        // <summary>Refresh Form Data</summary>
+        $.RefreshFormData = function () {
+            let ParamList = [];
+
+            // 調用後端服務器
+            $.SyncService(ServerURL + 'QueryAllData', ParamList, function(pReult) {
+                $("#DivDataList").SetDataList({ 
+                    JsonObject: JSON.parse(pReult.d), 
+                    Heigth: 0
+                });
+            })
+
+        }
+
+        // <summary>註冊當使用者點選到查詢時所觸發的事件</summary>
+        $.ButtonQuery_Click = function () {
+            // Refresh Form Data
+            $.RefreshFormData();
+        }
+        // <summary>註冊當使用者點選到新增時所觸發的事件</summary>
+        $.ButtonInsert_Click = function () {
+
+        }
+        // <summary>註冊當使用者點選到修改時所觸發的事件</summary>
+        $.ButtonUpdate_Click = function () {
+
+        }
+        // <summary>註冊當使用者點選到刪除時所觸發的事件</summary>
+        $.ButtonDelete_Click = function () {
+
+        }
+        // <summary>註冊當使用者點選到清除時所觸發的事件</summary>
+        $.ButtonClear_Click = function () {
+            $('[type="text"]').val('');
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <label class="CellStyle">資料維護作業</label>
+        <table class="TableMain">
+            <tr>
+                <td class="CellStyle">員工編號</td>
+                <td><input type="text" id="id" /></td>
+                <td class="CellStyle">員工姓名</td>
+                <td><input type="text" id="emp_name" /></td>
+                <td class="CellStyle">生日</td>
+                <td><input type="text" id="birthday" /></td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align:right" id="TdFunction">
+                    <input id="ButtonQuery" type="button" value="Query" />
+                    <input id="ButtonInsert" type="button" value="Insert" />
+                    <input id="ButtonUpdate" type="button" value="Update" />
+                    <input id="ButtonDelete" type="button" value="Delete" />
+                    <input id="ButtonClear" type="button" value="Clear" />
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <div id="DivDataList">
+
+        </div>
+
+        
+    </form>
+</body>
+</html>

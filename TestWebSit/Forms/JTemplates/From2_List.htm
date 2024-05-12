@@ -1,0 +1,22 @@
+﻿<table class="HeadScroll">
+    <thead>
+        <tr>
+            <th>刪除</th>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>生日</th>
+        </tr>
+    </thead>
+    <tbody>
+        {#foreach $T as E}
+        <tr>
+            <td>
+                <input type="checkbox" name="" id="" />
+            </td>
+            <td>{$T.E.id}</td>
+            <td>{$T.E.emp_name}</td>
+            <td>{$T.E.birthday}</td>
+        </tr>
+        {#/for}
+    </tbody>
+</table>

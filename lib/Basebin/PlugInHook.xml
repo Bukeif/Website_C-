@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlugInHook</name>
+    </assembly>
+    <members>
+        <member name="T:Core.PlugInHook.Adapter.AdapterConfigManager">
+            <summary></summary>
+        </member>
+        <member name="F:Core.PlugInHook.Adapter.AdapterConfigManager.ConfigPath">
+            <summary>用來儲存要處理的檔案路徑</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Adapter.AdapterConfigManager.AdapterSetting">
+            <summary>儲存 XML 定義資料</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterConfigManager.#ctor(System.String)">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterConfigManager.Finalize">
+            <summary>解構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterConfigManager.GetConfigContext">
+            <summary>讀取 Config 檔案資訊</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterConfigManager.GetDefinitionInfo(System.String)">
+            <summary>取得被定義好的資訊</summary>
+            <param name="paramIdentification">傳入要執行的定義</param>
+            <param name="paramAssemblyName">傳入要儲存 Assembly 名稱的變數</param>
+            <param name="paramClassName">傳入要儲存 Class 名稱的變數</param>
+            <param name="paramMethodName">傳入要儲存 Method 名稱的變數</param>
+            <returns>將會回傳 IoCControl 物件</returns>
+        </member>
+        <member name="T:Core.PlugInHook.Adapter.AdapterHandler">
+            <summary>轉接器</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Adapter.AdapterHandler.ConfigManager">
+            <summary>用來管理 Config 內容資訊</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Adapter.AdapterHandler.ADAPTER_DIR_NAME">
+            <summary>Adapter 控制資料夾的名稱</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.ExecAdapter(System.String)">
+            <summary>執行轉接</summary>
+            <param name="paramIdentification">傳入要執行 XML 的定義</param>
+            <returns>將回傳執行後的結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.ExecAdapter(System.String,System.Object[])">
+            <summary>執行轉接</summary>
+            <param name="pIdentification">傳入要執行 XML 的定義</param>
+            <param name="pParameterOject">傳入要帶入的參數物件</param>
+            <returns>將回傳執行後的結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.ExecAdapter(System.Type,System.String,System.Object[])">
+            <summary>執行轉接</summary>
+            <param name="pClassInstance">傳入類別的實例</param>
+            <param name="pIdentification">傳入要執行 XML 的定義</param>
+            <param name="pParameterOject">傳入要帶入的參數物件</param>
+            <returns>將回傳執行後的結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.GetHookInstance(System.String)">
+            <summary>執行轉接</summary>
+            <param name="pIdentification">傳入要執行 XML 的定義</param>
+            <returns>將回傳執行後的結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.GetClassInstance(System.Reflection.Assembly,System.String)">
+            <summary>取得 Class Instance</summary>
+            <param name="pAssemblyInstance">傳入要被搜尋的 Assembly Instance</param>
+            <param name="pClassName">傳入要取得的 Class Name</param>
+            <returns>將會回傳被搜尋到的 Class Instance</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.GetMethodInstance(System.Type,System.String)">
+            <summary>取得 Method 的實體</summary>
+            <param name="pClassInstance">傳入要執行類別的實體</param>
+            <param name="pMethodName">傳入要執行的方法名稱</param>
+            <returns>將回傳 Method 的實體</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Adapter.AdapterHandler.CallMethod(System.Type,System.Reflection.MethodInfo,System.Object[])">
+            <summary>呼叫 Method 執行</summary>
+            <param name="paramClassInstance">傳入要執行類別的實體</param>
+            <param name="paramMethodInstance">傳入要執行的方法的實體</param>
+            <param name="parameterOject">傳入要呼叫 Method 時所要帶入的參數</param>
+            <returns>將回傳呼叫完 Method 後的結果</returns>
+        </member>
+        <member name="T:Core.PlugInHook.EntryPoint">
+            <summary>進入點</summary>
+        </member>
+        <member name="F:Core.PlugInHook.EntryPoint.Start">
+            <summary>開始</summary>
+        </member>
+        <member name="F:Core.PlugInHook.EntryPoint.End">
+            <summary>結束</summary>
+        </member>
+        <member name="T:Core.PlugInHook.ExecuteResult">
+            <summary>執行結果</summary>
+        </member>
+        <member name="F:Core.PlugInHook.ExecuteResult.Normal">
+            <summary>正常</summary>
+        </member>
+        <member name="F:Core.PlugInHook.ExecuteResult.Cancel">
+            <summary>取消後續作業</summary>
+        </member>
+        <member name="F:Core.PlugInHook.ExecuteResult.Error">
+            <summary>發生錯誤</summary>
+        </member>
+        <member name="F:Core.PlugInHook.ExecuteResult.NotExecute">
+            <summary>沒有執行</summary>
+        </member>
+        <member name="T:Core.PlugInHook.IoCControl">
+            <summary>本類別為定義檔，主要定義 IOC 注入清單中控制元素的資訊</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.Identification">
+            <summary>設定或是取得 IoC 定義檔名稱</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.Assembly">
+            <summary>設定或是取得 Assembly 檔案名稱</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.AssemblyPath">
+            <summary>設定或是取得 Assembly 檔案路徑</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.Class">
+            <summary>設定或是取得對應 Identification 所要呼叫的類別名稱</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.Method">
+            <summary>設定或是取得 Method 名稱</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.LastAccessTime">
+            <summary>設定或是取得對應 Assembly 檔案最後存取時間</summary>
+        </member>
+        <member name="P:Core.PlugInHook.IoCControl.IsMaintain">
+            <summary>設定或是取得是否有進行維護了</summary>
+        </member>
+        <member name="T:Core.PlugInHook.Plugin.APluginManager">
+            <summary>Plug-in管理者</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.APluginManager.InterfaceType">
+            <summary>設定或是取得所使用的 Interface Type</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.#ctor(System.Type)">
+            <summary>建構子</summary>
+            <param name="paramInterface">用來儲存所使用的介面</param>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.APluginManager.IocDefinitionFile">
+            <summary>取得控制 Plug-in 清單的檔案名稱</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.APluginManager.AssemblyPath">
+            <summary>用來存放 Assembly 存放的位置</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.BuildPluginControllingList">
+            <summary>建置 Plugin 管理清冊</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.GetControllingList">
+            <summary>取得控制清單資訊</summary>
+            <returns>將回傳取得後的清單資訊</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.SetAssemblyInfo(System.Collections.Generic.List{Core.PlugInHook.IoCControl})">
+            <summary>設定 Assembly 資訊</summary>
+            <param name="paramIoCControls">傳入 IOC 控制清單項目</param>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.MaintainIocControlInfo(System.IO.FileInfo,System.Collections.Generic.List{Core.PlugInHook.IoCControl})">
+            <summary>維護 IOC 控制資訊</summary>
+            <param name="paramAssemblyFile">傳入 Assembly 檔案資訊</param>
+            <param name="paramIoCInfo">傳入 IoC 控制清單資訊</param>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.GetIoCInfoByIdentification(System.String)">
+            <summary>取得對應的 IOC 注入資訊</summary>
+            <param name="paramIdentification">傳入 Identification 資訊</param>
+            <returns>將回傳對應的 IOC 注入資訊</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.APluginManager.GetPluginHandler(System.String)">
+            <summary>取得插件處理者</summary>
+            <param name="paramIdentification">傳入 Identification</param>
+            <returns>將回傳插件處理者</returns>
+        </member>
+        <member name="T:Core.PlugInHook.Plugin.IPluginHandler">
+            <summary>插件處理者</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.IPluginHandler.Identification">
+            <summary>設定或是取得要處理插件的定義檔編號</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.IPluginHandler.IoCInfo">
+            <summary>設定或是取得要處理插件的 IOC 資訊</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.IPluginHandler.PluginManager">
+            <summary>設定或是取得 Plug-in 管理者</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.IPluginHandler.ExecutePlugin(Core.PlugInHook.EntryPoint,System.Object[])">
+            <summary>執行 Plug-in 作業</summary>
+            <param name="paramEntryPoint">傳入進入點</param>
+            <param name="paramCallParameter">執行 Plug-in </param>
+            <returns>將回傳執行的結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.IPluginHandler.ExecuteMultiPlugin(Core.PlugInHook.EntryPoint,System.Object[])">
+            <summary>執行插件作業</summary>
+            <param name="paramEntryPoint">傳入進入點</param>
+            <param name="paramCallParameter">傳入呼叫進入點所帶入的參數</param>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginHandler.PluginManager">
+            <summary>設定或是取得 Plug-in 管理者</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginHandler.Identification">
+            <summary>設定或是取得要處理插件的定義檔編號</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginHandler.IoCInfo">
+            <summary>設定或是取得要處理插件的 IOC 資訊</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginHandler.ExecutePlugin(Core.PlugInHook.EntryPoint,System.Object[])">
+            <summary>執行插件作業</summary>
+            <param name="pEntryPoint">傳入進入點</param>
+            <param name="pCallParameter">傳入呼叫進入點所帶入的參數</param>
+            <returns>將回傳執行結果</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginHandler.ExecuteMultiPlugin(Core.PlugInHook.EntryPoint,System.Object[])">
+            <summary>執行插件作業</summary>
+            <param name="paramEntryPoint">傳入進入點</param>
+            <param name="paramCallParameter">傳入呼叫進入點所帶入的參數</param>
+        </member>
+        <member name="T:Core.PlugInHook.Plugin.PluginManager_BR">
+            <summary>BR Plugin 管理者</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Plugin.PluginManager_BR.ObjectInstance">
+            <summary>用來儲存處理者物件本身的 Instance</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Plugin.PluginManager_BR.LockObject">
+            <summary>用來解決多執行序資源互搶的問題</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginManager_BR.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginManager_BR.GetInstance">
+            <summary>取得 PluginHandler 物件的實體</summary>
+            <returns>將建立並回傳 PluginHandler 物件的實體</returns>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginManager_BR.AssemblyPath">
+            <summary>取得 Assembly 當前目錄</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginManager_BR.IocDefinitionFile">
+            <summary>取得控制 Plug-in 清單的檔案名稱</summary>
+        </member>
+        <member name="T:Core.PlugInHook.Plugin.PluginManager_WIP">
+            <summary>WIP Plugin 管理者</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Plugin.PluginManager_WIP.ObjectInstance">
+            <summary>用來儲存處理者物件本身的 Instance</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Plugin.PluginManager_WIP.LockObject">
+            <summary>用來解決多執行序資源互搶的問題</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginManager_WIP.#ctor">
+            <summary>建構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Plugin.PluginManager_WIP.GetInstance">
+            <summary>取得 PluginHandler 物件的實體</summary>
+            <returns>將建立並回傳 PluginHandler 物件的實體</returns>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginManager_WIP.AssemblyPath">
+            <summary>取得 Assembly 當前目錄</summary>
+        </member>
+        <member name="P:Core.PlugInHook.Plugin.PluginManager_WIP.IocDefinitionFile">
+            <summary>取得控制 Plug-in 清單的檔案名稱</summary>
+        </member>
+        <member name="T:Core.PlugInHook.HandleResult">
+            <summary>執行插件的結果</summary>
+        </member>
+        <member name="P:Core.PlugInHook.HandleResult.ExecuteStatus">
+            <summary>設定或是取得執行後的狀況</summary>
+        </member>
+        <member name="P:Core.PlugInHook.HandleResult.ReturnValue">
+            <summary>設定或是取得執行完 Plug-in 之後的回傳結果</summary>
+        </member>
+        <member name="P:Core.PlugInHook.HandleResult.IsError">
+            <summary>設定或是取得是否執行 Plug-in 時發生異常</summary>
+        </member>
+        <member name="P:Core.PlugInHook.HandleResult.Exception">
+            <summary>設定或是取得執行 Plug-in 發生的異常資訊</summary>
+        </member>
+        <member name="T:Core.PlugInHook.Utility.FileUtility">
+            <summary>建立公用Mothod的PublicUtility</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Utility.FileUtility.UtilityInstance">
+            <summary>建立singleton pattern存取的FileUtility Instance</summary>
+        </member>
+        <member name="F:Core.PlugInHook.Utility.FileUtility.LockObject">
+            <summary>用來解決同一時間會有兩條執行緒搶New的程式</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.#ctor">
+            <summary>FileUtility建構子</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.GetInstance">
+            <summary>利用single pattern取得FileUtility的實體</summary>
+            <returns>將會回傳一個ProjectBase.GetInstance的實體</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.ReadFile(System.String)">
+            <summary>讀取檔案</summary>
+            <param name="paramFilePath">傳入要讀取得目錄 + 檔案名稱</param>
+            <returns>將回傳讀取得內容</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.ReadFile(System.String,System.Text.Encoding)">
+            <summary>讀取檔案</summary>
+            <param name="paramFilePath">傳入要讀取得目錄 + 檔案名稱</param>
+            <returns>將回傳讀取得內容</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.WriteFile(System.String,System.String)">
+            <summary>寫入檔案</summary>
+            <param name="paramFilePath">傳入要寫入的檔案目錄 + 名稱</param>
+            <param name="paramWriteContent">傳入要寫入的內容</param>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.WriteFile(System.String,System.String,System.Text.Encoding)">
+            <summary>寫入檔案</summary>
+            <param name="paramFilePath">傳入要寫入的檔案目錄 + 名稱</param>
+            <param name="paramWriteContent">傳入要寫入的內容</param>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.MakeDirectory(System.String)">
+            <summary>建立指定的資料夾</summary>
+            <param name="paramFolderPath">傳入指定的檔案路徑</param>
+            <returns>將回傳驗證是否成功</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.DropDirectoryAllFile(System.String)">
+            <summary>刪除資料夾中所有的檔案</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.FileUtility.DeleteFile(System.String)">
+            <summary>刪除檔案</summary>
+            <param name="paramFilePath">傳入要刪除的檔案</param>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.IFileUtility.ReadFile(System.String)">
+            <summary>讀取檔案</summary>
+            <param name="paramFilePath">傳入要讀取得目錄 + 檔案名稱</param>
+            <returns>將回傳讀取得內容</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.IFileUtility.ReadFile(System.String,System.Text.Encoding)">
+            <summary>讀取檔案</summary>
+            <param name="paramFilePath">傳入要讀取得目錄 + 檔案名稱</param>
+            <returns>將回傳讀取得內容</returns>
+        </member>
+        <!-- 已忽略成員 "M:Core.PlugInHook.Utility.IFileUtility.WriteFile(System.String,System.String)" 中格式錯誤的 XML 註解 -->
+        <!-- 已忽略成員 "M:Core.PlugInHook.Utility.IFileUtility.WriteFile(System.String,System.String,System.Text.Encoding)" 中格式錯誤的 XML 註解 -->
+        <member name="M:Core.PlugInHook.Utility.IFileUtility.MakeDirectory(System.String)">
+            <summary>建立指定的資料夾</summary>
+            <param name="paramFolderPath">傳入指定的檔案路徑</param>
+            <returns>將回傳驗證是否成功</returns>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.IFileUtility.DropDirectoryAllFile(System.String)">
+            <summary>刪除資料夾中所有的檔案</summary>
+        </member>
+        <member name="M:Core.PlugInHook.Utility.IFileUtility.DeleteFile(System.String)">
+            <summary>刪除檔案</summary>
+            <param name="paramFilePath">傳入要刪除的檔案</param>
+        </member>
+        <member name="T:iMESCIO.PIO.Plugin.ICommonPlugin">
+            <summary>本介面主要用來定義泛用型的外掛 Plug-in 介面</summary>
+        </member>
+        <member name="P:iMESCIO.PIO.Plugin.ICommonPlugin.PlugInPoint">
+            <summary>設定或是取得要外掛的插入點</summary>
+            <remarks>
+            用來定義外掛的功能名稱，ex：
+            範例一：
+                如果要外掛在 Class：clsLot 的 Method：TriggerOP 執行前
+                PlugInName = "clsLot.TriggerOP"
+            範例二：
+                如果要外掛在 Class：clsLot 的 Method：TriggerOP 執行結束之後
+                PlugInName = "clsLot.TriggerOP"
+            </remarks>
+        </member>
+        <member name="M:iMESCIO.PIO.Plugin.ICommonPlugin.BeforeExecut(System.Boolean@,System.Object[])">
+            <summary>執行在指定插入點之前</summary>
+            <param name="paramIsCancel">是否執行完本 Plug-in 程式之後，要求原程式不需要再繼續執行</param>
+            <param name="Parameters">傳入執行 Plug-in 所會使用到的參數</param>
+            <returns>將會回傳執行結果</returns>
+        </member>
+        <member name="M:iMESCIO.PIO.Plugin.ICommonPlugin.AfterExecut(System.Object[])">
+            <summary>執行在指定插入點執行完畢之後</summary>
+            <param name="Parameters">傳入執行 Plug-in 所會使用到的參數</param>
+            <returns>將會回傳執行結果</returns>
+        </member>
+    </members>
+</doc>
