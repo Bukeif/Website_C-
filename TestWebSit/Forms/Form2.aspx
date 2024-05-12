@@ -42,6 +42,8 @@
             $('#ButtonUpdate').click($.ButtonUpdate_Click);
             // 註冊當使用者點選到刪除時所觸發的事件
             $('#ButtonDelete').click($.ButtonDelete_Click);
+            // 註冊當使用者點選到整批刪除時所觸發的事件
+            $('#ButtonDelete_M').click($.ButtonDelete_M_Click);
             // 註冊當使用者點選到清除時所觸發的事件
             $('#ButtonClear').click($.ButtonClear_Click);
             
@@ -77,18 +79,100 @@
             // Refresh Form Data
             $.RefreshFormData();
         }
+
+        // <summary> 取得要維護的資料</summary>
+        $.GetJsonObject = function() {
+            var Json = {
+                id: $.trim($('#id').val()),
+                emp_name: $.trim($('#emp_name').val()),
+                birthday: $.trim($('#birthday').val()),
+            };          
+            return Json;
+        }
         // <summary>註冊當使用者點選到新增時所觸發的事件</summary>
         $.ButtonInsert_Click = function () {
+            var ParamList = ['pCondition', JSON.stringify($.GetJsonObject())];
+            // 視覺效果，讓人知道訊息有在更新
+            $('#LabelMessage').text('');
 
+            // 調用後端服務器
+            $.AsyncService(ServerURL + 'InsertData', ParamList, function (pReult) {
+                // 將結果直接打印在網頁上的 Label
+                $('#LabelMessage').text(pReult.d);
+                // Refresh Form Data
+                $.RefreshFormData();
+            })
         }
         // <summary>註冊當使用者點選到修改時所觸發的事件</summary>
         $.ButtonUpdate_Click = function () {
+            var ParamList = ['pCondition', JSON.stringify($.GetJsonObject())];
+            // 視覺效果，讓人知道訊息有在更新
+            $('#LabelMessage').text('');
 
+            // 調用後端服務器
+            $.AsyncService(ServerURL + 'UpdateData', ParamList, function (pReult) {
+                // 將結果直接打印在網頁上的 Label
+                $('#LabelMessage').text(pReult.d);
+                // Refresh Form Data
+                $.RefreshFormData();
+            })
         }
         // <summary>註冊當使用者點選到刪除時所觸發的事件</summary>
         $.ButtonDelete_Click = function () {
+            var ParamList = ['pCondition', JSON.stringify($.GetJsonObject())];
+            // 視覺效果，讓人知道訊息有在更新
+            $('#LabelMessage').text('');
+
+            // 調用後端服務器
+            $.AsyncService(ServerURL + 'DeleteData', ParamList, function (pReult) {
+                // 將結果直接打印在網頁上的 Label
+                $('#LabelMessage').text(pReult.d);
+                // Refresh Form Data
+                $.RefreshFormData();
+            })
 
         }
+
+        // <summary>註冊當使用者點選到整批刪除時所觸發的事件</summary>
+        $.ButtonDelete_M_Click = function () {
+            const DeleteList = $.GetNeedDeleteObject();
+            const ParamList = ['pCondition', JSON.stringify(DeleteList)];
+            // 多一重確認，資料有無選取
+            if (DeleteList.length <= 0) {
+                $.ShowMessage('作業錯誤，尚未選取要刪除的資料，請重新作業');
+                return false;
+            }
+            // 視覺效果，讓人知道訊息有在更新
+            $('#LabelMessage').text('');
+            // 詢問是否真的要刪除，再執行刪除動作
+            $.ShowConfirm('請確定是否真的要刪除資料，資料一旦刪除無法救回!!', function () {
+                // 調用後端服務器
+                $.AsyncService(ServerURL + 'DeleteListData', ParamList, function (pReult) {
+                    // 將結果直接打印在網頁上的 Label
+                    $('#LabelMessage').text(pReult.d);
+                    // Refresh Form Data
+                    $.RefreshFormData();
+                })
+            })
+
+        }
+
+        // <summary>取得要維護的資料</summary>
+        $.GetNeedDeleteObject = function () {
+            let ReturnObject = [];
+            // 透過 foreach 抓出 #DivDataList 底下有被 checked 的子元素
+            $.each( $('#DivDataList :checked'), function(pIndex, pItem){
+                // 向回找到 checkbox 的父元素
+                let RowTemp = $(this).closest('tr');
+                // 抓取 tr 底下td[1] 第二個子元素的內容
+                ReturnObject[pIndex] = { 
+                    id : $.trim(RowTemp.find('td:eq(1)').text()) 
+                };
+            });
+
+            return ReturnObject;
+        }
+
         // <summary>註冊當使用者點選到清除時所觸發的事件</summary>
         $.ButtonClear_Click = function () {
             $('[type="text"]').val('');
@@ -113,10 +197,12 @@
                     <input id="ButtonInsert" type="button" value="Insert" />
                     <input id="ButtonUpdate" type="button" value="Update" />
                     <input id="ButtonDelete" type="button" value="Delete" />
+                    <input id="ButtonDelete_M" type="button" value="整批刪除" />
                     <input id="ButtonClear" type="button" value="Clear" />
                 </td>
             </tr>
         </table>
+        <label id="LabelMessage"></label>
         <hr />
         <div id="DivDataList">
 

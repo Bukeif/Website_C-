@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "D:\\MyTest\\C#\\TestWebSit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|D:\\MyTest\\C#\\TestWebSit\\testwebsit\\forms\\form2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\forms\\form2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|d:\\mytest\\c#\\testwebsit\\testwebsit\\forms\\form2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\forms\\form2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|d:\\mytest\\c#\\testwebsit\\testwebsit\\forms\\webform1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\forms\\webform1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|d:\\mytest\\c#\\testwebsit\\bo\\bo\\empbasishandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|D:\\MyTest\\C#\\TestWebSit\\bo\\bo\\empbasishandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|solutionrelative:bo\\bo\\empbasishandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|D:\\MyTest\\C#\\TestWebSit\\bo\\dao\\daotb_base_emp_basis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|solutionrelative:bo\\dao\\daotb_base_emp_basis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|D:\\MyTest\\C#\\TestWebSit\\testwebsit\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|D:\\MyTest\\C#\\TestWebSit\\testwebsit\\forms\\form2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\forms\\form2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AF5AC552-011F-41EE-8CD5-8A2CB45A86C2}|BO\\BO.csproj|D:\\MyTest\\C#\\TestWebSit\\bo\\cdo\\cdotb_base_emp_basis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,8 +19,16 @@
       "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\scripts\\jplugin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|d:\\mytest\\c#\\testwebsit\\testwebsit\\forms\\form2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\forms\\form2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|D:\\MyTest\\C#\\TestWebSit\\testwebsit\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|D:\\MyTest\\C#\\TestWebSit\\testwebsit\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{412D286F-2B38-4841-8141-494AB8696E38}|TestWebSit\\TestWebSit.csproj|solutionrelative:testwebsit\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,50 +38,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form2.aspx.cs",
-              "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\Form2.aspx.cs",
-              "RelativeDocumentMoniker": "TestWebSit\\Forms\\Form2.aspx.cs",
-              "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\Form2.aspx.cs",
-              "RelativeToolTip": "TestWebSit\\Forms\\Form2.aspx.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAADwvwsAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T02:56:32.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WebForm1.aspx.cs",
-              "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\WebForm1.aspx.cs",
-              "RelativeDocumentMoniker": "TestWebSit\\Forms\\WebForm1.aspx.cs",
-              "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\WebForm1.aspx.cs",
-              "RelativeToolTip": "TestWebSit\\Forms\\WebForm1.aspx.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAA5wCMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T02:56:15.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "EmpBasisHandler.cs",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\BO\\BO\\EmpBasisHandler.cs",
               "RelativeDocumentMoniker": "BO\\BO\\EmpBasisHandler.cs",
               "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\BO\\BO\\EmpBasisHandler.cs",
               "RelativeToolTip": "BO\\BO\\EmpBasisHandler.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAABMAAAApAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAA9wGsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-10T01:31:20.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Web.config",
               "RelativeDocumentMoniker": "TestWebSit\\Web.config",
@@ -102,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Form2.aspx",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\Form2.aspx",
               "RelativeDocumentMoniker": "TestWebSit\\Forms\\Form2.aspx",
@@ -115,43 +81,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DAOtb_base_emp_basis.cs",
-              "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\BO\\DAO\\DAOtb_base_emp_basis.cs",
-              "RelativeDocumentMoniker": "BO\\DAO\\DAOtb_base_emp_basis.cs",
-              "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\BO\\DAO\\DAOtb_base_emp_basis.cs",
-              "RelativeToolTip": "BO\\DAO\\DAOtb_base_emp_basis.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T01:24:29.06Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "CDOtb_base_emp_basis.cs",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\BO\\CDO\\CDOtb_base_emp_basis.cs",
               "RelativeDocumentMoniker": "BO\\CDO\\CDOtb_base_emp_basis.cs",
               "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\BO\\CDO\\CDOtb_base_emp_basis.cs",
               "RelativeToolTip": "BO\\CDO\\CDOtb_base_emp_basis.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAlAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T01:23:02.948Z"
+              "WhenOpened": "2024-05-10T01:23:02.948Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
+              "Title": "Form2.aspx.cs",
+              "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\Form2.aspx.cs",
+              "RelativeDocumentMoniker": "TestWebSit\\Forms\\Form2.aspx.cs",
+              "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Forms\\Form2.aspx.cs",
+              "RelativeToolTip": "TestWebSit\\Forms\\Form2.aspx.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAABCwCwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T02:56:32.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "jPlugin.js",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Scripts\\jPlugin.js",
               "RelativeDocumentMoniker": "TestWebSit\\Scripts\\jPlugin.js",
               "ToolTip": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\Scripts\\jPlugin.js",
               "RelativeToolTip": "TestWebSit\\Scripts\\jPlugin.js",
-              "ViewState": "AQIAADoAAAAAAAAAAIA+wEEAAAAVAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAgwEoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-11T14:58:53.533Z"
+              "WhenOpened": "2024-05-11T14:58:53.533Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "RouteConfig.cs",
               "DocumentMoniker": "D:\\MyTest\\C#\\TestWebSit\\TestWebSit\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "TestWebSit\\App_Start\\RouteConfig.cs",
@@ -159,7 +128,8 @@
               "RelativeToolTip": "TestWebSit\\App_Start\\RouteConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T02:04:29.414Z"
+              "WhenOpened": "2024-05-10T02:04:29.414Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -11,6 +11,7 @@ namespace FW.SystemDAO.DAO.Tables {
 
     /// <summary>DAO：用來對［tb_base_emp_basis］資料表進行交易操作的 Data Access 物件</summary>
     public class DAOtb_base_emp_basis : DAOBase<CDOtb_base_emp_basis> {
+        internal int? id;
 
         #region 建構子
 

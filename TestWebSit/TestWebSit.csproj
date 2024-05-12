@@ -176,7 +176,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Forms\Form2.aspx" />
     <Content Include="Forms\JTemplates\From2_List.htm" />
-    <Content Include="Forms\WebForm1.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\colorbox\colorbox.css" />
     <Content Include="Scripts\colorbox\images\border1.png" />
@@ -361,13 +360,6 @@
     </Compile>
     <Compile Include="Forms\Form2.aspx.designer.cs">
       <DependentUpon>Form2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

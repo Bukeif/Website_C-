@@ -17,23 +17,45 @@ namespace TestWebSit
         }
 
         [WebMethod]
-        public static string QueryAllData() {
+        public static string QueryAllData()
+        {
+            // 呼叫 BO 層物件 
             var BO = new EmpBasisHandler();
-            
+            // 使用 QueryAllData(pCondition) Model 做查詢，並回傳結果訊息
             return BO.QueryAllData();
         }
         [WebMethod]
-        public static string InsertData(string pCondition) {
-            return "員工資料新增成功";
+        public static string InsertData(string pCondition)
+        {
+            // 呼叫 BO 層物件 
+            var BO = new EmpBasisHandler();
+            // 使用 InserData(pCondition) Model 做新增，並回傳結果訊息
+            return BO.InsertData(pCondition);
         }
 
         [WebMethod]
-        public static string UpdateData(string pCondition) {
-            return "員工資料修改成功";
+        public static string UpdateData(string pCondition)
+        {
+            // 呼叫 BO 層物件 
+            var BO = new EmpBasisHandler();
+            // 使用 UpdateData(pCondition) Model 做修改，並回傳結果訊息
+            return BO.UpdateData(pCondition);
         }
         [WebMethod]
-        public static string DeleteData(string pCondition) {
-            return "員工資料刪除成功";
+        public static string DeleteData(string pCondition)
+        {
+            // 建立 BO 層物件 
+            var BO = new EmpBasisHandler();
+            // 使用 DeleteData(pCondition) Model 做刪除，並回傳結果訊息
+            return BO.DeleteData(pCondition);
+        }
+        [WebMethod]
+        public static string DeleteListData(string pCondition)
+        {
+            // 建立 BO 層物件 
+            var BO = new EmpBasisHandler();
+            // 使用 DeleteListData(pCondition) Model 做刪除，並回傳結果訊息
+            return BO.DeleteListData(pCondition);
         }
 
 
